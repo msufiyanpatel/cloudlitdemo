@@ -1,80 +1,93 @@
 import React from "react";
 import styles from "../styles/Contact.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import {
   faTwitter,
   faLinkedin,
   faSquareInstagram,
   faFacebook,
 } from "@fortawesome/free-brands-svg-icons";
-// import { faTwitter, faLinkedin, faInstagram } from '@fortawesome/free-solid-svg-icons';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Contact = () => {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  const socials = [
+    { icon: faFacebook, href: "https://facebook.com/cloudlit.official", label: "Facebook" },
+    { icon: faTwitter, href: "https://twitter.com/thecloudlit", label: "Twitter" },
+    { icon: faSquareInstagram, href: "https://instagram.com/cloudlit_official", label: "Instagram" },
+    { icon: faLinkedin, href: "https://www.linkedin.com/mwlite/company/cloudlitofficial", label: "LinkedIn" },
+  ];
+
+  const pageLinks = [
+    { label: "Home", href: "/home" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Benefits", href: "/benefits" },
+    { label: "Contact Us", href: "/contact" },
+  ];
+
   return (
-    <div className={styles.Contact}>
-      <div className={styles.container}>
-        <div className={styles.pages}>
-          <h1>
-            <b>Pages</b>
-          </h1>
-          <a href="/home"><h2>Home</h2></a>
-          <a href="/about"><h2>About</h2></a>
-          <a href="/services"><h2>Services</h2></a>
-          <a href="/benefits"><h2>Benefits</h2></a>
-          <a href="/contact"><h2>Contact Us</h2></a>
-        </div>
-        <div className={styles.social}>
-          <h1>
-            <b>Get social with us</b>
-          </h1>
-          <div className={styles.iconContainer}>
-            <div className={styles.smallBox}>
-              <a
-                href="https://facebook.com/cloudlit.official"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FontAwesomeIcon icon={faFacebook} className={styles.icon} />
-              </a>
-            </div>
-            <div className={styles.smallBox}>
-              <a
-                href="https://twitter.com/thecloudlit"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FontAwesomeIcon icon={faTwitter} className={styles.icon} />
-              </a>
-            </div>
-            <div className={styles.smallBox}>
-              <a
-                href="https://instagram.com/cloudlit_official"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FontAwesomeIcon
-                  icon={faSquareInstagram}
-                  className={styles.icon}
-                />
-              </a>
-            </div>
-            <div className={styles.smallBox}>
-              <a
-                href="https://www.linkedin.com/mwlite/company/cloudlitofficial"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FontAwesomeIcon icon={faLinkedin} className={styles.icon} />
-              </a>
+    <footer className={styles.footer} ref={ref}>
+      <div className={styles.footerGlow} />
+      <motion.div
+        className={styles.footerInner}
+        initial={{ opacity: 0, y: 30 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7 }}
+      >
+        <div className={styles.footerGrid}>
+          {/* Brand column */}
+          <div className={styles.brandCol}>
+            <h2 className={styles.brandName}>
+              Cloud<span className={styles.brandAccent}>lit</span>
+            </h2>
+            <p className={styles.brandDesc}>
+              Think. Build. Scale with Cloud. Your trusted partner for cloud-native
+              transformation and DevOps excellence.
+            </p>
+          </div>
+
+          {/* Pages column */}
+          <div className={styles.linksCol}>
+            <h3 className={styles.colTitle}>Pages</h3>
+            <ul className={styles.linkList}>
+              {pageLinks.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className={styles.footerLink}>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Social column */}
+          <div className={styles.socialCol}>
+            <h3 className={styles.colTitle}>Get Social</h3>
+            <div className={styles.socialIcons}>
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialLink}
+                  aria-label={social.label}
+                >
+                  <FontAwesomeIcon icon={social.icon} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
-      </div>
-      <footer className={styles.underFooter}>
-        <p>© 2023 Cloudlit. All rights reserved</p>
-      </footer>
-    </div>
+
+        <div className={styles.footerBottom}>
+          <p>&copy; {new Date().getFullYear()} Cloudlit. All rights reserved.</p>
+        </div>
+      </motion.div>
+    </footer>
   );
 };
 

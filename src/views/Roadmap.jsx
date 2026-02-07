@@ -1,105 +1,96 @@
 import React from "react";
 import styles from "../styles/Roadmap.module.css";
-import { IconButton } from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+
+const steps = [
+  {
+    number: "01",
+    title: "Requirements Gathering",
+    desc: "Our experts collect complete reports of your existing system — services, databases, middleware. We map every component and communication path.",
+    color: "#3A92EE",
+  },
+  {
+    number: "02",
+    title: "Select Right Cloud Platform",
+    desc: "Multiple cloud providers exist in the market. We ensure you choose the platform that's the perfect fit for your solution and budget.",
+    color: "#5146CA",
+  },
+  {
+    number: "03",
+    title: "Integration of Tools & Strategies",
+    desc: "From the very start, your solution is built on the latest tools and strategies with best-in-class DevOps practices integrated throughout.",
+    color: "#6015B2",
+  },
+  {
+    number: "04",
+    title: "Train & Build Cloud Culture",
+    desc: "Our team works with your IT experts, training them on integrated tools and how to take full advantage of cloud-native techniques.",
+    color: "#8B5CF6",
+  },
+];
+
+const StepCard = ({ data, index }) => {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const isEven = index % 2 === 0;
+
+  return (
+    <motion.div
+      ref={ref}
+      className={`${styles.step} ${isEven ? styles.stepLeft : styles.stepRight}`}
+      initial={{ opacity: 0, x: isEven ? -40 : 40 }}
+      animate={inView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.15 }}
+    >
+      <div className={styles.stepCard}>
+        <div className={styles.stepNumber} style={{ color: data.color }}>
+          {data.number}
+        </div>
+        <h3 className={styles.stepTitle}>{data.title}</h3>
+        <p className={styles.stepDesc}>{data.desc}</p>
+      </div>
+      <div className={styles.stepConnector}>
+        <div
+          className={styles.stepDot}
+          style={{ background: data.color, boxShadow: `0 0 20px ${data.color}40` }}
+        />
+      </div>
+    </motion.div>
+  );
+};
 
 const Roadmap = () => {
+  const [headerRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+
   return (
-    <div id="Roadmap">
-      <div className={styles["roadmap-container"]}>
-        <div className={styles.content}>
-          <h1>
-            <b>
-              <span className={styles["content-h1"]}>
-                Roadmap To Your Successful DevOps Transformation Journey&nbsp;
-              </span>
-            </b>
-          </h1>
-          {/* <h1 className={styles["coloured-content"]}>Custom Software Development </h1>
-        <h1 className ={styles["content-h1"]}>&nbsp;Success</h1> */}
-          <p className={styles.paragraph}>
-            As your business evolves, so must technology models. Cloudlit
-            roadmap gives you on-demand access to a team of highly skilled
-            experts that work alongside your team to collaboratively drive your
-            cloud outcomes while continuously evolving your environment. Gain
-            direct access to highly skilled cloud experts and work with them as
-            you would your own team.
+    <div id="Roadmap" className={styles.roadmapSection}>
+      <div className={styles.roadmapInner}>
+        <motion.div
+          ref={headerRef}
+          className={styles.sectionHeader}
+          initial={{ opacity: 0, y: 30 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+        >
+          <span className={styles.sectionTag}>Our Process</span>
+          <h2 className={styles.sectionTitle}>
+            Roadmap To Your{" "}
+            <span className={styles.titleGradient}>
+              Successful DevOps Transformation
+            </span>
+          </h2>
+          <p className={styles.sectionDesc}>
+            As your business evolves, so must technology models. Cloudlit's roadmap
+            gives you on-demand access to highly skilled cloud experts who work
+            alongside your team.
           </p>
-          {/* <IconButton>Connect now</IconButton> */}
-        </div>
-        <div className={styles["box-container"]}>
-          <div className={styles.box}>
-            {/* <FontAwesomeIcon icon={solid("1")} /> */}
-            {/* <div className={styles.circle}> */}
-            <FontAwesomeIcon icon={solid("1")} className={styles.icon1} />
-            {/* </div> */}
-            <div className={styles["box-content"]}>
-              <b>
-                <h1 className={styles["box-heading"]}>
-                  {" "}
-                  Requirments Gathering:
-                </h1>
-              </b>
-              <p className={styles["box-para"]}>
-                Our experts will collect complete reports of your existing
-                system (services,databases,middleware etc). Understand complete
-                communication between different components.
-              </p>
-            </div>
-          </div>
-          <div className={styles.box}>
-            {/* <div className={styles.circle}> */}
-            <FontAwesomeIcon icon={solid("2")} className={styles.icon2} />
-            {/* </div> */}
-            <div className={styles["box-content"]}>
-              <b>
-                <h1 className={styles["box-heading"]}>
-                  Select right cloud platform
-                </h1>
-              </b>
-              <p className={styles["box-para"]}>
-                There are multiple cloud providers available currently in the
-                market, we make sure you choose which is perfect for your
-                solution.
-              </p>
-            </div>
-          </div>
-          <div className={styles.box}>
-            {/* <div className={styles.circle}> */}
-            <FontAwesomeIcon icon={solid("3")} className={styles.icon3} />
-            {/* </div> */}
-            <div className={styles["box-content"]}>
-              <b>
-                <h1 className={styles["box-heading"]}>
-                  {" "}
-                  Integration of tools and strategies{" "}
-                </h1>
-              </b>
-              <p className={styles["box-para"]}>
-                Our integration team makes sure from the very start your
-                solution is built on the latest tools and strategies. The tools
-                and technologies we focus on are available here.
-              </p>
-            </div>
-          </div>
-          <div className={styles.box}>
-            {/* <div className={styles.circle}> */}
-            <FontAwesomeIcon icon={solid("4")} className={styles.icon4} />
-            {/* </div> */}
-            <div className={styles["box-content"]}>
-              <b>
-                <h1 className={styles["box-heading"]}>
-                  Train and build your business culture on cloud:
-                </h1>
-              </b>
-              <p className={styles["box-para"]}>
-                Our team will be involved with your IT experts and train them on
-                the tools integrated and how to take full advantage of
-                cloud-native techniques.
-              </p>
-            </div>
-          </div>
+        </motion.div>
+
+        <div className={styles.timeline}>
+          <div className={styles.timelineLine} />
+          {steps.map((step, i) => (
+            <StepCard key={step.number} data={step} index={i} />
+          ))}
         </div>
       </div>
     </div>

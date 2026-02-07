@@ -1,38 +1,63 @@
+/* ===== GLOBAL RESET & BASE ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "Inter", "Open Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #1a1a2e;
+  background: #fff;
+  overflow-x: hidden;
+}
+
 .App {
   text-align: center;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Smooth scrollbar for modern browsers */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+::-webkit-scrollbar-track {
+  background: #f1f1f5;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
-  font-size: calc(10px + 2vmin);
-  color: white;  
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #3A92EE, #5146CA);
+  border-radius: 4px;
 }
 
-.App-link {
-  color: #61dafb;
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5146CA, #6015B2);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Selection color */
+::selection {
+  background: rgba(81, 70, 202, 0.15);
+  color: #1a1a2e;
+}
+
+/* Remove default link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Prevent image drag */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
 }
