@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Cuprum&display=swap');
+
+  .cuprum-font {
+    font-family: 'Cuprum', sans-serif;
+  }
+
+.bullet-list li::marker {
+    font-size: 1.7em; /* Adjust the size as needed */
+    color: green;
+}
+
+.bullet-list {
+    list-style: disc; /* Bullet points */
+    font-weight: bold;
+    /* list-style: square; // Square points */
+    /* list-style: none; // No points */
+    /* list-style: circle; // Circle points */
+  }

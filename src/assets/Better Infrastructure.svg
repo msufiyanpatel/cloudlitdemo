@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="107" height="107" viewBox="0 0 107 107">
+  <defs>
+    <filter id="Rectangle_16562" x="0" y="0" width="107" height="107" filterUnits="userSpaceOnUse">
+      <feOffset dy="4" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="6.5" result="blur"/>
+      <feFlood flood-color="#dce1e5"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="0.136" y1="0.062" x2="0.833" y2="0.932" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#53c0b0"/>
+      <stop offset="0.503" stop-color="#018acb"/>
+      <stop offset="1" stop-color="#fd5dc8"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_58375" data-name="Group 58375" transform="translate(19.5 15.5)">
+    <g transform="matrix(1, 0, 0, 1, -19.5, -15.5)" filter="url(#Rectangle_16562)">
+      <rect id="Rectangle_16562-2" data-name="Rectangle 16562" width="68" height="68" rx="5" transform="translate(19.5 15.5)" fill="#fff"/>
+    </g>
+    <g id="noun_analysis_3106201" transform="translate(17.908 17.857)" style="isolation: isolate">
+      <path id="Path_98586" data-name="Path 98586" d="M32.142,1.48a.692.692,0,0,0-.052-.17l-.043-.087A1.283,1.283,0,0,0,31.8.866a1.209,1.209,0,0,0-.339-.232L31.361.581a.691.691,0,0,0-.17-.052A1.051,1.051,0,0,0,30.88.486H26.531a1.3,1.3,0,1,0,0,2.61h1.194l-2.451,2.45A14.342,14.342,0,0,0,0,14.839a13.617,13.617,0,0,0,.347,3.094A12.787,12.787,0,0,0,.88,19.791a14.342,14.342,0,0,0,22.651,6.071l5.556,5.556a1.3,1.3,0,1,0,1.845-1.845l-5.556-5.556a14.316,14.316,0,0,0,1.431-16.3l2.768-2.769V6.14a1.3,1.3,0,1,0,2.61,0V1.791A1.05,1.05,0,0,0,32.142,1.48ZM2.61,14.839A11.737,11.737,0,0,1,23.426,7.4l-4.289,4.3L15.278,7.825a1.314,1.314,0,0,0-1.707-.119L2.658,15.891C2.626,15.531,2.61,15.182,2.61,14.839Zm20.046,8.305A11.744,11.744,0,0,1,3.26,18.7l10.973-8.223,3.979,3.987a1.31,1.31,0,0,0,1.85,0l4.82-4.819A11.743,11.743,0,0,1,22.655,23.144Z" transform="translate(0 0)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

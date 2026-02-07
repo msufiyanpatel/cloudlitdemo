@@ -1,0 +1,119 @@
+.Contact{
+    padding-top:30px;
+    height: 450px;
+    background-color: #222323;
+    display: flex;
+    font-family: "Open Sans",sans-serif;
+    flex-direction: column;
+}
+.container{
+    border-bottom:white 1px solid;
+    height: 320px;
+    width: 1200px;
+    margin: 20px 150px;
+    padding: 20px;
+    display: flex; 
+    box-sizing: border-box;
+}
+.pages{
+    margin: 30px 10px;
+    height:250px;
+    width: 250px;
+    text-align: left;
+}
+.pages h1{
+    color: white;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.pages h2{
+    color: aliceblue;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.social{
+    color: white;
+    height: 150px;
+    width: 250px;
+    margin: 20px 80px 10px 500px;
+    justify-content: left;
+    text-align: left;
+}
+.iconContainer{
+    /* border:white 1px solid; */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.smallBox{
+    /* border:white 1px solid; */
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+    background: linear-gradient(to left, #3A92EE, #5146CA,#6015B2);
+    border-radius: 4px;
+}
+.icon{
+    /* margin: 10px 10px 10px; */
+    font-size: 25px;
+    margin: 5px;
+}
+.underFooter{
+  display: block;
+  /* border:1px solid white; */
+  text-align: center;
+  padding: 3px;
+  /* background-color: DarkSalmon; */
+  color: white;
+  height:max-content;
+  margin-top: 0px;
+
+}
+/* @media (max-width: 650px){
+    /* .roadmap-container{
+      flex-direction: column;
+      height:auto;
+    }
+    .content{
+      box-sizing: border-box;
+      width:80%;
+    }  
+    .box{
+      box-sizing: border-box;
+      width: 0%;
+    }
+  }  */
+  @media(max-width: 1240px){
+    .container{
+      width:auto;
+      margin: 20px auto;
+    }
+    .pages{
+        width:auto;
+    }
+    .social{
+        width:auto;
+        margin: 35px auto;
+        align-items: flex-end;
+    }
+    /* .content{
+      width: 80%;
+    }
+    .box-container{
+      box-sizing: border-box;
+      justify-content: start;
+      flex-wrap: wrap;
+      margin: 30px 15px;
+    }
+    .box{
+      /* min-width: 270px; */
+      /* width: auto; 
+      min-width: 100px;
+      min-height:170px;
+      margin-right: 10px;
+      margin-bottom: 20px;
+    } */
+    
+
+  }
+

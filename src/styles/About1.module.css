@@ -1,0 +1,188 @@
+.about-container{
+    padding-top: 120px;
+    font-family: "Open Sans",sans-serif;
+    height: auto;
+    box-sizing: border-box;
+    /* height: 650px;
+    background-color:#F4F7FA;  */
+    /* display: flex;
+    flex-wrap: wrap;
+    max-width: 1600px; */
+    /* flex-direction: column; */
+}
+.contentContainer{
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  /* flex-wrap: wrap; */
+}
+.content{
+    /* flex: 1; */
+    /* width:60%; */
+    display:flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-right: 2%;
+    margin-left: 5%;
+    text-align: left;
+    box-sizing: border-box;
+} 
+.content-h1{
+    font-size: 50px;
+}
+.paragraph{
+    margin-top: 30px;
+    margin-left: 0px;
+    padding-bottom: 10px;
+    font-family: "Open Sans",sans-serif;
+    font-size:17px;
+    width: 90%;
+    box-sizing: border-box;
+}
+/* .imageContainer{
+  display: flex;
+  width:30%;
+  flex:1;
+} */
+.image{
+  width: 100%;
+  max-width:500px;
+  height: auto;
+  margin-top: 0px;
+  margin-left: 2%;
+  margin-right: 2%;
+  box-sizing: border-box;
+} 
+.section2{
+    /* border: 1px solid black; */
+    height:max-content;
+    margin: 2% 2%;
+    word-wrap: break-word;
+    display: flex;
+    box-sizing: border-box;
+}
+.section2-div1{
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    position: relative;
+    
+    /* margin-top: 20px;
+    margin-right: 100px; */
+    padding-left: 50px; 
+    padding-right: 2%; 
+    text-align: left;
+    background-color: #6015b2;
+    width: 60%;
+    word-wrap: break-word;
+    clip-path: polygon(0 0, 100% 0, 81% 100%, 0 100%);
+    margin-right:0;
+    box-sizing: border-box;
+    padding-bottom: 2%;
+} 
+.section2-div2{
+    display: flex;
+    flex-direction: column;
+    /* height: max-content;  */
+    position:relative;
+    /* margin-top: 20px;
+    margin-right: 100px; */
+    padding-left: 12%; 
+    padding-right: 2%; 
+    padding-bottom: 2%;
+    text-align: left;
+    background-color: #E5E4E2;
+    width:60%;
+    word-wrap: break-word;
+    clip-path: polygon(18.5% 0, 100% 0, 100% 100%, 0% 100%);
+    margin-left: -140px;
+    box-sizing: border-box;
+} 
+.section3{
+    /* border: 1px solid black;  */
+    
+    margin: 5%;
+    /* margin: 100px 100px; */
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    
+}
+.section3-h1{
+    font-size: 35px;
+}
+
+.box-container{
+    /* border: 1px solid black; */
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0.9;
+    justify-content: center;
+     margin-top: 20px;
+    height: max-content;
+    box-sizing: border-box;
+    /* display: flex;
+    margin: 50px; */
+}
+.hexagonContainer{
+    /* border: 1px solid black; */
+    align-self: center;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 1.5%;
+    box-sizing: border-box;
+}
+.hexagon {
+    width: 230px;
+    height: 230px;
+    background-color: #f1f1f1;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    border-radius: 20px;
+    margin:  1% 2%;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 1440px) {
+    .contentContainer {
+      flex-direction: column; /* Stack content and image vertically */
+      align-items: center; /* Center items horizontally */
+      margin-right: 50px;
+      margin-left: 50px;
+    }
+    .paragraph{
+      width:100%
+    }
+   
+  }
+  @media(max-width:1024px) {
+    .section2 {
+      flex-direction: column;
+      margin-right: 3%;
+    }
+    .section2-div1{
+      margin: auto 1%;
+      clip-path: none;
+      width: 100%;
+    }
+    .section2-div2{
+      margin: 1% 1%;
+      padding-left: 50px;
+      clip-path: none;
+      min-height:298px;
+      width: 100%;
+    }
+    .box-container{
+      padding-left: 10%;
+    }
+  }
+  /* @media(max-width:600px){
+    .contentContainer{
+      margin-left:10px;
+      margin-left:10px;
+      width:100%
+    }
+  } */
