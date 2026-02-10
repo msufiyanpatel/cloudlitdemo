@@ -6,25 +6,13 @@ import awsIcon from "../assets/aws-icon.png";
 import azureIcon from "../assets/Azure-Logo-PNG-Black.png";
 import gcp from "../assets/google-cloud-platform.png";
 import docker from "../assets/docker-logo.png";
-import dockerCompose from "../assets/docker compose.jpg";
 import kubernetes from "../assets/kubernetes.png";
 import gitlab from "../assets/Gitlab.png";
-import github from "../assets/GitHub.png";
-import teamcity from "../assets/TeamCity.png";
 import ansible from "../assets/ansible.png";
 import chef from "../assets/chef.png";
-import puppet from "../assets/puppet.png";
-import mysql from "../assets/mysql.png";
-import postgresql from "../assets/Postgresql_elephant.svg.png";
-import oracle from "../assets/oracle.png";
-import rabbitMQ from "../assets/rabbitmq.png";
-import kafka from "../assets/kafka.png";
-import reddis from "../assets/reddid.png";
 import Promethus from "../assets/promoetheus.png";
 import datadog from "../assets/datadog.png";
-import pagerduty from "../assets/pagerduty.png";
 import Terraform from "../assets/terraform.png";
-import pulumi from "../assets/pulumi.svg";
 import cloudFormation from "../assets/aws-cloudformation.png";
 
 const TABS = [

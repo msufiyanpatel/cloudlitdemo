@@ -43,8 +43,6 @@ const CaseStudiesPage = () => {
     setShowTechnologyDropdown(false);
   };
 
-  const hasActiveFilters = searchTerm || industryFilter || techFilter;
-
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (industryDropdownRef.current && !industryDropdownRef.current.contains(e.target))
