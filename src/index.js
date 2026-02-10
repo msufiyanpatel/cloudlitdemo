@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import styles from './index.module.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
-import Navbar from '../src/components/Navbar'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
