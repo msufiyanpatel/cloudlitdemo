@@ -67,11 +67,27 @@
   position: absolute;
   left: 50%;
   top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, #3A92EE, #5146CA, #6015B2, #8B5CF6);
+  width: 4px;
+  height: calc(100% - 80px);
+  background: linear-gradient(
+    to bottom,
+    rgba(58, 146, 238, 0.18),
+    rgba(81, 70, 202, 0.12),
+    rgba(96, 21, 178, 0.08)
+  );
   transform: translateX(-50%);
-  opacity: 0.2;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.timelineLineFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, #3A92EE, #5146CA, #6015B2, #8B5CF6);
+  border-radius: 2px;
+  transition: height 0.08s ease-out;
 }
 
 /* ===== STEP ===== */
@@ -117,13 +133,12 @@
 .stepNumber {
   font-size: 42px;
   font-weight: 900;
-  opacity: 0.15;
   line-height: 1;
   margin-bottom: 8px;
 }
 
 .stepCard:hover .stepNumber {
-  opacity: 0.3;
+  opacity: 0.9;
 }
 
 .stepTitle {

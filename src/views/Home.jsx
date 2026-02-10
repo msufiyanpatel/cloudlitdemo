@@ -1,7 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import logo1 from "../assets/logos/1.png";
+import logo2 from "../assets/logos/2.png";
+import logo3 from "../assets/logos/3.png";
+import logo4 from "../assets/logos/4.png";
+import logo5 from "../assets/logos/5.png";
+import logo6 from "../assets/logos/6.png";
+import logo7 from "../assets/logos/7.png";
+import logo8 from "../assets/logos/8.png";
+import logo9 from "../assets/logos/9.png";
+import logo10 from "../assets/logos/10.png";
+
+const trustedLogos = [
+  logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10,
+];
 
 const FloatingOrb = ({ size, color, top, left, delay, duration }) => (
   <div
@@ -24,6 +38,12 @@ const Home = () => {
   const navigate = useNavigate();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
+
+  const { scrollY } = useScroll();
+  
+  // Gradient moves down and fades out on scroll
+  const gradientY = useTransform(scrollY, [0, 500], [0, 350]);
+  const gradientOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -64,6 +84,16 @@ const Home = () => {
     <div id="Home" className={styles.homeWrapper}>
       {/* Hero Section */}
       <section className={styles.hero} ref={heroRef}>
+        {/* D-shaped gradient - moves down and fades on scroll */}
+        <motion.div
+          className={styles.heroGradientD}
+          style={{
+            y: gradientY,
+            opacity: gradientOpacity,
+          }}
+          aria-hidden="true"
+        />
+        
         {/* Animated gradient background orbs */}
         <div className={styles.orbContainer}>
           <FloatingOrb
@@ -158,12 +188,25 @@ const Home = () => {
               className={styles.heroDescription}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.7 }}
+            >
+              As you begin your journey to embrace modern cloud native mindset.
+            </motion.p>
+            <motion.p
+              className={styles.heroDescription}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.7 }}
+            >    
+              Cloudlit Engineering is our core to support our clients in complete cloud transformation.
+              </motion.p>
+            <motion.p
+              className={styles.heroPoints}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.7 }}
             >
-              As you begin your journey to embrace modern cloud native mindset,
-              you may need more than just support. Cloudlit helps you scale your
-              IT organization, transform environments, streamline operating
-              models and operate efficiently.
+              Kubernetes • Cloud Migration • DevOps Automation • Microservices
             </motion.p>
 
             <motion.div
@@ -207,118 +250,19 @@ const Home = () => {
               </div>
             </motion.div>
           </motion.div>
-
-          {/* Right side - animated visual */}
-          <motion.div
-            className={styles.heroRight}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-          >
-            <div className={styles.visualContainer}>
-              {/* Central rotating ring */}
-              <div className={styles.outerRing}>
-                <div className={styles.innerRing}>
-                  <div className={styles.centerPulse}>
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      className={styles.cloudIcon}
-                    >
-                      <path
-                        d="M6.5 19.5C3.46243 19.5 1 17.0376 1 14C1 11.2386 3.03201 8.95429 5.68394 8.55476C6.43728 5.44954 9.23696 3.14286 12.5714 3.14286C16.5464 3.14286 19.7857 6.38214 19.7857 10.3571C19.7857 10.5714 19.7768 10.7839 19.7594 10.9939C21.5821 11.5879 23 13.3393 23 15.3571C23 17.8429 20.9857 19.8571 18.5 19.8571L6.5 19.5Z"
-                        fill="url(#cloudGrad)"
-                        stroke="rgba(58,146,238,0.3)"
-                        strokeWidth="0.5"
-                      />
-                      <defs>
-                        <linearGradient
-                          id="cloudGrad"
-                          x1="1"
-                          y1="3"
-                          x2="23"
-                          y2="20"
-                        >
-                          <stop offset="0%" stopColor="#3A92EE" />
-                          <stop offset="50%" stopColor="#5146CA" />
-                          <stop offset="100%" stopColor="#6015B2" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              {/* Orbiting nodes */}
-              {["Deploy", "Monitor", "Scale", "Secure", "Automate", "Optimize"].map(
-                (label, i) => (
-                  <div
-                    key={label}
-                    className={styles.orbitNode}
-                    style={{
-                      "--orbit-delay": `${i * -3.33}s`,
-                      "--orbit-index": i,
-                    }}
-                  >
-                    <div className={styles.nodeInner}>
-                      <span>{label}</span>
-                    </div>
-                  </div>
-                )
-              )}
-
-              {/* Connecting lines that pulse */}
-              <svg className={styles.connectionLines} viewBox="0 0 400 400">
-                <circle
-                  cx="200"
-                  cy="200"
-                  r="140"
-                  fill="none"
-                  stroke="url(#lineGrad)"
-                  strokeWidth="1"
-                  strokeDasharray="6 4"
-                  className={styles.dashedCircle}
-                />
-                <circle
-                  cx="200"
-                  cy="200"
-                  r="100"
-                  fill="none"
-                  stroke="url(#lineGrad)"
-                  strokeWidth="0.5"
-                  strokeDasharray="4 6"
-                  className={styles.dashedCircleInner}
-                />
-                <defs>
-                  <linearGradient
-                    id="lineGrad"
-                    x1="0%"
-                    y1="0%"
-                    x2="100%"
-                    y2="100%"
-                  >
-                    <stop offset="0%" stopColor="rgba(58,146,238,0.3)" />
-                    <stop offset="50%" stopColor="rgba(81,70,202,0.3)" />
-                    <stop offset="100%" stopColor="rgba(96,21,178,0.3)" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-          </motion.div>
         </div>
+      </section>
 
-        {/* Scroll indicator */}
-        <motion.div
-          className={styles.scrollIndicator}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-        >
-          <div className={styles.scrollMouse}>
-            <div className={styles.scrollDot} />
-          </div>
-          <span>Scroll to explore</span>
-        </motion.div>
+      {/* Trusted By Industry Leaders */}
+      <section className={styles.trustedSection}>
+        <h2 className={styles.trustedHeading}>TRUSTED BY INDUSTRY LEADERS IN MEA</h2>
+        <div className={styles.trustedLogos}>
+          {trustedLogos.map((logo, i) => (
+            <div key={i} className={styles.trustedLogoItem}>
+              <img src={logo} alt={`Trusted partner ${i + 1}`} />
+            </div>
+          ))}
+        </div>
       </section>
     </div>
   );

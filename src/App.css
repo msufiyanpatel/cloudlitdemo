@@ -1,4 +1,8 @@
 /* ===== GLOBAL RESET & BASE ===== */
+:root {
+  --header-banner-bg: #f8faff;
+}
+
 *,
 *::before,
 *::after {
@@ -24,6 +28,11 @@ body {
 .App {
   text-align: center;
   overflow-x: hidden;
+}
+
+/* No top padding - banner starts from screen top */
+.App__main {
+  padding-top: 0;
 }
 
 /* Smooth scrollbar for modern browsers */

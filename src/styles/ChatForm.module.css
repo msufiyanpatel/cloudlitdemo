@@ -1,124 +1,495 @@
-.ChatForm{
-  padding-top: 50px;
-  display: flex;
- 
- 
-  /* height: 800px; */
-  /* width: 1600px; */
-  width: 100%;
-  padding-top: 50px;
-  /* padding-left: 20%; */
-  /* max-width: 1600px; */
-  /* padding-left: 20%;
-  padding-right: 20%; */
-  font-family: "Open Sans",sans-serif;
-  box-sizing: border-box;
-  /* flex-direction:row; */
-}
-.staticStyling{
-  display:flex;
-  padding: 10px;
-  position: relative;
-    /* margin-top: 80px;
-    margin-left: 20px;
-    margin-bottom:100px ; */
-    margin-top: 80px;
-    margin-left:20%;
-    padding-left: 5px;
-   padding-right: 5px;
-    width: 350px;
-    max-width: 100%;
-    box-sizing: border-box;
-    height: 630px;
-    background: linear-gradient(to right,blue, blueviolet);
-    /* background: linear-gradient(rgba(42, 26, 216, 1),transparent) */
-}
-.textOne{
-  padding: 18px;
-  margin-bottom: 130px;
-  font-size: 20px;
-  color: white;
-}
-.image{
-  align-content: center;
-  margin-top: 50px;
-  margin-left: 70px;
+/* ===== PAGE – Match reference layout, padding, margin (our colors) ===== */
+.page {
+  padding-top: 90px;
+  min-height: 100vh;
+  background: #fff;
+  font-family: "Inter", "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
 }
 
-.form-container {
-  display:flex;
+.wrapper {
+  display: grid;
+  grid-template-columns: 0.35fr 0.65fr;
+  gap: 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 56px 5% 100px;
+  align-items: start;
+  min-width: 0;
+}
+
+/* ===== LEFT – content left aligned ===== */
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  text-align: left;
+  min-width: 0;
+  
+}
+
+.heading {
+  margin: 0 0 10px 0;
+  font-size: clamp(38px, 4.8vw, 52px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+.headingLine1 {
+  display: block;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+  
+}
+
+.headingLine2 {
+  display: block;
+  color: #444;
+  font-weight: 700;
+}
+
+.intro {
+  margin: 0 0 40px 0;
+  font-size: 17px;
+  color: #555;
+  line-height: 1.65;
+  max-width: min(380px, 100%);
+}
+
+.teamHeading {
+  margin: 0 0 20px 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #5146CA;
+}
+
+/* Team strip: horizontal, scrollable (like carousel) */
+.teamStripWrapper {
   width: 100%;
   max-width: 100%;
-  flex-direction: column;
-  margin-top:50px;
-  margin-right: 1%;
-  /* max-width: 600px; */
-  padding: 20px;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 14px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
 }
 
-.heading1 {
-  text-align: left;
-  margin-bottom: 10px;
-  font-weight: bolder;
-  font-family: 'Mada';
-  font-size: 40px;
-}
-
-.form-group {
-  margin-bottom: 30px;
-}
-
-label {
-  padding-top: 5px;
-  margin-top: 5px;
-  text-align: left;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 18px;
-  display: block;
-  margin-bottom: 5px;
-}
-
-textarea {
-  height: 180px;
-  resize: vertical; 
-}
-input{
-  height: 45px;
-}
-
-input,
-textarea {
-  width:100%;
-  max-width: 500px;
-  padding: 10px;
-  border: 1px solid  	#E8E8E8;
-  border-radius: 4px;
+.teamStrip {
   display: flex;
+  gap: 16px;
+  width: 100%;
+  overflow-x: hidden;
+  padding-bottom: 8px;
+  margin-bottom: 0;
+  scroll-behavior: auto;
 }
 
-.submit-btn {
-  width: 150px;
-  margin-top: 20px;
-  margin-left: 20%;
-  padding: 10px;
-  background: linear-gradient(to right,blue, blueviolet);
+.teamStrip::-webkit-scrollbar {
+  display: none;
+}
+
+.teamCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 60px;
+ width: 200px;
+  padding: 16px 14px;
+  background: #f8f7fc;
+  border: 1px solid rgba(81, 70, 202, 0.12);
+  border-radius: 50px;
+  text-align: left;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
+}
+
+.teamCard:hover {
+  background: rgba(81, 70, 202, 0.06);
+  border-color: rgba(81, 70, 202, 0.22);
+  box-shadow: 0 8px 24px rgba(81, 70, 202, 0.08);
+}
+
+/* Two-row carousel: JS drives scroll direction (forward/backward) */
+.teamStripForward {
+  /* no-op marker class */
+}
+
+.teamStripBackward {
+  /* no-op marker class */
+}
+
+.teamAvatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(81, 70, 202, 0.08);
+}
+
+.teamAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.teamTitle {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: #1a1a2e;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+/* Contact info: side-by-side square boxes (Email Us | Visit Us) */
+.contactInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 0;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px;
+  min-height: 140px;
+  aspect-ratio: 2;
+  
+ 
+  
+  
+}
+
+
+
+.contactIconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(81, 70, 202, 0.1);
+  flex-shrink: 0;
+}
+
+.contactIcon {
+  font-size: 16px;
+  color: #5146CA;
+}
+
+.contactLabel {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.contactValue,
+.contactPhone {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.contactValue {
+  color: #5146CA;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: inline-block;
+}
+
+.contactValue:hover {
+  color: #6015B2;
+}
+
+.contactPhone {
+  margin-top: 6px;
+  color: #5146CA;
+}
+
+/* ===== RIGHT – Form panel aligned to right ===== */
+.right {
+  position: sticky;
+  top: 100px;
+  left: 60%;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  min-width: 0;
+}
+
+.formPanel {
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: 0;
+  background: #fafafe;
+  border: 1px solid rgba(81, 70, 202, 0.1);
+  border-radius: 24px;
+  padding: 48px 44px 44px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+}
+
+.formGroup label {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #1a1a2e;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 16px 18px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #1a1a2e;
+  background: #fff;
+  border: 1px solid rgba(81, 70, 202, 0.18);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #999;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: #5146CA;
+  box-shadow: 0 0 0 3px rgba(81, 70, 202, 0.1);
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  padding: 18px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
   color: #fff;
+  background: linear-gradient(135deg, #5146CA, #6015B2);
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
 }
-@media(max-width:1024px)
-{
-  .ChatForm{
-    padding-left:20px;
-    padding-right: 0;
+
+.submitBtn:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(81, 70, 202, 0.35);
+}
+
+.sendIcon {
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+.recaptcha {
+  margin: 20px 0 0 0;
+  font-size: 11px;
+  color: #888;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ===== RESPONSIVE ===== */
+/* Switch to single-column layout only on narrower screens */
+@media (max-width: 900px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    padding: 48px 5% 72px;
+    gap: 48px;
+  }
+
+  .right {
+    position: static;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .contactInfo {
+    grid-template-columns: 1fr;
+  }
+
+  .right {
+    justify-content: stretch;
+  }
+
+  .formPanel {
+    margin-left: 0;
+    max-width: none;
+  }
+
+  .form {
+    align-items: stretch;
+  }
+
+  .formGroup {
+    align-items: flex-start;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    text-align: left;
   }
 }
-@media(max-width:768px){
-  .staticStyling{
-    display: none;
+
+@media (max-width: 768px) {
+  .page {
+    padding-top: 80px;
   }
-  .form-container{
-    margin-left: 20px ;
+
+  .wrapper {
+    padding: 40px 4% 56px;
+  }
+
+  .teamStrip {
+    max-width: 100%;
+  }
+
+  .teamCard {
+    padding: 16px 10px;
+  }
+
+  .teamAvatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .formPanel {
+    padding: 32px 24px 28px;
+  }
+
+  .form {
+    gap: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding-top: 72px;
+  }
+
+  .wrapper {
+    padding: 24px 16px 48px;
+  }
+
+  .heading {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .intro {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .formPanel {
+    padding: 24px 16px 24px;
+  }
+
+  .form {
+    gap: 18px;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+
+  .submitBtn {
+    padding: 16px 24px;
+    font-size: 15px;
+    width: 100%;
+  }
+
+  .contactItem {
+    padding: 16px;
+    min-height: 120px;
+  }
+
+  .contactInfo {
+    gap: 16px;
+  }
+
+  .teamCard {
+    padding: 12px 10px;
+  }
+
+  .teamAvatar {
+    width: 48px;
+    height: 48px;
   }
 }

@@ -1,66 +1,101 @@
 /* ===== FOOTER ===== */
 .footer {
   position: relative;
-  background: #0f0f1a;
-  padding: 80px 5% 0;
-  overflow: hidden;
+  background: #000000;
+  padding: 0;
+  overflow-x: hidden;
   font-family: "Inter", "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.footerGlow {
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 200px;
-  background: radial-gradient(ellipse, rgba(81,70,202,0.08) 0%, transparent 70%);
-  pointer-events: none;
+/* ===== FOOTER SEPARATOR ===== */
+.footerSeparator {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 5%;
 }
 
+/* ===== FOOTER INNER ===== */
 .footerInner {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 48px 5% 0;
+  text-align: left;
+}
+
+.capabilitiesTitle {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 32px 0;
+  text-align: left;
 }
 
 /* ===== FOOTER GRID ===== */
 .footerGrid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 60px;
+  gap: 48px 60px;
   padding-bottom: 48px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+  min-width: 0;
 }
 
 /* ===== BRAND COLUMN ===== */
 .brandCol {
   max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  min-width: 0;
+}
+
+.brandLogoLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.brandLogoLink:hover {
+  opacity: 0.9;
+}
+
+.brandLogo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .brandName {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 800;
   color: #fff;
-  margin-bottom: 16px;
   letter-spacing: -0.5px;
-}
-
-.brandAccent {
-  background-image: linear-gradient(135deg, #3A92EE, #5146CA, #6015B2);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 .brandDesc {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.45);
   line-height: 1.7;
+  margin: 0 0 24px 0;
+  text-align: left;
+}
+
+.brandCol .socialIcons {
+  margin-top: 0;
 }
 
 /* ===== LINKS COLUMN ===== */
 .linksCol {
   padding-top: 4px;
+  text-align: left;
 }
 
 .colTitle {
@@ -70,6 +105,7 @@
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-align: left;
 }
 
 .linkList {
@@ -79,6 +115,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  align-items: flex-start;
 }
 
 .footerLink {
@@ -94,11 +131,7 @@
   transform: translateX(4px);
 }
 
-/* ===== SOCIAL COLUMN ===== */
-.socialCol {
-  padding-top: 4px;
-}
-
+/* ===== SOCIAL ICONS ===== */
 .socialIcons {
   display: flex;
   gap: 12px;
@@ -130,7 +163,7 @@
 /* ===== FOOTER BOTTOM ===== */
 .footerBottom {
   padding: 24px 0;
-  text-align: center;
+  text-align: left;
 }
 
 .footerBottom p {
@@ -139,17 +172,181 @@
 }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .footerGrid {
+    gap: 40px 48px;
+  }
+
+  .footerInner {
+    padding: 40px 5% 0;
+  }
+}
+
 @media (max-width: 768px) {
-  .footer {
-    padding: 60px 6% 0;
+  .footerInner {
+    padding: 36px 5% 0;
+  }
+
+  .capabilitiesTitle {
+    margin-bottom: 24px;
   }
 
   .footerGrid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
+    padding-bottom: 36px;
   }
 
   .brandCol {
     max-width: 100%;
   }
+
+  .brandLogoLink {
+    margin-bottom: 16px;
+  }
+
+  .brandDesc {
+    margin-bottom: 20px;
+  }
 }
+
+@media (max-width: 600px) {
+  .footerSeparator {
+    margin: 0 4%;
+  }
+
+  .footerInner {
+    padding: 32px 4% 0;
+  }
+
+  .footerGrid {
+    gap: 32px;
+    padding-bottom: 32px;
+  }
+
+  .brandName {
+    font-size: 22px;
+  }
+
+  .brandLogo {
+    height: 36px;
+  }
+
+  .brandDesc {
+    font-size: 14px;
+  }
+
+  .socialLink {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .footerBottom {
+    padding: 20px 0;
+  }
+
+  .footerBottom p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerInner {
+    padding: 28px 4% 0;
+  }
+
+  .footerGrid {
+    gap: 28px;
+    padding-bottom: 28px;
+  }
+
+  .brandLogoLink {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .brandLogo {
+    height: 32px;
+  }
+
+  .brandName {
+    font-size: 20px;
+  }
+
+  .brandDesc {
+    font-size: 13px;
+    margin-bottom: 18px;
+    line-height: 1.65;
+  }
+
+  .socialIcons {
+    gap: 10px;
+  }
+
+  .socialLink {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+    font-size: 15px;
+  }
+
+  .colTitle {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .footerLink {
+    font-size: 13px;
+  }
+
+  .linkList {
+    gap: 10px;
+  }
+
+  .footerBottom {
+    padding: 18px 0;
+  }
+
+  .footerBottom p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 375px) {
+  .footerSeparator {
+    margin: 0 3%;
+  }
+
+  .footerInner {
+    padding: 24px 3% 0;
+  }
+
+  .footerGrid {
+    gap: 24px;
+    padding-bottom: 24px;
+  }
+
+  .brandLogo {
+    height: 28px;
+  }
+
+  .brandName {
+    font-size: 18px;
+  }
+
+  .brandDesc {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+
+  .socialLink {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+

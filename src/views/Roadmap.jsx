@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "../styles/Roadmap.module.css";
 import { useInView } from "react-intersection-observer";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const steps = [
   {
@@ -61,6 +61,17 @@ const StepCard = ({ data, index }) => {
 
 const Roadmap = () => {
   const [headerRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const timelineRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start end", "end start"],
+  });
+
+  const lineFillHeight = useTransform(scrollYProgress, (v) => {
+    const p = Math.min(1, Math.max(0, v));
+    return `${p * 100}%`;
+  });
 
   return (
     <div id="Roadmap" className={styles.roadmapSection}>
@@ -86,8 +97,13 @@ const Roadmap = () => {
           </p>
         </motion.div>
 
-        <div className={styles.timeline}>
-          <div className={styles.timelineLine} />
+        <div ref={timelineRef} className={styles.timeline}>
+          <div className={styles.timelineLine}>
+            <motion.div
+              className={styles.timelineLineFill}
+              style={{ height: lineFillHeight }}
+            />
+          </div>
           {steps.map((step, i) => (
             <StepCard key={step.number} data={step} index={i} />
           ))}

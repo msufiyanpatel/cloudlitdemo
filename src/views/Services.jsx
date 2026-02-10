@@ -27,110 +27,161 @@ import Terraform from "../assets/terraform.png";
 import pulumi from "../assets/pulumi.svg";
 import cloudFormation from "../assets/aws-cloudformation.png";
 
+const TABS = [
+  { id: "cloud", label: "Cloud" },
+  { id: "devops", label: "DevOps" },
+  { id: "provision", label: "Provision" },
+  { id: "monitor", label: "Monitor" },
+];
+
 const serviceData = [
+  /* Cloud (4) */
   {
-    title: "Cloud Providers",
-    description: "Amazon AWS, GCP, Microsoft Azure, Any Private Cloud and other...",
-    icons: [
-      { src: awsIcon, alt: "AWS" },
-      { src: azureIcon, alt: "Azure" },
-      { src: gcp, alt: "GCP" },
-    ],
+    title: "Amazon Web Services",
+    category: "cloud",
+    description: "Innovate with agility and build a secure cloud platform by exploiting the full breadth of AWS capabilities.",
+    icons: [{ src: awsIcon, alt: "AWS" }],
     accent: "#3A92EE",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400",
   },
   {
-    title: "Containers & Orchestration",
-    description: "Docker, Compose, Kubernetes and other...",
-    icons: [
-      { src: docker, alt: "Docker" },
-      { src: dockerCompose, alt: "Docker Compose" },
-      { src: kubernetes, alt: "Kubernetes" },
-    ],
+    title: "Google Cloud",
+    category: "cloud",
+    description: "Google Cloud provides services that support organizations to go digital with computing, data and AI tools.",
+    icons: [{ src: gcp, alt: "GCP" }],
     accent: "#5146CA",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400",
   },
   {
-    title: "CI/CD",
-    description: "Jenkins, GitLab, GitHub, TeamCity, CircleCI, Travis CI, ArgoCD and other...",
-    icons: [
-      { src: gitlab, alt: "GitLab" },
-      { src: github, alt: "GitHub" },
-      { src: teamcity, alt: "TeamCity" },
-    ],
+    title: "IBM Cloud",
+    category: "cloud",
+    description: "IBM Cloud offers 200+ services in virtual servers, networking, storage and Watson AI capabilities.",
+    icons: [{ src: azureIcon, alt: "IBM" }],
     accent: "#6015B2",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400",
   },
   {
-    title: "Configuration Management",
-    description: "Ansible, Chef, Puppet and other...",
-    icons: [
-      { src: ansible, alt: "Ansible" },
-      { src: chef, alt: "Chef" },
-      { src: puppet, alt: "Puppet" },
-    ],
+    title: "Microsoft Azure",
+    category: "cloud",
+    description: "Azure helps organizations transition to the cloud with capabilities tailored to their specific needs.",
+    icons: [{ src: azureIcon, alt: "Azure" }],
     accent: "#3A92EE",
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400",
   },
+  /* DevOps (4) */
   {
-    title: "Databases",
-    description: "MySQL, MongoDB, Aurora, PostgreSQL, Percona, Oracle, MS SQL and other...",
-    icons: [
-      { src: mysql, alt: "MySQL" },
-      { src: postgresql, alt: "PostgreSQL" },
-      { src: oracle, alt: "Oracle" },
-    ],
+    title: "Red Hat OpenShift",
+    category: "devops",
+    description: "Enterprise Kubernetes platform for building, deploying and managing containerized applications at scale.",
+    icons: [{ src: kubernetes, alt: "OpenShift" }],
     accent: "#5146CA",
+    image: "https://picsum.photos/seed/containers1/400/200",
   },
   {
-    title: "Services",
-    description: "RabbitMQ, Apache Kafka, Redis, ELK stack, Istio, Memcached and other...",
-    icons: [
-      { src: rabbitMQ, alt: "RabbitMQ" },
-      { src: kafka, alt: "Apache Kafka" },
-      { src: reddis, alt: "Redis" },
-    ],
+    title: "Jenkins",
+    category: "devops",
+    description: "Open source automation server for building, testing and deploying software with extensive plugin ecosystem.",
+    icons: [{ src: gitlab, alt: "Jenkins" }],
     accent: "#6015B2",
+    image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=400",
   },
   {
-    title: "Monitoring",
-    description: "Prometheus, Datadog, Grafana, PagerDuty, CloudWatch and other...",
-    icons: [
-      { src: Promethus, alt: "Prometheus" },
-      { src: datadog, alt: "Datadog" },
-      { src: pagerduty, alt: "PagerDuty" },
-    ],
+    title: "Kubernetes",
+    category: "devops",
+    description: "Container orchestration platform for automating deployment, scaling and management of containerized apps.",
+    icons: [{ src: kubernetes, alt: "Kubernetes" }],
     accent: "#3A92EE",
+    image: "https://picsum.photos/seed/kubernetes1/400/200",
   },
   {
-    title: "Infrastructure Provisioning",
-    description: "Terraform, Pulumi, AWS CloudFormation and other...",
-    icons: [
-      { src: Terraform, alt: "Terraform" },
-      { src: pulumi, alt: "Pulumi" },
-      { src: cloudFormation, alt: "CloudFormation" },
-    ],
+    title: "Docker",
+    category: "devops",
+    description: "Container platform for developing, shipping and running applications in isolated, portable environments.",
+    icons: [{ src: docker, alt: "Docker" }],
     accent: "#5146CA",
+    image: "https://picsum.photos/seed/docker1/400/200",
+  },
+  /* Provision (4) */
+  {
+    title: "Ansible",
+    category: "provision",
+    description: "Agentless automation for configuration management, application deployment and IT orchestration.",
+    icons: [{ src: ansible, alt: "Ansible" }],
+    accent: "#3A92EE",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400",
+  },
+  {
+    title: "Chef",
+    category: "provision",
+    description: "Configuration management platform for defining infrastructure as code and automating compliance.",
+    icons: [{ src: chef, alt: "Chef" }],
+    accent: "#5146CA",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400",
+  },
+  {
+    title: "AWS CloudFormation",
+    category: "provision",
+    description: "Infrastructure as code service for modeling and provisioning AWS resources in a repeatable way.",
+    icons: [{ src: cloudFormation, alt: "CloudFormation" }],
+    accent: "#6015B2",
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400",
+  },
+  {
+    title: "Terraform",
+    category: "provision",
+    description: "Infrastructure as code tool for building, changing and versioning cloud and on-prem resources.",
+    icons: [{ src: Terraform, alt: "Terraform" }],
+    accent: "#5146CA",
+    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400",
+  },
+  /* Monitor (3) */
+  {
+    title: "Prometheus",
+    category: "monitor",
+    description: "Open source monitoring and alerting toolkit designed for reliability and dimensional data model.",
+    icons: [{ src: Promethus, alt: "Prometheus" }],
+    accent: "#3A92EE",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400",
+  },
+  {
+    title: "Datadog",
+    category: "monitor",
+    description: "Unified monitoring platform for infrastructure, applications, logs and real-time performance analytics.",
+    icons: [{ src: datadog, alt: "Datadog" }],
+    accent: "#5146CA",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400",
+  },
+  {
+    title: "Grafana",
+    category: "monitor",
+    description: "Analytics and monitoring platform for visualizing metrics, logs and traces from any source.",
+    icons: [{ src: datadog, alt: "Grafana" }],
+    accent: "#6015B2",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400",
   },
 ];
 
-const ServiceCard = ({ data, index }) => {
+const ServiceCard = ({ data, index, isWide }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <motion.div
       ref={ref}
-      className={styles.card}
+      className={`${styles.card} ${isWide ? styles.cardWide : ""}`}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.08 }}
     >
-      <div className={styles.cardAccent} style={{ background: data.accent }} />
       <div className={styles.cardBody}>
-        <h3 className={styles.cardTitle}>{data.title}</h3>
+        <div className={styles.cardHeader}>
+          <div className={styles.cardIcon} style={{ background: `${data.accent}20`, borderColor: `${data.accent}40` }}>
+            <img src={data.icons[0].src} alt={data.icons[0].alt} />
+          </div>
+          <h3 className={styles.cardTitle}>{data.title}</h3>
+        </div>
         <p className={styles.cardDesc}>{data.description}</p>
-        <div className={styles.iconRow}>
-          {data.icons.map((icon) => (
-            <div key={icon.alt} className={styles.iconBox}>
-              <img src={icon.src} alt={icon.alt} />
-            </div>
-          ))}
+        <div className={styles.cardImage}>
+          <img src={data.image} alt={data.title} />
         </div>
       </div>
     </motion.div>
@@ -138,7 +189,10 @@ const ServiceCard = ({ data, index }) => {
 };
 
 const Services = () => {
+  const [activeTab, setActiveTab] = React.useState("cloud");
   const [headerRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  const filteredServices = serviceData.filter((s) => s.category === activeTab);
 
   return (
     <div id="services" className={styles.servicesSection}>
@@ -161,10 +215,27 @@ const Services = () => {
           </p>
         </motion.div>
 
-        <div className={styles.cardGrid}>
-          {serviceData.map((data, i) => (
-            <ServiceCard key={data.title} data={data} index={i} />
-          ))}
+        <div className={styles.tabsLayout}>
+          <nav className={styles.tabsNav} aria-label="Service categories">
+            {TABS.map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                className={`${styles.tabBtn} ${activeTab === tab.id ? styles.tabActive : ""}`}
+                onClick={() => setActiveTab(tab.id)}
+                aria-pressed={activeTab === tab.id}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </nav>
+          <div className={styles.tabsContent}>
+            <div className={`${styles.cardGrid} ${filteredServices.length === 3 ? styles.cardGridThree : ""}`}>
+              {filteredServices.map((data, i) => (
+                <ServiceCard key={data.title} data={data} index={i} isWide={i === 0} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

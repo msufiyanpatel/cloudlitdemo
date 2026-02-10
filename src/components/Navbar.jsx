@@ -23,10 +23,10 @@ export default function Navbar() {
   }, [location]);
 
   const navLinks = [
-    { label: "Home", path: "/home" },
     { label: "About", path: "/about" },
     { label: "Services", path: "/services" },
     { label: "Benefits", path: "/benefits" },
+    { label: "Portfolio", path: "/casestudies" },
     { label: "Roadmap", path: "/roadmap" },
   ];
 
@@ -72,26 +72,32 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile overlay */}
-      <div className={`navbar__overlay ${menuOpen ? "navbar__overlay--open" : ""}`}>
-        <div className="navbar__overlay-links">
-          {navLinks.map((link, i) => (
+      {/* Mobile menu backdrop */}
+      <div
+        className={`navbar__side-menu-backdrop ${menuOpen ? "navbar__side-menu-backdrop--open" : ""}`}
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Mobile dropdown menu */}
+      <div className={`navbar__side-menu ${menuOpen ? "navbar__side-menu--open" : ""}`}>
+        <div className="navbar__side-menu-links">
+          {navLinks.map((link) => (
             <button
               key={link.label}
-              className="navbar__overlay-link"
+              className="navbar__side-menu-link"
               onClick={() => navigate(link.path)}
-              style={{ animationDelay: `${i * 0.05}s` }}
             >
               {link.label}
             </button>
           ))}
-          <button
-            className="navbar__overlay-cta"
-            onClick={() => navigate("/contact")}
-          >
-            Contact Us
-          </button>
         </div>
+        <button
+          className="navbar__side-menu-cta"
+          onClick={() => navigate("/contact")}
+        >
+          Contact Us
+        </button>
       </div>
     </nav>
   );
