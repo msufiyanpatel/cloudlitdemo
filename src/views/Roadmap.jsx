@@ -34,29 +34,34 @@ const steps = [
   },
 ];
 
+const CardContent = ({ data }) => (
+  <>
+    <div className={styles.cardAccentLine} style={{ background: `linear-gradient(90deg, ${data.color}, ${data.color}55)` }} />
+    <div className={styles.cardInner}>
+      <span className={styles.cardPhase} style={{ color: data.color }}>{data.phase}</span>
+      <div className={styles.cardNumber} style={{ color: `${data.color}20` }}>{data.number}</div>
+      <h3 className={styles.stepTitle}>{data.title}</h3>
+      <p className={styles.stepDesc}>{data.desc}</p>
+    </div>
+  </>
+);
+
 const StepCard = ({ data, index }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 });
   const isEven = index % 2 === 0;
 
   return (
-    <div className={styles.stepRow}>
-      {/* Left side */}
+    <div className={styles.stepRow} ref={ref}>
+      {/* Left side - desktop only for even cards */}
       <div className={`${styles.stepSide} ${styles.stepSideLeft}`}>
         {isEven && (
           <motion.div
-            ref={ref}
             className={styles.stepCard}
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className={styles.cardAccentLine} style={{ background: `linear-gradient(90deg, ${data.color}, ${data.color}55)` }} />
-            <div className={styles.cardInner}>
-              <span className={styles.cardPhase} style={{ color: data.color }}>{data.phase}</span>
-              <div className={styles.cardNumber} style={{ color: `${data.color}20` }}>{data.number}</div>
-              <h3 className={styles.stepTitle}>{data.title}</h3>
-              <p className={styles.stepDesc}>{data.desc}</p>
-            </div>
+            <CardContent data={data} />
           </motion.div>
         )}
       </div>
@@ -81,27 +86,17 @@ const StepCard = ({ data, index }) => {
         />
       </div>
 
-      {/* Right side */}
+      {/* Right side - desktop: odd cards only, mobile: all cards */}
       <div className={`${styles.stepSide} ${styles.stepSideRight}`}>
-        {!isEven && (
-          <motion.div
-            ref={ref}
-            className={styles.stepCard}
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <div className={styles.cardAccentLine} style={{ background: `linear-gradient(90deg, ${data.color}, ${data.color}55)` }} />
-            <div className={styles.cardInner}>
-              <span className={styles.cardPhase} style={{ color: data.color }}>{data.phase}</span>
-              <div className={styles.cardNumber} style={{ color: `${data.color}20` }}>{data.number}</div>
-              <h3 className={styles.stepTitle}>{data.title}</h3>
-              <p className={styles.stepDesc}>{data.desc}</p>
-            </div>
-          </motion.div>
-        )}
-        {/* For even rows, ref needs to be on the right placeholder to trigger inView */}
-        {isEven && <div ref={!isEven ? undefined : undefined} />}
+        {/* Always rendered for mobile, hidden on desktop for even cards */}
+        <motion.div
+          className={`${styles.stepCard} ${isEven ? styles.stepCardMobileOnly : ""}`}
+          initial={{ opacity: 0, x: 50 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <CardContent data={data} />
+        </motion.div>
       </div>
     </div>
   );

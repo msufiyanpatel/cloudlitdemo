@@ -296,6 +296,11 @@
   letter-spacing: 0.5px;
 }
 
+/* On desktop, hide the duplicate mobile-only cards on the right side */
+.stepCardMobileOnly {
+  display: none;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .roadmapSection {
@@ -346,6 +351,11 @@
 
   .stepSideLeft {
     display: none;
+  }
+
+  /* Show mobile-only cards (even cards duplicated on right side) */
+  .stepCardMobileOnly {
+    display: block;
   }
 
   .stepSideRight {
