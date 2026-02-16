@@ -8,8 +8,38 @@
 }
 
 .roadmapInner {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== BACKGROUND DECORATIONS ===== */
+.bgDecor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bgOrb1 {
+  position: absolute;
+  top: 15%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(58, 146, 238, 0.04) 0%, transparent 70%);
+}
+
+.bgOrb2 {
+  position: absolute;
+  bottom: 10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.04) 0%, transparent 70%);
 }
 
 /* ===== SECTION HEADER ===== */
@@ -63,158 +93,328 @@
   gap: 0;
 }
 
-.timelineLine {
+/* ===== PATH TRACK (center line) ===== */
+.pathTrack {
   position: absolute;
   left: 50%;
   top: 0;
+  bottom: 80px;
   width: 4px;
-  height: calc(100% - 80px);
-  background: linear-gradient(
-    to bottom,
-    rgba(58, 146, 238, 0.18),
-    rgba(81, 70, 202, 0.12),
-    rgba(96, 21, 178, 0.08)
-  );
   transform: translateX(-50%);
-  border-radius: 2px;
-  overflow: hidden;
+  z-index: 0;
 }
 
-.timelineLineFill {
+.pathBg {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  background: linear-gradient(
+    to bottom,
+    rgba(58, 146, 238, 0.12),
+    rgba(81, 70, 202, 0.08),
+    rgba(139, 92, 246, 0.06)
+  );
+}
+
+.pathFill {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
+  border-radius: 4px;
   background: linear-gradient(to bottom, #3A92EE, #5146CA, #6015B2, #8B5CF6);
-  border-radius: 2px;
-  transition: height 0.08s ease-out;
+  transform-origin: top center;
 }
 
-/* ===== STEP ===== */
-.step {
+/* ===== STEP ROW ===== */
+.stepRow {
   display: flex;
   align-items: center;
   position: relative;
-  margin-bottom: 40px;
+  min-height: 200px;
+  margin-bottom: 24px;
 }
 
-.stepLeft {
-  flex-direction: row;
+.stepRow:last-of-type {
+  margin-bottom: 0;
 }
 
-.stepRight {
-  flex-direction: row-reverse;
+/* ===== STEP SIDES ===== */
+.stepSide {
+  flex: 1;
+  min-width: 0;
 }
 
+.stepSideLeft {
+  padding-right: 48px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.stepSideRight {
+  padding-left: 48px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* ===== STEP CARD ===== */
 .stepCard {
-  flex: 0 0 calc(50% - 40px);
-  background: rgba(255, 255, 255, 0.9);
+  max-width: 420px;
+  width: 100%;
+  background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 20px;
-  padding: 32px;
-  backdrop-filter: blur(10px);
+  overflow: hidden;
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
 }
 
 .stepCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(81, 70, 202, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(81, 70, 202, 0.12), 0 6px 20px rgba(0, 0, 0, 0.04);
   border-color: rgba(81, 70, 202, 0.15);
 }
 
-.stepLeft .stepCard {
-  text-align: right;
+/* ===== CARD ACCENT LINE ===== */
+.cardAccentLine {
+  height: 3px;
+  width: 100%;
 }
 
-.stepRight .stepCard {
-  text-align: left;
+/* ===== CARD INNER ===== */
+.cardInner {
+  padding: 28px 28px 24px;
+  position: relative;
 }
 
-.stepNumber {
-  font-size: 42px;
+/* ===== CARD PHASE LABEL ===== */
+.cardPhase {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* ===== CARD NUMBER (large watermark) ===== */
+.cardNumber {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 72px;
   font-weight: 900;
   line-height: 1;
-  margin-bottom: 8px;
+  letter-spacing: -3px;
+  user-select: none;
+  pointer-events: none;
 }
 
-.stepCard:hover .stepNumber {
-  opacity: 0.9;
-}
-
+/* ===== TITLE ===== */
 .stepTitle {
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 800;
   color: #1a1a2e;
   margin-bottom: 10px;
+  line-height: 1.3;
+  position: relative;
 }
 
+/* ===== DESCRIPTION ===== */
 .stepDesc {
   font-size: 14px;
   color: #666;
-  line-height: 1.7;
+  line-height: 1.75;
+  position: relative;
 }
 
-/* ===== CONNECTOR DOT ===== */
-.stepConnector {
-  flex: 0 0 80px;
+/* ===== CENTER MILESTONE ===== */
+.milestone {
+  flex: 0 0 56px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-.stepDot {
-  width: 16px;
-  height: 16px;
+.milestoneDot {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  border: 3px solid #fff;
-  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #fff;
+  position: relative;
+  z-index: 2;
 }
 
-.step:hover .stepDot {
-  transform: scale(1.3);
+.milestoneNumber {
+  font-size: 13px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.milestonePulse {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid;
+  pointer-events: none;
+}
+
+/* ===== JOURNEY END ===== */
+.journeyEnd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 32px;
+  position: relative;
+  z-index: 2;
+}
+
+.journeyEndIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5146CA, #8B5CF6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(81, 70, 202, 0.3);
+}
+
+.journeyEndText {
+  font-size: 14px;
+  font-weight: 700;
+  color: #5146CA;
+  letter-spacing: 0.5px;
 }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .roadmapSection {
+    padding: 100px 5% 80px;
+  }
+
+  .stepSideLeft {
+    padding-right: 32px;
+  }
+
+  .stepSideRight {
+    padding-left: 32px;
+  }
+
+  .cardInner {
+    padding: 24px 24px 20px;
+  }
+
+  .cardNumber {
+    font-size: 56px;
+  }
+
+  .stepTitle {
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 768px) {
   .roadmapSection {
     padding: 80px 5% 60px;
   }
 
-  .timelineLine {
-    left: 24px;
+  .sectionHeader {
+    margin-bottom: 48px;
   }
 
-  .step {
-    flex-direction: row !important;
+  /* Stack everything - left side hidden, right side shows all cards */
+  .pathTrack {
+    left: 28px;
+    transform: none;
   }
 
-  .stepConnector {
-    flex: 0 0 48px;
+  .stepRow {
+    flex-direction: row;
+    min-height: auto;
+    margin-bottom: 20px;
+  }
+
+  .stepSideLeft {
+    display: none;
+  }
+
+  .stepSideRight {
+    padding-left: 24px;
+    flex: 1;
+  }
+
+  .milestone {
+    flex: 0 0 56px;
     order: -1;
   }
 
   .stepCard {
-    flex: 1;
-    text-align: left !important;
+    max-width: 100%;
   }
 
-  .sectionHeader {
-    margin-bottom: 48px;
+  .cardNumber {
+    font-size: 48px;
+    top: 8px;
+    right: 14px;
+  }
+
+  .journeyEnd {
+    padding-left: 56px;
+    align-items: flex-start;
   }
 }
 
 @media (max-width: 480px) {
-  .stepCard {
-    padding: 24px 20px;
+  .milestone {
+    flex: 0 0 44px;
   }
 
-  .stepNumber {
-    font-size: 32px;
+  .milestoneDot {
+    width: 36px;
+    height: 36px;
+    border-width: 3px;
+  }
+
+  .milestoneNumber {
+    font-size: 11px;
+  }
+
+  .milestonePulse {
+    width: 36px;
+    height: 36px;
+  }
+
+  .stepSideRight {
+    padding-left: 16px;
+  }
+
+  .cardInner {
+    padding: 20px 18px 18px;
+  }
+
+  .cardNumber {
+    font-size: 40px;
   }
 
   .stepTitle {
     font-size: 17px;
+  }
+
+  .stepDesc {
+    font-size: 13px;
+  }
+
+  .pathTrack {
+    left: 22px;
   }
 }

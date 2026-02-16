@@ -1,21 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.bea484fb.css",
-    "main.js": "/static/js/main.d0a072d5.js",
+    "main.css": "/static/css/main.d9725247.css",
+    "main.js": "/static/js/main.6030087b.js",
     "static/js/787.bdb0affa.chunk.js": "/static/js/787.bdb0affa.chunk.js",
     "static/media/Integrity.png": "/static/media/Integrity.91a630a1b6fe9b71d963.png",
+    "static/media/2nd picture.png": "/static/media/2nd picture.bdf0549e847c543bade3.png",
     "static/media/Ethics.png": "/static/media/Ethics.b904d6221474872b65b0.png",
     "static/media/Execellence.png": "/static/media/Execellence.95ce2149f37db5799263.png",
     "static/media/3rd picture.png": "/static/media/3rd picture.9aa6bc0b2443f4b5fbad.png",
     "static/media/TeamWork.png": "/static/media/TeamWork.2a8ba3328de14ad5b136.png",
     "static/media/Compassion.png": "/static/media/Compassion.0087550c5c290d5f4270.png",
     "static/media/Innovation.png": "/static/media/Innovation.e0c706338e4685cd10ec.png",
+    "static/media/Postgresql_elephant.svg.png": "/static/media/Postgresql_elephant.svg.1b904635aedb7c19150d.png",
     "static/media/aws-icon.png": "/static/media/aws-icon.fde7be569fbbed8586ba.png",
     "static/media/2.png": "/static/media/2.22e39913a022c43c9de5.png",
     "static/media/4.png": "/static/media/4.d9834551452b1f0346dd.png",
     "static/media/datadog.png": "/static/media/datadog.dcc661cfe708abcd645a.png",
     "static/media/9.png": "/static/media/9.c704d5d82718a0e18301.png",
     "static/media/5.png": "/static/media/5.5c85eb9a503a23a25736.png",
+    "static/media/rabbitmq.png": "/static/media/rabbitmq.59c6970534ca124f0e3d.png",
     "static/media/1.png": "/static/media/1.60941990ceb2c57e9829.png",
     "static/media/Azure-Logo-PNG-Black.png": "/static/media/Azure-Logo-PNG-Black.5d378b10b684ad02e995.png",
     "static/media/3.png": "/static/media/3.f65279d559659d750153.png",
@@ -26,14 +29,16 @@
     "static/media/7.png": "/static/media/7.86a15c2bd0779839147a.png",
     "static/media/docker-logo.png": "/static/media/docker-logo.900e4877d5954f413357.png",
     "static/media/6.png": "/static/media/6.69ea1320ff8407c7a224.png",
+    "static/media/reddid.png": "/static/media/reddid.52a85440d0cb10638fe8.png",
     "static/media/promoetheus.png": "/static/media/promoetheus.2a5b7deb47bb273248ed.png",
+    "static/media/pulumi.svg": "/static/media/pulumi.1cfbe418da31452c30f1ca4da2a5daee.svg",
     "index.html": "/index.html",
-    "main.bea484fb.css.map": "/static/css/main.bea484fb.css.map",
-    "main.d0a072d5.js.map": "/static/js/main.d0a072d5.js.map",
+    "main.d9725247.css.map": "/static/css/main.d9725247.css.map",
+    "main.6030087b.js.map": "/static/js/main.6030087b.js.map",
     "787.bdb0affa.chunk.js.map": "/static/js/787.bdb0affa.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bea484fb.css",
-    "static/js/main.d0a072d5.js"
+    "static/css/main.d9725247.css",
+    "static/js/main.6030087b.js"
   ]
 }
