@@ -363,7 +363,7 @@
   }
 
   .ctaInner {
-    border-radius: 24px;
+    border-radius: 0px 0px 24px 24px;
   }
 
   .ctaContent {
