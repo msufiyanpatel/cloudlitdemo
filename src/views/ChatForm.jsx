@@ -96,7 +96,7 @@ const ChatForm = () => {
             the future with our expert team.
           </p>
 
-          <h2 className={styles.teamHeading}>SOME OF OUR GREAT MINDS</h2>
+          <h2 className={styles.teamHeading}>SOME OF OUR SERVICES</h2>
          
             
             

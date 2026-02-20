@@ -1,242 +1,348 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/Services.module.css";
-import { useInView } from "react-intersection-observer";
-import { motion } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCloud,
-  faCode,
-  faServer,
-  faChartLine,
-} from "@fortawesome/free-solid-svg-icons";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import awsIcon from "../assets/aws-icon.png";
 import azureIcon from "../assets/Azure-Logo-PNG-Black.png";
 import gcp from "../assets/google-cloud-platform.png";
 import docker from "../assets/docker-logo.png";
 import kubernetes from "../assets/kubernetes.png";
 import gitlab from "../assets/Gitlab.png";
+import github from "../assets/GitHub.png";
+import teamcity from "../assets/TeamCity.png";
 import ansible from "../assets/ansible.png";
 import chef from "../assets/chef.png";
+import puppet from "../assets/puppet.png";
+import mysql from "../assets/mysql.png";
+import postgresql from "../assets/Postgresql_elephant.svg.png";
+import oracle from "../assets/oracle.png";
+import rabbitMQ from "../assets/rabbitmq.png";
+import kafka from "../assets/kafka.png";
+import reddis from "../assets/reddid.png";
 import Promethus from "../assets/promoetheus.png";
 import datadog from "../assets/datadog.png";
+import pagerduty from "../assets/pagerduty.png";
 import Terraform from "../assets/terraform.png";
+import pulumi from "../assets/pulumi.svg";
 import cloudFormation from "../assets/aws-cloudformation.png";
 
-const TABS = [
-  { id: "cloud", label: "Cloud", icon: faCloud },
-  { id: "devops", label: "DevOps", icon: faCode },
-  { id: "provision", label: "Provision", icon: faServer },
-  { id: "monitor", label: "Monitor", icon: faChartLine },
+gsap.registerPlugin(ScrollTrigger);
+
+// All logos for the marquee
+const allLogos = [
+  { src: awsIcon, alt: "AWS" },
+  { src: azureIcon, alt: "Azure" },
+  { src: gcp, alt: "GCP" },
+  { src: docker, alt: "Docker" },
+  { src: kubernetes, alt: "Kubernetes" },
+  { src: gitlab, alt: "GitLab" },
+  { src: github, alt: "GitHub" },
+  { src: teamcity, alt: "TeamCity" },
+  { src: ansible, alt: "Ansible" },
+  { src: chef, alt: "Chef" },
+  { src: puppet, alt: "Puppet" },
+  { src: mysql, alt: "MySQL" },
+  { src: postgresql, alt: "PostgreSQL" },
+  { src: oracle, alt: "Oracle" },
+  { src: rabbitMQ, alt: "RabbitMQ" },
+  { src: kafka, alt: "Kafka" },
+  { src: reddis, alt: "Redis" },
+  { src: Promethus, alt: "Prometheus" },
+  { src: datadog, alt: "Datadog" },
+  { src: pagerduty, alt: "PagerDuty" },
+  { src: Terraform, alt: "Terraform" },
+  { src: pulumi, alt: "Pulumi" },
+  { src: cloudFormation, alt: "CloudFormation" },
 ];
 
-const serviceData = [
-  /* Cloud (4) */
+// Service categories for the bento grid
+const categories = [
   {
-    title: "Amazon Web Services",
-    category: "cloud",
-    description: "Innovate with agility and build a secure cloud platform by exploiting the full breadth of AWS capabilities.",
-    icons: [{ src: awsIcon, alt: "AWS" }],
-    accent: "#3A92EE",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400",
+    id: "cloud",
+    title: "Cloud Providers",
+    subtitle: "Build on the world's leading platforms",
+    desc: "Amazon AWS, Google Cloud, Microsoft Azure and any private cloud - we architect solutions across all major providers.",
+    icons: [awsIcon, azureIcon, gcp],
+    color: "#3A92EE",
+    size: "large",
   },
   {
-    title: "Google Cloud",
-    category: "cloud",
-    description: "Google Cloud provides services that support organizations to go digital with computing, data and AI tools.",
-    icons: [{ src: gcp, alt: "GCP" }],
-    accent: "#5146CA",
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400",
+    id: "containers",
+    title: "Containers & Orchestration",
+    subtitle: "Ship anywhere, scale everywhere",
+    desc: "Docker, Kubernetes, and container orchestration that makes your deployments bulletproof.",
+    icons: [docker, kubernetes],
+    color: "#5146CA",
+    size: "medium",
   },
   {
-    title: "IBM Cloud",
-    category: "cloud",
-    description: "IBM Cloud offers 200+ services in virtual servers, networking, storage and Watson AI capabilities.",
-    icons: [{ src: azureIcon, alt: "IBM" }],
-    accent: "#6015B2",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400",
+    id: "cicd",
+    title: "CI/CD Pipelines",
+    subtitle: "From commit to production in minutes",
+    desc: "Jenkins, GitLab, GitHub Actions, TeamCity, ArgoCD - continuous delivery that never sleeps.",
+    icons: [gitlab, github, teamcity],
+    color: "#6015B2",
+    size: "medium",
   },
   {
-    title: "Microsoft Azure",
-    category: "cloud",
-    description: "Azure helps organizations transition to the cloud with capabilities tailored to their specific needs.",
-    icons: [{ src: azureIcon, alt: "Azure" }],
-    accent: "#3A92EE",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400",
-  },
-  /* DevOps (4) */
-  {
-    title: "Red Hat OpenShift",
-    category: "devops",
-    description: "Enterprise Kubernetes platform for building, deploying and managing containerized applications at scale.",
-    icons: [{ src: kubernetes, alt: "OpenShift" }],
-    accent: "#5146CA",
-    image: "https://picsum.photos/seed/containers1/400/200",
+    id: "config",
+    title: "Configuration Management",
+    subtitle: "Infrastructure as code, done right",
+    desc: "Ansible, Chef, Puppet - automate everything from server provisioning to application configuration.",
+    icons: [ansible, chef, puppet],
+    color: "#8B5CF6",
+    size: "small",
   },
   {
-    title: "Jenkins",
-    category: "devops",
-    description: "Open source automation server for building, testing and deploying software with extensive plugin ecosystem.",
-    icons: [{ src: gitlab, alt: "Jenkins" }],
-    accent: "#6015B2",
-    image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=400",
+    id: "databases",
+    title: "Databases",
+    subtitle: "Data that scales with your ambition",
+    desc: "MySQL, PostgreSQL, Oracle, MongoDB, Amazon Aurora - relational and NoSQL expertise for every workload.",
+    icons: [mysql, postgresql, oracle],
+    color: "#3A92EE",
+    size: "small",
   },
   {
-    title: "Kubernetes",
-    category: "devops",
-    description: "Container orchestration platform for automating deployment, scaling and management of containerized apps.",
-    icons: [{ src: kubernetes, alt: "Kubernetes" }],
-    accent: "#3A92EE",
-    image: "https://picsum.photos/seed/kubernetes1/400/200",
+    id: "services",
+    title: "Messaging & Caching",
+    subtitle: "Real-time data, zero latency",
+    desc: "RabbitMQ, Apache Kafka, Redis, ELK stack - event-driven architectures that handle millions of messages.",
+    icons: [rabbitMQ, kafka, reddis],
+    color: "#5146CA",
+    size: "small",
   },
   {
-    title: "Docker",
-    category: "devops",
-    description: "Container platform for developing, shipping and running applications in isolated, portable environments.",
-    icons: [{ src: docker, alt: "Docker" }],
-    accent: "#5146CA",
-    image: "https://picsum.photos/seed/docker1/400/200",
-  },
-  /* Provision (4) */
-  {
-    title: "Ansible",
-    category: "provision",
-    description: "Agentless automation for configuration management, application deployment and IT orchestration.",
-    icons: [{ src: ansible, alt: "Ansible" }],
-    accent: "#3A92EE",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400",
+    id: "monitoring",
+    title: "Monitoring & Observability",
+    subtitle: "See everything, miss nothing",
+    desc: "Prometheus, Datadog, Grafana, PagerDuty - full-stack observability from infrastructure to user experience.",
+    icons: [Promethus, datadog, pagerduty],
+    color: "#6015B2",
+    size: "medium",
   },
   {
-    title: "Chef",
-    category: "provision",
-    description: "Configuration management platform for defining infrastructure as code and automating compliance.",
-    icons: [{ src: chef, alt: "Chef" }],
-    accent: "#5146CA",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400",
-  },
-  {
-    title: "AWS CloudFormation",
-    category: "provision",
-    description: "Infrastructure as code service for modeling and provisioning AWS resources in a repeatable way.",
-    icons: [{ src: cloudFormation, alt: "CloudFormation" }],
-    accent: "#6015B2",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400",
-  },
-  {
-    title: "Terraform",
-    category: "provision",
-    description: "Infrastructure as code tool for building, changing and versioning cloud and on-prem resources.",
-    icons: [{ src: Terraform, alt: "Terraform" }],
-    accent: "#5146CA",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400",
-  },
-  /* Monitor (3) */
-  {
-    title: "Prometheus",
-    category: "monitor",
-    description: "Open source monitoring and alerting toolkit designed for reliability and dimensional data model.",
-    icons: [{ src: Promethus, alt: "Prometheus" }],
-    accent: "#3A92EE",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400",
-  },
-  {
-    title: "Datadog",
-    category: "monitor",
-    description: "Unified monitoring platform for infrastructure, applications, logs and real-time performance analytics.",
-    icons: [{ src: datadog, alt: "Datadog" }],
-    accent: "#5146CA",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400",
-  },
-  {
-    title: "Grafana",
-    category: "monitor",
-    description: "Analytics and monitoring platform for visualizing metrics, logs and traces from any source.",
-    icons: [{ src: datadog, alt: "Grafana" }],
-    accent: "#6015B2",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400",
+    id: "iac",
+    title: "Infrastructure Provisioning",
+    subtitle: "Spin up entire environments in minutes",
+    desc: "Terraform, Pulumi, AWS CloudFormation - declarative infrastructure that's versioned, reviewed, and repeatable.",
+    icons: [Terraform, pulumi, cloudFormation],
+    color: "#3A92EE",
+    size: "medium",
   },
 ];
 
-const ServiceCard = ({ data, index, isWide }) => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+// Infinite marquee component - pure CSS animation for reliable infinite loop
+const LogoMarquee = ({ direction = "left" }) => {
+  // Duplicate logos 3x to ensure seamless wrap
+  const logos = [...allLogos, ...allLogos, ...allLogos];
+  const isReverse = direction === "right";
 
   return (
-    <motion.div
-      ref={ref}
-      className={`${styles.card} ${isWide ? styles.cardWide : ""}`}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-    >
-      <div className={styles.cardBody}>
-        <div className={styles.cardHeader}>
-          <div className={styles.cardIcon} style={{ background: `${data.accent}20`, borderColor: `${data.accent}40` }}>
-            <img src={data.icons[0].src} alt={data.icons[0].alt} />
+    <div className={styles.marqueeTrack}>
+      <div
+        className={`${styles.marqueeInner} ${isReverse ? styles.marqueeReverse : ""}`}
+      >
+        {logos.map((logo, i) => (
+          <div key={`${logo.alt}-${i}`} className={styles.marqueeItem}>
+            <img src={logo.src} alt={logo.alt} />
+            <span>{logo.alt}</span>
           </div>
-          <h3 className={styles.cardTitle}>{data.title}</h3>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Individual bento card
+const BentoCard = ({ data, index }) => {
+  const cardRef = useRef(null);
+  const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 60, scale: 0.95 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.7,
+        delay: index * 0.08,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 88%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+  }, [index]);
+
+  const sizeClass =
+    data.size === "large"
+      ? styles.cardLarge
+      : data.size === "medium"
+      ? styles.cardMedium
+      : styles.cardSmall;
+
+  return (
+    <div
+      ref={cardRef}
+      className={`${styles.bentoCard} ${sizeClass}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Accent glow on hover */}
+      <div
+        className={styles.cardGlow}
+        style={{
+          background: `radial-gradient(circle at 50% 0%, ${data.color}15 0%, transparent 70%)`,
+          opacity: hovered ? 1 : 0,
+        }}
+      />
+
+      {/* Top color line */}
+      <div
+        className={styles.cardAccentLine}
+        style={{
+          background: `linear-gradient(90deg, ${data.color}, ${data.color}88)`,
+          transform: hovered ? "scaleX(1)" : "scaleX(0.3)",
+        }}
+      />
+
+      <div className={styles.cardInner}>
+        {/* Hover arrow - inside cardInner, positioned top-right */}
+        <div
+          className={styles.cardArrow}
+          style={{ opacity: hovered ? 1 : 0, transform: hovered ? "translate(0,0)" : "translate(-8px, 8px)" }}
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 15L15 5M15 5H8M15 5V12" stroke={data.color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </div>
-        <p className={styles.cardDesc}>{data.description}</p>
-        <div className={styles.cardImage}>
-          <img src={data.image} alt={data.title} />
+
+        {/* Category label */}
+        <span
+          className={styles.cardCategory}
+          style={{ color: data.color }}
+        >
+          {data.subtitle}
+        </span>
+
+        <h3 className={styles.cardTitle}>{data.title}</h3>
+
+        <p className={styles.cardDesc}>{data.desc}</p>
+
+        {/* Tech icons row */}
+        <div className={styles.cardIcons}>
+          {data.icons.map((icon, i) => (
+            <div
+              key={i}
+              className={styles.iconChip}
+              style={{
+                transitionDelay: hovered ? `${i * 0.05}s` : "0s",
+                transform: hovered ? "translateY(0)" : "translateY(4px)",
+                opacity: hovered ? 1 : 0.7,
+              }}
+            >
+              <img src={icon} alt="" />
+            </div>
+          ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
 const Services = () => {
-  const [activeTab, setActiveTab] = React.useState("cloud");
-  const [headerRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+  const marqueeWrapRef = useRef(null);
 
-  const filteredServices = serviceData.filter((s) => s.category === activeTab);
+  useEffect(() => {
+    // Heading animation
+    if (headingRef.current) {
+      const els = headingRef.current.querySelectorAll("[data-animate]");
+      gsap.fromTo(
+        els,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.12,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }
+
+    // Marquee parallax on scroll
+    if (marqueeWrapRef.current) {
+      gsap.to(marqueeWrapRef.current, {
+        y: -30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: marqueeWrapRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
 
   return (
-    <div id="services" className={styles.servicesSection}>
+    <section id="services" className={styles.servicesSection} ref={sectionRef}>
+      {/* Background grid */}
+      <div className={styles.bgGrid} />
+
+      {/* ===== HEADING ===== */}
       <div className={styles.servicesInner}>
-        <motion.div
-          ref={headerRef}
-          className={styles.sectionHeader}
-          initial={{ opacity: 0, y: 30 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-        >
-          <span className={styles.sectionTag}>Our Tech Stack</span>
-          <h2 className={styles.sectionTitle}>
-            Tools and Technologies{" "}
+        <div className={styles.sectionHeader} ref={headingRef}>
+          <span className={styles.sectionTag} data-animate>
+            Our Tech Stack
+          </span>
+          <h2 className={styles.sectionTitle} data-animate>
+            Tools and Technologies
+            <br />
             <span className={styles.titleGradient}>We Use</span>
           </h2>
-          <p className={styles.sectionDesc}>
-            Let us help you optimize your business success with an arsenal of
-            well-proven tools and technologies.
+          <p className={styles.sectionDesc} data-animate>
+            We architect solutions with an arsenal of battle-tested tools.
+            From cloud infrastructure to observability - we've got you covered.
           </p>
-        </motion.div>
-
-        <div className={styles.tabsLayout}>
-          <nav className={styles.tabsNav} aria-label="Service categories">
-            {TABS.map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                className={`${styles.tabItem} ${activeTab === tab.id ? styles.tabItemActive : ""}`}
-                onClick={() => setActiveTab(tab.id)}
-                aria-pressed={activeTab === tab.id}
-              >
-                <span className={styles.tabIcon}>
-                  <FontAwesomeIcon icon={tab.icon} />
-                </span>
-                <span className={styles.tabLabel}>{tab.label}</span>
-              </button>
-            ))}
-          </nav>
-          <div className={styles.tabsContent}>
-            <div className={styles.cardGrid}>
-              {filteredServices.map((data, i) => (
-                <ServiceCard key={data.title} data={data} index={i} isWide={i === 0} />
-              ))}
-            </div>
-          </div>
         </div>
       </div>
-    </div>
+
+      {/* ===== LOGO MARQUEE ===== */}
+      <div className={styles.marqueeSection} ref={marqueeWrapRef}>
+        <div className={styles.marqueeFade} />
+        <LogoMarquee direction="left" />
+        <LogoMarquee direction="right" />
+        <div className={styles.marqueeFadeRight} />
+      </div>
+
+      {/* ===== BENTO GRID ===== */}
+      <div className={styles.servicesInner}>
+        <div className={styles.bentoGrid}>
+          {categories.map((cat, i) => (
+            <BentoCard key={cat.id} data={cat} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 

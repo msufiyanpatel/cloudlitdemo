@@ -1,4 +1,4 @@
-/* ===== BENEFITS SECTION - Dark Carousel Design ===== */
+/* ===== BENEFITS SECTION - Dark Book Spine Carousel ===== */
 .benefitsSection {
   position: relative;
   padding: 120px 5% 100px;
@@ -7,22 +7,8 @@
   font-family: "Inter", "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Light variant for standalone Benefits page */
 .benefitsLight {
-  background: #fff;
-}
-
-.benefitsLight .sectionTag {
-  background: rgba(81, 70, 202, 0.07);
-  color: #5146CA;
-}
-
-.benefitsLight .sectionTitle {
-  color: #1a1a2e;
-}
-
-.benefitsLight .sectionDesc {
-  color: #666;
+  background: #fafbff;
 }
 
 .benefitsInner {
@@ -30,6 +16,25 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
+}
+
+/* ===== SUBTLE BG GRID ===== */
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(81, 70, 202, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(81, 70, 202, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%);
+}
+
+.benefitsLight .bgGrid {
+  background-image:
+    linear-gradient(rgba(81, 70, 202, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(81, 70, 202, 0.03) 1px, transparent 1px);
 }
 
 /* ===== SECTION HEADER ===== */
@@ -51,6 +56,11 @@
   margin-bottom: 16px;
 }
 
+.benefitsLight .sectionTag {
+  background: rgba(81, 70, 202, 0.07);
+  color: #5146CA;
+}
+
 .sectionTitle {
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 800;
@@ -58,6 +68,10 @@
   margin-bottom: 16px;
   letter-spacing: -1px;
   line-height: 1.2;
+}
+
+.benefitsLight .sectionTitle {
+  color: #1a1a2e;
 }
 
 .titleGradient {
@@ -69,152 +83,253 @@
 
 .sectionDesc {
   font-size: 17px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.6);
   max-width: 550px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
+.benefitsLight .sectionDesc {
+  color: #666;
+}
+
 /* ===== CAROUSEL ===== */
 .carouselWrapper {
   overflow: hidden;
-  padding: 20px 0;
 }
 
 .carousel {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   align-items: stretch;
-  justify-content: center;
-  min-height: 420px;
+  height: 520px;
 }
 
+/* ===== CAROUSEL CARD (shared base) ===== */
 .carouselCard {
-  flex: 0.5;
   min-width: 0;
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
   position: relative;
-  cursor: pointer;
-  transition: flex 0.25s cubic-bezier(0.32, 0.72, 0, 1);
   display: flex;
   flex-direction: column;
-  background: #1a1a22;
+  background: #16161e;
   border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
 }
 
-.carouselCard:hover {
-  opacity: 1;
+.benefitsLight .carouselCard {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.06);
 }
 
+/* ===== COLLAPSED STATE (BOOK SPINE) ===== */
+.carouselCardCollapsed {
+  cursor: pointer;
+  width: 72px;
+  min-width: 72px;
+  flex-shrink: 0;
+}
+
+.carouselCardCollapsed:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: #1c1c28;
+}
+
+.benefitsLight .carouselCardCollapsed:hover {
+  border-color: rgba(81, 70, 202, 0.15);
+  background: #f5f4ff;
+}
+
+/* ===== ACTIVE STATE ===== */
 .carouselCardActive {
   cursor: default;
-  flex: 1.8;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
-/* Card image area */
+.benefitsLight .carouselCardActive {
+  border-color: rgba(81, 70, 202, 0.12);
+  box-shadow: 0 20px 60px rgba(81, 70, 202, 0.08);
+}
+
+/* ===== SPINE ACCENT BAR (left edge color strip) ===== */
+.spineAccent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+/* ===== TOP ACCENT LINE (active card) ===== */
+.cardAccentLine {
+  height: 3px;
+  width: 100%;
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  flex-shrink: 0;
+}
+
+/* ===== SPINE CONTENT (collapsed vertical text) ===== */
+.spineContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  transition: opacity 0.35s ease;
+  z-index: 3;
+}
+
+.spineNumber {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.spineTitle {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.3px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.benefitsLight .spineTitle {
+  color: #444;
+}
+
+.spineTag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 6px;
+  border-radius: 6px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+/* ===== EXPANDED CONTENT ===== */
+.expandedContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  transition: opacity 0.4s ease 0.1s;
+  z-index: 1;
+}
+
+/* ===== IMAGE AREA ===== */
 .cardImageWrap {
   position: relative;
-  width: 100%;
-  height: 220px;
-  min-height: 140px;
+  width: 45%;
   flex-shrink: 0;
   overflow: hidden;
   cursor: pointer;
-}
-
-.carouselCardActive .cardImageWrap {
-  height: 280px;
 }
 
 .cardImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.25s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .cardImageWrap:hover .cardImage {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
-.cardOverlay {
+.cardImageOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.7) 100%);
   pointer-events: none;
 }
 
-/* Card content */
+/* ===== CARD CONTENT (right side of active card) ===== */
 .cardContent {
-  padding: 24px 20px 56px;
   flex: 1;
+  padding: 36px 36px 36px 32px;
   display: flex;
   flex-direction: column;
-  position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 0;
 }
 
+/* ===== NUMBER ===== */
+.cardNumber {
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 12px;
+  user-select: none;
+}
+
+/* ===== TAG ===== */
 .cardTag {
   display: inline-block;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
   width: fit-content;
 }
 
+/* ===== TITLE ===== */
 .cardTitle {
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 8px 0;
-  line-height: 1.3;
-}
-
-.carouselCardActive .cardTitle {
   font-size: 22px;
-  margin-bottom: 12px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 14px 0;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
 }
 
+.benefitsLight .cardTitle {
+  color: #1a1a2e;
+}
+
+/* ===== DESCRIPTION ===== */
 .cardDesc {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.6;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
   margin: 0;
 }
 
-/* Toggle button - bottom right */
-.cardToggle {
-  position: absolute;
-  bottom: 16px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
-
-.cardToggle:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.35);
-  transform: scale(1.05);
+.benefitsLight .cardDesc {
+  color: #666;
 }
 
 /* ===== LIGHTBOX ===== */
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.92);
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -225,27 +340,27 @@
 
 .lightboxContent {
   position: relative;
-  max-width: 95vw;
-  max-height: 95vh;
-  border-radius: 12px;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
   cursor: default;
 }
 
 .lightboxContent img {
   display: block;
   max-width: 100%;
-  max-height: 90vh;
+  max-height: 85vh;
   object-fit: contain;
 }
 
 .lightboxClose {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 48px;
-  height: 48px;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.9);
   border: none;
@@ -254,26 +369,49 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .lightboxClose:hover {
   background: #fff;
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
+  .benefitsSection {
+    padding: 100px 5% 80px;
+  }
+
   .carousel {
-    min-height: 380px;
+    height: 460px;
+    gap: 8px;
   }
 
-  .carouselCardActive {
-    flex: 1.5;
+  .carouselCardCollapsed {
+    width: 60px;
+    min-width: 60px;
   }
 
-  .carouselCard {
-    flex: 0.45;
+  .spineTitle {
+    font-size: 12px;
+  }
+
+  .cardContent {
+    padding: 28px 24px 28px 24px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+
+  .cardNumber {
+    font-size: 36px;
+  }
+
+  .cardImageWrap {
+    width: 40%;
   }
 }
 
@@ -288,48 +426,115 @@
 
   .carousel {
     flex-direction: column;
-    gap: 16px;
-    min-height: auto;
-    align-items: center;
+    height: auto;
+    gap: 10px;
   }
 
-  .carouselCard,
-  .carouselCardActive {
-    flex: none;
+  .carouselCard {
+    flex: none !important;
     width: 100%;
-    max-width: 400px;
+  }
+
+  /* Collapsed cards become horizontal bars on mobile */
+  .carouselCardCollapsed {
+    width: 100%;
+    min-width: 100%;
+    height: 56px;
+    min-height: 56px;
+  }
+
+  .spineContent {
+    flex-direction: row;
+    padding: 0 20px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .spineTitle {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 14px;
+    padding: 0;
+    flex: 1;
+    text-align: left;
+  }
+
+  .spineTag {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 10px;
+  }
+
+  .spineAccent {
+    width: 100%;
+    height: 3px;
+    border-radius: 20px 20px 0 0;
+    top: 0;
+    left: 0;
+  }
+
+  /* Active card on mobile */
+  .carouselCardActive {
+    height: auto;
+  }
+
+  .expandedContent {
+    position: relative;
+    flex-direction: column;
   }
 
   .cardImageWrap {
-    height: 180px;
-  }
-
-  .carouselCardActive .cardImageWrap {
-    height: 220px;
-  }
-
-  .cardContent {
-    padding: 20px 16px 52px;
-  }
-
-  .carouselCardActive .cardTitle {
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 500px) {
-  .cardImageWrap {
-    height: 160px;
-  }
-
-  .carouselCardActive .cardImageWrap {
+    width: 100%;
     height: 200px;
   }
 
-  .cardToggle {
-    width: 36px;
-    height: 36px;
-    bottom: 12px;
-    right: 16px;
+  .cardContent {
+    padding: 20px 20px 24px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+  }
+
+  .cardNumber {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  .cardDesc {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  .sectionDesc {
+    font-size: 15px;
+  }
+
+  .carouselCardCollapsed {
+    height: 50px;
+    min-height: 50px;
+  }
+
+  .spineContent {
+    padding: 0 14px;
+    gap: 8px;
+  }
+
+  .spineTitle {
+    font-size: 13px;
+  }
+
+  .cardImageWrap {
+    height: 170px;
+  }
+
+  .cardContent {
+    padding: 16px 16px 20px;
   }
 }
