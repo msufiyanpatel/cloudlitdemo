@@ -58,43 +58,61 @@
 /* ===== TABS LAYOUT ===== */
 .tabsLayout {
   display: flex;
+  flex-direction: column;
   gap: 48px;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .tabsNav {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex-shrink: 0;
-  min-width: 160px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 72px;
+  padding: 24px 0;
 }
 
-.tabBtn {
-  display: block;
-  width: 100%;
-  padding: 14px 20px;
-  text-align: left;
-  font-size: 16px;
-  font-weight: 600;
-  color: #666;
+.tabItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 28px;
   background: transparent;
   border: none;
-  border-left: 3px solid transparent;
-  border-radius: 0 8px 8px 0;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
 }
 
-.tabBtn:hover {
-  color: #1a1a2e;
-  background: rgba(81, 70, 202, 0.05);
+.tabIcon {
+  font-size: 24px;
+  color: #888;
+  transition: color 0.25s ease;
 }
 
-.tabActive {
+.tabLabel {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #888;
+  transition: color 0.25s ease;
+}
+
+.tabItem:hover .tabIcon,
+.tabItem:hover .tabLabel {
+  color: #555;
+}
+
+.tabItemActive .tabIcon,
+.tabItemActive .tabLabel {
   color: #5146CA;
-  background: rgba(81, 70, 202, 0.08);
-  border-left-color: #5146CA;
+}
+
+.tabItemActive:hover .tabIcon,
+.tabItemActive:hover .tabLabel {
+  color: #5146CA;
 }
 
 .tabsContent {
@@ -105,18 +123,9 @@
 /* ===== CARD GRID ===== */
 .cardGrid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   align-items: start;
-}
-
-/* Monitor (3 cards) - equal width, cover full row */
-.cardGridThree {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.cardGridThree .cardWide {
-  grid-column: span 1;
 }
 
 /* ===== INDIVIDUAL CARD ===== */
@@ -220,39 +229,26 @@
   }
 
   .tabsNav {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    min-width: auto;
-    width: 100%;
-    justify-content: space-between;
+    gap: 16px 48px;
+    padding: 16px 0;
   }
 
-  .tabBtn {
+  .tabItem {
     flex: 1;
-    min-width: 0;
-    padding: 10px 8px;
-    font-size: 13px;
-    text-align: center;
-    border-left: none;
-    border-bottom: 3px solid transparent;
-    border-radius: 8px 8px 0 0;
+    min-width: 80px;
+    padding: 12px 8px;
   }
 
-  .tabActive {
-    border-left: none;
-    border-bottom-color: #5146CA;
+  .tabIcon {
+    font-size: 20px;
+  }
+
+  .tabLabel {
+    font-size: 11px;
   }
 
   .cardGrid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .cardWide {
-    grid-column: span 2;
-  }
-
-  .cardGridThree .cardWide {
-    grid-column: span 1;
   }
 }
 
@@ -272,27 +268,26 @@
   }
 
   .tabsNav {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    justify-content: space-between;
-    gap: 4px;
+    gap: 12px 32px;
+    padding: 12px 0;
   }
 
-  .tabBtn {
-    flex: 1;
-    min-width: 0;
-    padding: 8px 4px;
-    font-size: 12px;
+  .tabItem {
+    min-width: 64px;
+    padding: 10px 6px;
+  }
+
+  .tabIcon {
+    font-size: 18px;
+  }
+
+  .tabLabel {
+    font-size: 10px;
   }
 
   .cardGrid {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .cardWide {
-    grid-column: span 1;
   }
 
   .sectionHeader {

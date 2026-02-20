@@ -2,6 +2,13 @@ import React from "react";
 import styles from "../styles/Services.module.css";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCloud,
+  faCode,
+  faServer,
+  faChartLine,
+} from "@fortawesome/free-solid-svg-icons";
 import awsIcon from "../assets/aws-icon.png";
 import azureIcon from "../assets/Azure-Logo-PNG-Black.png";
 import gcp from "../assets/google-cloud-platform.png";
@@ -16,10 +23,10 @@ import Terraform from "../assets/terraform.png";
 import cloudFormation from "../assets/aws-cloudformation.png";
 
 const TABS = [
-  { id: "cloud", label: "Cloud" },
-  { id: "devops", label: "DevOps" },
-  { id: "provision", label: "Provision" },
-  { id: "monitor", label: "Monitor" },
+  { id: "cloud", label: "Cloud", icon: faCloud },
+  { id: "devops", label: "DevOps", icon: faCode },
+  { id: "provision", label: "Provision", icon: faServer },
+  { id: "monitor", label: "Monitor", icon: faChartLine },
 ];
 
 const serviceData = [
@@ -209,16 +216,19 @@ const Services = () => {
               <button
                 key={tab.id}
                 type="button"
-                className={`${styles.tabBtn} ${activeTab === tab.id ? styles.tabActive : ""}`}
+                className={`${styles.tabItem} ${activeTab === tab.id ? styles.tabItemActive : ""}`}
                 onClick={() => setActiveTab(tab.id)}
                 aria-pressed={activeTab === tab.id}
               >
-                {tab.label}
+                <span className={styles.tabIcon}>
+                  <FontAwesomeIcon icon={tab.icon} />
+                </span>
+                <span className={styles.tabLabel}>{tab.label}</span>
               </button>
             ))}
           </nav>
           <div className={styles.tabsContent}>
-            <div className={`${styles.cardGrid} ${filteredServices.length === 3 ? styles.cardGridThree : ""}`}>
+            <div className={styles.cardGrid}>
               {filteredServices.map((data, i) => (
                 <ServiceCard key={data.title} data={data} index={i} isWide={i === 0} />
               ))}
