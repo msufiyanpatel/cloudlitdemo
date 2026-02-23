@@ -12,10 +12,10 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const capabilities = [
-  { label: "Cloud", href: "/services#cloud" },
-  { label: "DevOps", href: "/services#devops" },
-  { label: "Provision", href: "/services#provision" },
-  { label: "Monitor", href: "/services#monitor" },
+  { label: "Cloud", href: "/services/cloud" },
+  { label: "DevOps", href: "/services/devops" },
+  { label: "Provision", href: "/services/provision" },
+  { label: "Monitor", href: "/services/monitor" },
 ];
 
 const Footer = () => {
@@ -42,7 +42,7 @@ const Footer = () => {
 
   const pageLinks = [
     { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
+    { label: "Services", href: "/services/cloud" },
     { label: "Benefits", href: "/benefits" },
     { label: "Portfolio", href: "/casestudies" },
     { label: "Roadmap", href: "/roadmap" },

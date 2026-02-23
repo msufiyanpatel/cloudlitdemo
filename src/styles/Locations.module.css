@@ -1,0 +1,180 @@
+/* ===== LOCATIONS - White & Purple theme ===== */
+.section {
+  padding: 100px 5% 120px;
+  background: #fff;
+  font-family: "Inter", "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== HEADER ===== */
+.header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.title {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 800;
+  color: #1a1a2e;
+  margin: 0 0 16px 0;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #555;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===== CARD GRID ===== */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  align-items: stretch;
+}
+
+/* ===== LOCATION CARD - Tall rectangle (narrow width, long height), round corners ===== */
+.card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 360px;
+  aspect-ratio: 3 / 4;
+  background: #fff;
+  border: 1px solid rgba(81, 70, 202, 0.15);
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(81, 70, 202, 0.06);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(81, 70, 202, 0.15);
+  border-color: rgba(81, 70, 202, 0.3);
+}
+
+.cardBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.85) saturate(0.7) hue-rotate(-10deg);
+  opacity: 0.35;
+  transition: transform 0.5s ease, filter 0.4s ease, opacity 0.4s ease;
+}
+
+.card:hover .cardBg {
+  transform: scale(1.12);
+  filter: brightness(0.9) saturate(0.8) hue-rotate(-5deg);
+  opacity: 0.5;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cardIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(81, 70, 202, 0.08);
+  border: 1px solid rgba(81, 70, 202, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5146CA;
+  font-size: 18px;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.city {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin: 0 0 4px 0;
+}
+
+.country {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.hubTag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: rgba(81, 70, 202, 0.12);
+  color: #5146CA;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: auto;
+  width: fit-content;
+}
+
+.coords {
+  font-size: 11px;
+  color: #888;
+  margin-top: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .card {
+    min-height: 320px;
+    aspect-ratio: 3 / 4;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 5% 90px;
+  }
+
+  .header {
+    margin-bottom: 48px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .card {
+    min-height: 300px;
+    aspect-ratio: 3 / 4;
+  }
+
+  .cardContent {
+    padding: 24px 20px;
+  }
+
+  .city {
+    font-size: 22px;
+  }
+}

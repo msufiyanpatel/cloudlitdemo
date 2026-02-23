@@ -23,7 +23,7 @@ const Contact = () => {
   const pageLinks = [
     { label: "Home", href: "/home" },
     { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
+    { label: "Services", href: "/services/cloud" },
     { label: "Benefits", href: "/benefits" },
     { label: "Contact Us", href: "/contact" },
   ];

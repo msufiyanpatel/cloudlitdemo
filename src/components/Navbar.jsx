@@ -24,7 +24,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "About", path: "/about" },
-    { label: "Services", path: "/services" },
+    { label: "Services", path: "/services/cloud" },
     { label: "Benefits", path: "/benefits" },
     { label: "Portfolio", path: "/casestudies" },
     { label: "Roadmap", path: "/roadmap" },
@@ -43,7 +43,7 @@ export default function Navbar() {
             <button
               key={link.label}
               className={`navbar__link ${
-                location.pathname === link.path ? "navbar__link--active" : ""
+                location.pathname === link.path || (link.path === "/services/cloud" && location.pathname.startsWith("/services")) ? "navbar__link--active" : ""
               }`}
               onClick={() => navigate(link.path)}
             >

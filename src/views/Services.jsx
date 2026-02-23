@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styles from "../styles/Services.module.css";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
@@ -164,7 +165,7 @@ const ServiceCard = ({ data, index }) => {
     >
       <div className={styles.cardBody}>
         <div className={styles.cardHeader}>
-          <div className={styles.cardIcon} style={{ background: `${data.accent}20`, borderColor: `${data.accent}40` }}>
+          <div className={styles.cardIcon} style={{ borderColor: `${data.accent}30` }}>
             <img src={data.icons[0].src} alt={data.icons[0].alt} />
           </div>
           <h3 className={styles.cardTitle}>{data.title}</h3>
@@ -176,7 +177,8 @@ const ServiceCard = ({ data, index }) => {
 };
 
 const Services = () => {
-  const [activeTab, setActiveTab] = useState("cloud");
+  const { pathname } = useLocation();
+  const activeTab = pathname === "/services" ? "cloud" : pathname.replace("/services/", "");
   const [headerRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   const activeTabData = TABS.find((t) => t.id === activeTab);
@@ -185,21 +187,20 @@ const Services = () => {
   return (
     <section id="services" className={styles.servicesSection}>
       <div className={styles.servicesInner}>
-        {/* Tab navigation */}
+        {/* Tab navigation - links to category pages */}
         <nav className={styles.tabsNav} aria-label="Service categories">
           {TABS.map((tab) => (
-            <button
+            <Link
               key={tab.id}
-              type="button"
+              to={`/services/${tab.id}`}
               className={`${styles.tabItem} ${activeTab === tab.id ? styles.tabItemActive : ""}`}
-              onClick={() => setActiveTab(tab.id)}
-              aria-pressed={activeTab === tab.id}
+              aria-current={activeTab === tab.id ? "page" : undefined}
             >
               <span className={styles.tabIcon}>
                 <FontAwesomeIcon icon={tab.icon} />
               </span>
               <span className={styles.tabLabel}>{tab.label}</span>
-            </button>
+            </Link>
           ))}
         </nav>
 

@@ -17,7 +17,14 @@ const teamMembers = [
   { image: avatar1, title: "Backend Developer" },
 ];
 
+const TABS = [
+  { id: "sales", label: "Sales" },
+  { id: "support", label: "Support" },
+  { id: "careers", label: "Careers" },
+];
+
 const ChatForm = () => {
+  const [activeTab, setActiveTab] = useState("sales");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -165,8 +172,24 @@ const ChatForm = () => {
           </div>
         </div>
 
-        {/* Right: Form */}
+        {/* Right: Tabs + Content */}
         <div className={styles.right}>
+          <div className={styles.tabsWrapper}>
+            <div className={styles.tabsRow}>
+              {TABS.map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  className={`${styles.tabBtn} ${activeTab === tab.id ? styles.tabBtnActive : ""}`}
+                  onClick={() => setActiveTab(tab.id)}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {activeTab === "sales" && (
           <div className={styles.formPanel}>
             <form onSubmit={handleSubmit} className={styles.form}>
               <div className={styles.formRow}>
@@ -226,6 +249,30 @@ const ChatForm = () => {
               Service apply.
             </p>
           </div>
+          )}
+
+          {activeTab === "support" && (
+            <div className={styles.contentPanel}>
+              <div className={styles.contentHeader}>Our Headquarter</div>
+              <div className={styles.contentBody}>
+                <p>35 Saint Cherbel Way</p>
+                <p>Punchbowl</p>
+                <p>New South Wales</p>
+                <p>2196</p>
+                <p>Australia</p>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "careers" && (
+            <div className={styles.contentPanel}>
+              <div className={styles.contentHeader}>CloudLit's Careers</div>
+              <div className={styles.contentBody}>
+                <p>Join our CloudLit team in solving all our Customer's Digital needs.</p>
+                <a href="mailto:admin@cloudlit.co" className={styles.careersEmail}>admin@cloudlit.co</a>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

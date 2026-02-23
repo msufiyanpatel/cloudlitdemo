@@ -232,15 +232,113 @@
   color: #5146CA;
 }
 
-/* ===== RIGHT – Form panel aligned to right ===== */
+/* ===== RIGHT – Tabs + Form/Content aligned to right ===== */
 .right {
   position: sticky;
   top: 100px;
-  left: 60%;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
   width: 100%;
   min-width: 0;
+  gap: 24px;
+}
+
+.tabsWrapper {
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+}
+
+.tabsRow {
+  display: flex;
+  gap: 8px 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(81, 70, 202, 0.12);
+  justify-content: center;
+}
+
+.tabBtn {
+  padding: 12px 0;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.tabBtn::after {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  border-radius: 2px;
+  transition: background 0.25s ease;
+}
+
+.tabBtn:hover {
+  color: #5146CA;
+}
+
+.tabBtnActive {
+  color: #1a1a2e;
+}
+
+.tabBtnActive::after {
+  background: linear-gradient(90deg, #5146CA, #3A92EE);
+}
+
+.contentPanel {
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  background: #fff;
+  border: 1px solid rgba(81, 70, 202, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(81, 70, 202, 0.06);
+}
+
+.contentHeader {
+  padding: 20px 24px;
+  background: linear-gradient(90deg, #5146CA, #3A92EE);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.contentBody {
+  padding: 24px;
+  background: #f8f7fc;
+  color: #444;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.contentBody p {
+  margin: 0 0 8px 0;
+}
+
+.contentBody p:last-child {
+  margin-bottom: 0;
+}
+
+.careersEmail {
+  display: inline-block;
+  margin-top: 12px;
+  color: #5146CA;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.careersEmail:hover {
+  color: #6015B2;
 }
 
 .formPanel {
