@@ -177,7 +177,7 @@
 .footerInner {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 48px 48px 0;
+  padding: 48px 0 0;
   text-align: left;
 }
 
@@ -185,7 +185,7 @@
 .footerGrid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px 40px;
+  gap: 48px 99px;
   padding-bottom: 48px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   text-align: left;
@@ -353,7 +353,7 @@
   }
 
   .footerInner {
-    padding: 48px 36px 0;
+    padding: 48px 0 0;
   }
 
   .ctaContent {

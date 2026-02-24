@@ -123,7 +123,6 @@ const Footer = () => {
           <div className={styles.brandCol}>
             <a href="/" className={styles.brandLogoLink}>
               <img src="/CloudLit (1).png" alt="Cloudlit" className={styles.brandLogo} />
-              <span className={styles.brandName}>Cloudlit</span>
             </a>
             <p className={styles.brandDesc}>
               Think. Build. Scale with Cloud. Your trusted partner for cloud-native

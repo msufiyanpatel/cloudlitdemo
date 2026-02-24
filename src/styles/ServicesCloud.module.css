@@ -379,6 +379,7 @@
   border: 1px solid rgba(81, 70, 202, 0.08);
   border-top: none;
   padding: 20px 24px;
+  text-align: left;
 }
 
 .faqAnswerPara {
@@ -388,6 +389,7 @@
   margin: 0;
   display: flex;
   gap: 12px;
+  text-align: left;
 }
 
 .faqBullet {

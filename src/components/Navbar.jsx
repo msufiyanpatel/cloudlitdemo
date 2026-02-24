@@ -54,7 +54,7 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <div className="navbar__inner">
-        <a href="/home" className="navbar__logo">
+        <a href="/" className="navbar__logo">
           <img src="/CloudLit.png" alt="Cloudlit logo" />
         </a>
 
@@ -62,12 +62,17 @@ export default function Navbar() {
         <div className="navbar__links">
           {navLinks.map((link) =>
             link.dropdown ? (
-              <div key={link.label} className="navbar__dropdown-wrap">
+              <div
+                key={link.label}
+                className="navbar__dropdown-wrap"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
                 <button
                   className={`navbar__link ${
                     location.pathname.startsWith("/services") ? "navbar__link--active" : ""
                   }`}
-                  onClick={() => setServicesOpen(!servicesOpen)}
+                  onClick={() => navigate("/services/cloud")}
                   aria-expanded={servicesOpen}
                 >
                   {link.label}
