@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/Contact.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import cloudlitLogo from "../assets/white2.png";
 import {
   faTwitter,
   faLinkedin,
@@ -123,7 +122,7 @@ const Footer = () => {
         <div className={styles.footerGrid}>
           <div className={styles.brandCol}>
             <a href="/" className={styles.brandLogoLink}>
-              <img src={cloudlitLogo} alt="Cloudlit" className={styles.brandLogo} />
+              <img src="/CloudLit (1).png" alt="Cloudlit" className={styles.brandLogo} />
               <span className={styles.brandName}>Cloudlit</span>
             </a>
             <p className={styles.brandDesc}>

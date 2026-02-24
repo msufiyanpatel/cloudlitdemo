@@ -80,7 +80,9 @@ const ServicesDevOps = () => {
       {/* Section 3 - Use Cases */}
       <section className={devOpsStyles.useCasesSection}>
         <div className={devOpsStyles.useCasesInner}>
-          <h2 className={devOpsStyles.useCasesHeading}>Use Cases</h2>
+          <h2 className={devOpsStyles.useCasesHeading} style={{ margin: 0, padding: 0 }}>
+            Use Cases
+          </h2>
           <div className={devOpsStyles.useCasesAccordion}>
             {USE_CASES.map((item, i) => (
               <div

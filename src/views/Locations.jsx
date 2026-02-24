@@ -12,7 +12,7 @@ const locationsData = [
     country: "AUSTRALIA",
     hub: "Tech Center",
     coords: "33.8688° S, 151.2093° E",
-    image: "https://picsum.photos/seed/sydney-nsw/800/600",
+    image: "/New%20South%20Wales.jpg",
   },
   {
     city: "Karachi",
@@ -20,7 +20,7 @@ const locationsData = [
     country: "PAKISTAN",
     hub: "Design Studio",
     coords: "24.8607° N, 67.0011° E",
-    image: "https://picsum.photos/seed/karachi-pk/800/600",
+    image: "/karachi.jpg",
   },
   {
     city: "Jeddah",
@@ -28,7 +28,7 @@ const locationsData = [
     country: "SAUDI ARABIA",
     hub: "Technical Sales",
     coords: "21.5433° N, 39.1728° E",
-    image: "https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?w=600",
+    image: "/jeddah.jpg",
   },
   {
     city: "Toronto",
@@ -36,7 +36,7 @@ const locationsData = [
     country: "CANADA",
     hub: "Innovation Lab",
     coords: "43.6532° N, 79.3832° W",
-    image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=600",
+    image: "/canada.jpg",
   },
 ];
 
@@ -76,16 +76,17 @@ const Locations = () => {
                 aria-label={`${loc.city} background`}
               />
               <div className={styles.cardContent}>
-                <div className={styles.cardIcon}>
+                <div className={styles.cardIcon} aria-hidden="true">
                   <FontAwesomeIcon icon={faLocationDot} />
                 </div>
-                <h3 className={styles.city}>
-                  {loc.city}
-                  {loc.region && `, ${loc.region}`}
-                </h3>
-                <span className={styles.country}>{loc.country}</span>
-                <span className={styles.hubTag}>{loc.hub}</span>
-                <span className={styles.coords}>{loc.coords}</span>
+                <div className={styles.cardCentered}>
+                  <span className={styles.hubTag}>{loc.hub}</span>
+                  <h3 className={styles.city}>
+                    {loc.city}
+                    {loc.region && `, ${loc.region}`}
+                  </h3>
+                  <span className={styles.country}>{loc.country}</span>
+                </div>
               </div>
             </motion.article>
           ))}

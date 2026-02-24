@@ -3,7 +3,6 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Benefits from "./views/Benefits";
-import Services from "./views/Services";
 import ServicesCloud from "./views/ServicesCloud";
 import ServicesDevOps from "./views/ServicesDevOps";
 import ServicesProvision from "./views/ServicesProvision";

@@ -71,9 +71,9 @@
 }
 
 .card:hover .cardBg {
-  transform: scale(1.12);
-  filter: brightness(0.9) saturate(0.8) hue-rotate(-5deg);
-  opacity: 0.5;
+  transform: scale(1.08);
+  filter: none;
+  opacity: 0.85;
 }
 
 .cardContent {
@@ -86,6 +86,9 @@
 }
 
 .cardIcon {
+  position: absolute;
+  top: 28px;
+  left: 24px;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -96,8 +99,29 @@
   justify-content: center;
   color: #5146CA;
   font-size: 18px;
-  margin-bottom: 16px;
   flex-shrink: 0;
+}
+
+.cardCentered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  margin: 0;
+}
+
+.hubTag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: rgba(81, 70, 202, 0.12);
+  color: #5146CA;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  width: fit-content;
 }
 
 .city {
@@ -112,26 +136,6 @@
   font-weight: 600;
   letter-spacing: 1.2px;
   color: #666;
-  margin-bottom: 12px;
-}
-
-.hubTag {
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 50px;
-  background: rgba(81, 70, 202, 0.12);
-  color: #5146CA;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: auto;
-  width: fit-content;
-}
-
-.coords {
-  font-size: 11px;
-  color: #888;
-  margin-top: 16px;
-  letter-spacing: 0.5px;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -172,6 +176,15 @@
 
   .cardContent {
     padding: 24px 20px;
+  }
+
+  .cardIcon {
+    top: 24px;
+    left: 20px;
+  }
+
+  .cardCentered {
+    margin: 0;
   }
 
   .city {

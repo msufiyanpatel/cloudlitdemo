@@ -71,12 +71,12 @@
 
 /* ===== SECTION 3 - Use Cases (heading left, accordion right) ===== */
 .useCasesSection {
-  padding: 80px 5%;
+  padding: 80px max(5%, calc((100vw - 960px) / 2));
   background: #faf9ff;
 }
 
 .useCasesInner {
-  max-width: 1100px;
+  max-width: 960px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -91,6 +91,7 @@
   margin: 0;
   line-height: 1.2;
   letter-spacing: -0.5px;
+  text-align: center;
 }
 
 .useCasesAccordion {
@@ -161,11 +162,11 @@
 
 /* ===== SECTION 4 - Power your Advantage ===== */
 .powerSection {
-  padding: 80px 5%;
+  padding: 80px max(5%, calc((100vw - 960px) / 2));
 }
 
 .powerInner {
-  max-width: 1100px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -265,10 +266,13 @@
     padding: 32px 5% 60px;
   }
 
-  .section,
+  .section {
+    padding: 60px 5%;
+  }
+
   .useCasesSection,
   .powerSection {
-    padding: 60px 5%;
+    padding: 60px max(5%, calc((100vw - 960px) / 2));
   }
 
   .serviceCards {

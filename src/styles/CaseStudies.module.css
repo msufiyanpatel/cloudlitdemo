@@ -430,15 +430,28 @@
   .toolbar {
     flex-direction: column;
     align-items: stretch;
-    padding: 0 5% 32px;
+    padding: 24px 5% 32px;
+    gap: 12px;
   }
 
   .searchWrap {
     max-width: none;
+    min-width: 0;
   }
 
   .filters {
     justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .dropdownWrap {
+    width: 100%;
+  }
+
+  .filterTrigger {
+    width: 100%;
+    justify-content: space-between;
+    touch-action: manipulation;
   }
 
   .grid {
@@ -469,9 +482,16 @@
     font-size: 15px;
   }
 
+  .toolbar {
+    padding: 20px 4% 28px;
+  }
+
   .filterTrigger {
     width: 100%;
     justify-content: space-between;
+    touch-action: manipulation;
+    min-height: 44px;
+    padding: 12px 16px;
   }
 
   .dropdownWrap {
@@ -480,5 +500,7 @@
 
   .dropdown {
     min-width: 100%;
+    left: 0;
+    right: 0;
   }
 }

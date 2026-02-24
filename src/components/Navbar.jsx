@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Navbar.css";
-import logo2 from "../assets/white2.png";
+
+const serviceLinks = [
+  { label: "Cloud", path: "/services/cloud" },
+  { label: "DevOps", path: "/services/devops" },
+  { label: "Provision", path: "/services/provision" },
+  { label: "Monitor", path: "/services/monitor" },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,11 +27,25 @@ export default function Navbar() {
   // Close mobile menu on route change
   useEffect(() => {
     setMenuOpen(false);
+    setServicesOpen(false);
   }, [location]);
+
+  // Close desktop dropdown when clicking outside (only when desktop menu is visible)
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      const inDesktopDropdown = e.target.closest(".navbar__dropdown-wrap");
+      const inMobileDropdown = e.target.closest(".navbar__side-menu-dropdown");
+      if (servicesOpen && !inDesktopDropdown && !inMobileDropdown) {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener("click", closeDropdown);
+    return () => document.removeEventListener("click", closeDropdown);
+  }, [servicesOpen]);
 
   const navLinks = [
     { label: "About", path: "/about" },
-    { label: "Services", path: "/services/cloud" },
+    { label: "Services", path: "/services/cloud", dropdown: serviceLinks },
     { label: "Benefits", path: "/benefits" },
     { label: "Portfolio", path: "/casestudies" },
     { label: "Roadmap", path: "/roadmap" },
@@ -34,22 +55,59 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <div className="navbar__inner">
         <a href="/home" className="navbar__logo">
-          <img src={logo2} alt="Cloudlit logo" />
+          <img src="/CloudLit.png" alt="Cloudlit logo" />
         </a>
 
         {/* Desktop links */}
         <div className="navbar__links">
-          {navLinks.map((link) => (
-            <button
-              key={link.label}
-              className={`navbar__link ${
-                location.pathname === link.path || (link.path === "/services/cloud" && location.pathname.startsWith("/services")) ? "navbar__link--active" : ""
-              }`}
-              onClick={() => navigate(link.path)}
-            >
-              {link.label}
-            </button>
-          ))}
+          {navLinks.map((link) =>
+            link.dropdown ? (
+              <div key={link.label} className="navbar__dropdown-wrap">
+                <button
+                  className={`navbar__link ${
+                    location.pathname.startsWith("/services") ? "navbar__link--active" : ""
+                  }`}
+                  onClick={() => setServicesOpen(!servicesOpen)}
+                  aria-expanded={servicesOpen}
+                >
+                  {link.label}
+                  <svg
+                    className={`navbar__dropdown-chevron ${servicesOpen ? "navbar__dropdown-chevron--open" : ""}`}
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <div className={`navbar__dropdown ${servicesOpen ? "navbar__dropdown--open" : ""}`}>
+                  {link.dropdown.map((sub) => (
+                    <button
+                      key={sub.path}
+                      className={`navbar__dropdown-link ${location.pathname === sub.path ? "navbar__dropdown-link--active" : ""}`}
+                      onClick={() => {
+                        navigate(sub.path);
+                        setServicesOpen(false);
+                      }}
+                    >
+                      {sub.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <button
+                key={link.label}
+                className={`navbar__link ${location.pathname === link.path ? "navbar__link--active" : ""}`}
+                onClick={() => navigate(link.path)}
+              >
+                {link.label}
+              </button>
+            )
+          )}
         </div>
 
         {/* CTA button */}
@@ -75,22 +133,66 @@ export default function Navbar() {
       {/* Mobile menu backdrop */}
       <div
         className={`navbar__side-menu-backdrop ${menuOpen ? "navbar__side-menu-backdrop--open" : ""}`}
-        onClick={() => setMenuOpen(false)}
+        onClick={() => {
+          setMenuOpen(false);
+          setServicesOpen(false);
+        }}
         aria-hidden="true"
       />
 
       {/* Mobile dropdown menu */}
       <div className={`navbar__side-menu ${menuOpen ? "navbar__side-menu--open" : ""}`}>
         <div className="navbar__side-menu-links">
-          {navLinks.map((link) => (
-            <button
-              key={link.label}
-              className="navbar__side-menu-link"
-              onClick={() => navigate(link.path)}
-            >
-              {link.label}
-            </button>
-          ))}
+          {navLinks.map((link) =>
+            link.dropdown ? (
+              <div key={link.label} className="navbar__side-menu-dropdown">
+                <button
+                  className={`navbar__side-menu-link navbar__side-menu-link--parent ${
+                    servicesOpen ? "navbar__side-menu-link--expanded" : ""
+                  }`}
+                  onClick={() => setServicesOpen(!servicesOpen)}
+                >
+                  {link.label}
+                  <svg
+                    className={`navbar__side-menu-chevron ${servicesOpen ? "navbar__side-menu-chevron--open" : ""}`}
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </button>
+                <div className={`navbar__side-menu-sub ${servicesOpen ? "navbar__side-menu-sub--open" : ""}`}>
+                  <div>
+                    {link.dropdown.map((sub) => (
+                      <button
+                        key={sub.path}
+                        className="navbar__side-menu-sublink"
+                        onClick={() => {
+                          navigate(sub.path);
+                          setMenuOpen(false);
+                          setServicesOpen(false);
+                        }}
+                      >
+                        {sub.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <button
+                key={link.label}
+                className="navbar__side-menu-link"
+                onClick={() => navigate(link.path)}
+              >
+                {link.label}
+              </button>
+            )
+          )}
         </div>
         <button
           className="navbar__side-menu-cta"

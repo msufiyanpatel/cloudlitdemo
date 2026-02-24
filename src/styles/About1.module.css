@@ -227,14 +227,14 @@
 .whoFeatures {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 12px 16px;
   margin-top: 24px;
 }
 
 .whoFeature {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-size: 14px;
   font-weight: 600;
   color: #333;
@@ -243,6 +243,8 @@
 .whoFeatureIcon {
   width: 32px;
   height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   border-radius: 8px;
   background: rgba(81, 70, 202, 0.08);
   display: flex;
@@ -475,7 +477,20 @@
 
   .whoFeatures {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .whoFeature {
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .whoFeatureIcon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
   }
 
   .missionSection {
@@ -504,6 +519,18 @@
 @media (max-width: 480px) {
   .heroTitle {
     font-size: 28px;
+  }
+
+  .whoFeature {
+    padding: 4px 0;
+    touch-action: manipulation;
+  }
+
+  .whoFeatureIcon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
   }
 
   .statsGrid {
