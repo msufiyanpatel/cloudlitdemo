@@ -72,7 +72,10 @@ export default function Navbar() {
                   className={`navbar__link ${
                     location.pathname.startsWith("/services") ? "navbar__link--active" : ""
                   }`}
-                  onClick={() => navigate("/services/cloud")}
+                  onClick={() => {
+                    setServicesOpen(!servicesOpen);
+                    navigate("/services/cloud");
+                  }}
                   aria-expanded={servicesOpen}
                 >
                   {link.label}
