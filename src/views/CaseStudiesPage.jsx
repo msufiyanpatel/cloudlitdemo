@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "../styles/CaseStudies.module.css";
@@ -192,14 +193,16 @@ const CaseStudiesPage = () => {
                   transition={{ duration: 0.35 }}
                   whileHover={{ y: -6 }}
                 >
-                  <a href={cs.link} className={styles.cardLink}>
+                  <div className={styles.cardLink}>
                     <div className={styles.cardHeader}>
-                      <span className={styles.cardIndustry}>{cs.industry}</span>
                       <div className={styles.cardGradient} />
+                      <div className={styles.cardHeaderContent}>
+                        <span className={styles.cardIndustry}>{cs.industry}</span>
+                        <h3 className={styles.cardHeaderTitle}>{cs.title}</h3>
+                      </div>
                     </div>
                     <div className={styles.cardBody}>
-                      <h3 className={styles.cardSolution}>{cs.solution || cs.title}</h3>
-                      <p className={styles.cardTitle}>{cs.title}</p>
+                      <h3 className={styles.cardSolution}>{cs.solution}</h3>
                       <p className={styles.cardDesc}>
                         {cs.shortDescription || cs.description.substring(0, 120) + "…"}
                       </p>
@@ -208,12 +211,19 @@ const CaseStudiesPage = () => {
                           <span key={t} className={styles.techTag}>{t}</span>
                         ))}
                       </div>
-                      <span className={styles.cardCta}>
-                        Read more
-                        <span className={styles.cardArrow}>→</span>
-                      </span>
+                      {cs.link.startsWith("http") ? (
+                        <a href={cs.link} className={styles.cardCta} target="_blank" rel="noopener noreferrer">
+                          Read more
+                          <span className={styles.cardArrow}>→</span>
+                        </a>
+                      ) : (
+                        <Link to={cs.link} className={styles.cardCta}>
+                          Read more
+                          <span className={styles.cardArrow}>→</span>
+                        </Link>
+                      )}
                     </div>
-                  </a>
+                  </div>
                 </motion.article>
               ))}
             </motion.div>

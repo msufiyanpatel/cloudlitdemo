@@ -66,7 +66,6 @@ export default function Navbar() {
                 key={link.label}
                 className="navbar__dropdown-wrap"
                 onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
               >
                 <button
                   className={`navbar__link ${

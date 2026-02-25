@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/HomeServices.module.css";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import awsIcon from "../assets/aws-icon.png";
 import azureIcon from "../assets/Azure-Logo-PNG-Black.png";
 import gcp from "../assets/google-cloud-platform.png";
@@ -16,151 +16,212 @@ import cloudFormation from "../assets/aws-cloudformation.png";
 import Promethus from "../assets/promoetheus.png";
 import datadog from "../assets/datadog.png";
 
-const TABS = [
-  { id: "cloud", label: "Cloud" },
-  { id: "devops", label: "DevOps" },
-  { id: "provision", label: "Provision" },
-  { id: "monitor", label: "Monitor" },
+const TOOL_ITEMS = [
+  { icon: awsIcon, label: "AWS" },
+  { icon: gcp, label: "GCP" },
+  { icon: azureIcon, label: "Azure" },
+  { icon: docker, label: "Docker" },
+  { icon: kubernetes, label: "Kubernetes" },
+  { icon: gitlab, label: "GitLab" },
+  { icon: ansible, label: "Ansible" },
+  { icon: chef, label: "Chef" },
+  { icon: Terraform, label: "Terraform" },
+  { icon: cloudFormation, label: "CloudFormation" },
+  { icon: Promethus, label: "Prometheus" },
+  { icon: datadog, label: "Datadog" },
 ];
 
-const cloudServices = [
+const SERVICE_CARDS = [
   {
-    title: "Amazon Web Services",
-    description: "Innovate with agility and build a secure cloud platform by exploiting the full breadth of AWS's leading-edge cloud capabilities.",
-    icon: awsIcon,
+    eyebrow: "BUILD ON THE WORLD'S LEADING PLATFORMS",
+    title: "Cloud Providers",
+    description:
+      "Amazon AWS, Google Cloud, Microsoft Azure and any private cloud – we architect solutions across all major providers.",
+    tools: [awsIcon, gcp, azureIcon],
+    path: "/services/cloud",
   },
   {
-    title: "Google Cloud",
-    description: "Google Cloud provides services that support organizations to go digital. It offers a suite of computing services to do everything from data management to delivering web and AI/machine learning tools.",
-    icon: gcp,
+    eyebrow: "SHIP ANYWHERE, SCALE EVERYWHERE",
+    title: "Containers & Orchestration",
+    description:
+      "Docker, Kubernetes, and container orchestration that makes your deployments bulletproof.",
+    tools: [docker, kubernetes],
+    path: "/services/devops",
   },
   {
-    title: "IBM Cloud",
-    description: "IBM Cloud is a suite of cloud computing services that offers 200+ services in virtual servers, networking and storage. IBM Watson has amazing AI capabilities.",
-    icon: azureIcon,
+    eyebrow: "FROM COMMIT TO PRODUCTION IN MINUTES",
+    title: "CI/CD Pipelines",
+    description:
+      "Jenkins, GitLab, GitHub Actions, ArgoCD – continuous delivery that never sleeps.",
+    tools: [gitlab],
+    path: "/services/devops",
   },
   {
-    title: "Microsoft Cloud",
-    description: "Microsoft Azure has been leveraging its legacy footholds to help reluctant organizations transition to the cloud in a way that plays to its particular capabilities over the past few years.",
-    icon: azureIcon,
-  },
-];
-
-const devopsServices = [
-  {
-    title: "Kubernetes",
-    description: "Container orchestration platform for automating deployment, scaling and management of containerized apps.",
-    icon: kubernetes,
+    eyebrow: "INFRASTRUCTURE AS CODE, DONE RIGHT",
+    title: "Configuration Management",
+    description:
+      "Ansible, Chef, Puppet – automate everything from server provisioning to application configuration.",
+    tools: [ansible, chef],
+    path: "/services/provision",
   },
   {
-    title: "Docker",
-    description: "Container platform for developing, shipping and running applications in isolated, portable environments.",
-    icon: docker,
+    eyebrow: "DATA THAT SCALES WITH YOUR AMBITION",
+    title: "Databases",
+    description:
+      "MySQL, PostgreSQL, Oracle, MongoDB, Amazon Aurora – relational and NoSQL expertise for every workload.",
+    tools: [awsIcon, azureIcon],
+    path: "/services/cloud",
   },
   {
-    title: "GitLab",
-    description: "Complete DevOps platform for source code management, CI/CD, and collaboration across the software lifecycle.",
-    icon: gitlab,
-  },
-];
-
-const provisionServices = [
-  {
-    title: "Terraform",
-    description: "Infrastructure as code tool for building, changing and versioning cloud and on-prem resources.",
-    icon: Terraform,
+    eyebrow: "REAL-TIME DATA, ZERO LATENCY",
+    title: "Messaging & Caching",
+    description:
+      "RabbitMQ, Kafka, Redis, ELK stack – event-driven architectures that handle millions of messages.",
+    tools: [Promethus],
+    path: "/services/monitor",
   },
   {
-    title: "Ansible",
-    description: "Agentless automation for configuration management, application deployment and IT orchestration.",
-    icon: ansible,
+    eyebrow: "SEE EVERYTHING, MISS NOTHING",
+    title: "Monitoring & Observability",
+    description:
+      "Prometheus, Datadog, Grafana – full-stack observability from infrastructure to user experience.",
+    tools: [Promethus, datadog],
+    path: "/services/monitor",
   },
   {
-    title: "Chef",
-    description: "Configuration management platform for defining infrastructure as code and automating compliance.",
-    icon: chef,
-  },
-  {
-    title: "AWS CloudFormation",
-    description: "Infrastructure as code service for modeling and provisioning AWS resources in a repeatable way.",
-    icon: cloudFormation,
-  },
-];
-
-const monitorServices = [
-  {
-    title: "Prometheus",
-    description: "Open source monitoring and alerting toolkit designed for reliability and dimensional data model.",
-    icon: Promethus,
-  },
-  {
-    title: "Datadog",
-    description: "Unified monitoring platform for infrastructure, applications, logs and real-time performance analytics.",
-    icon: datadog,
+    eyebrow: "SPIN UP ENTIRE ENVIRONMENTS IN MINUTES",
+    title: "Infrastructure Provisioning",
+    description:
+      "Terraform, Pulumi, AWS CloudFormation – declarative infrastructure that’s versioned, reviewed, and repeatable.",
+    tools: [Terraform, cloudFormation],
+    path: "/services/provision",
   },
 ];
-
-const SERVICES_BY_TAB = {
-  cloud: cloudServices,
-  devops: devopsServices,
-  provision: provisionServices,
-  monitor: monitorServices,
-};
 
 const HomeServices = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("cloud");
+  const [isPaused, setIsPaused] = useState(false);
+  const forwardStripRef = useRef(null);
+  const backwardStripRef = useRef(null);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  useEffect(() => {
+    const forward = forwardStripRef.current;
+    const backward = backwardStripRef.current;
+    if (!forward || !backward) return;
+
+    let animationId;
+    let forwardPos = forward.scrollLeft;
+    let backwardPos = backward.scrollLeft;
+    const speed = 0.5;
+
+    if (backwardPos === 0) backwardPos = backward.scrollWidth / 2;
+
+    const animate = () => {
+      if (!isPaused) {
+        forwardPos += speed;
+        backwardPos -= speed;
+
+        const forwardResetAt = forward.scrollWidth / 2;
+        const backwardResetAt = backward.scrollWidth / 2;
+
+        if (forwardPos >= forwardResetAt) forwardPos = 0;
+        if (backwardPos <= 0) backwardPos = backwardResetAt;
+
+        forward.scrollLeft = forwardPos;
+        backward.scrollLeft = backwardPos;
+      }
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationId) cancelAnimationFrame(animationId);
+    };
+  }, [isPaused]);
+
+  const duplicatedTools = [...TOOL_ITEMS, ...TOOL_ITEMS];
 
   return (
     <section id="services" className={styles.section} ref={ref}>
       <div className={styles.inner}>
-        {/* Tab navigation */}
-        <nav className={styles.tabsNav} aria-label="Service categories">
-          {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              className={`${styles.tabItem} ${activeTab === tab.id ? styles.tabItemActive : ""}`}
-              onClick={() => setActiveTab(tab.id)}
-              aria-pressed={activeTab === tab.id}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </nav>
+        {/* Tool icons marquee */}
+        <div
+          className={styles.marqueeWrapper}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div
+            className={`${styles.marqueeStrip} ${styles.marqueeStripForward}`}
+            ref={forwardStripRef}
+          >
+            {duplicatedTools.map((item, i) => (
+              <div key={`f-${i}`} className={styles.marqueeItem}>
+                <img src={item.icon} alt={item.label} />
+                <span className={styles.marqueeLabel}>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div
+          className={styles.marqueeWrapper}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div
+            className={`${styles.marqueeStrip} ${styles.marqueeStripBackward}`}
+            ref={backwardStripRef}
+          >
+            {duplicatedTools.map((item, i) => (
+              <div key={`b-${i}`} className={styles.marqueeItem}>
+                <img src={item.icon} alt={item.label} />
+                <span className={styles.marqueeLabel}>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 
-        {/* Service cards grid - all tabs have inner services */}
         <motion.div
           className={styles.cardGrid}
-          key={activeTab}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          {(SERVICES_BY_TAB[activeTab] || []).map((service, i) => (
+          {SERVICE_CARDS.map((service, i) => (
             <motion.article
               key={service.title}
-              className={styles.card}
+              className={`${styles.card} ${i === 0 ? styles.cardFeatured : ""}`}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.08 }}
             >
-              <div className={styles.cardLogo}>
-                <img src={service.icon} alt={service.title} />
-              </div>
+              <button
+                type="button"
+                className={styles.cardArrowButton}
+                onClick={() => navigate(service.path)}
+                aria-label={`Go to ${service.title} services`}
+              >
+                ↗
+              </button>
+              <p className={styles.cardEyebrow}>{service.eyebrow}</p>
               <h3 className={styles.cardTitle}>{service.title}</h3>
               <p className={styles.cardDesc}>{service.description}</p>
-              <a
-                href={`/services/${activeTab}`}
-                className={styles.learnMore}
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate(`/services/${activeTab}`);
-                }}
-              >
-                Learn More →
-              </a>
+              {service.progress && (
+                <div className={styles.cardProgressTrack}>
+                  <div className={styles.cardProgressBar} />
+                </div>
+              )}
+              {service.tools && service.tools.length > 0 && (
+                <div className={styles.cardTools}>
+                  {service.tools.map((icon, idx) => (
+                    <span key={idx} className={styles.cardToolIcon}>
+                      <img src={icon} alt="" />
+                    </span>
+                  ))}
+                </div>
+              )}
             </motion.article>
           ))}
         </motion.div>

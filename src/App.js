@@ -14,6 +14,9 @@ import Home from "./views/Home";
 import ChatForm from "./views/ChatForm";
 import About from "./views/About1";
 import CaseStudiesPage from "./views/CaseStudiesPage";
+import CaseStudyFlightAlert from "./views/CaseStudyFlightAlert";
+import CaseStudyMaximo from "./views/CaseStudyMaximo";
+import CaseStudyAiWebCrawling from "./views/CaseStudyAiWebCrawling";
 // import Router from './routes';
 
 function App() {
@@ -32,6 +35,9 @@ function App() {
           <Route path="/benefits" element={<Benefits variant="light" />} />
           <Route path="/roadmap" element={<Roadmap />} />
           <Route path="/casestudies" element={<CaseStudiesPage />} />
+          <Route path="/casestudies/flight-alert" element={<CaseStudyFlightAlert />} />
+          <Route path="/casestudies/maximo-azure-openshift" element={<CaseStudyMaximo />} />
+          <Route path="/casestudies/ai-web-crawling" element={<CaseStudyAiWebCrawling />} />
           <Route
             path="*"
             element={
