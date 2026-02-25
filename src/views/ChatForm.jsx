@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/ChatForm.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faLocationDot, faGear } from "@fortawesome/free-solid-svg-icons";
 import avatar1 from "../assets/icons/1.png";
 import avatar2 from "../assets/icons/2.png";
 import avatar3 from "../assets/icons/3.png";
@@ -149,24 +149,34 @@ const ChatForm = () => {
                 </span>
               </div>
               <div>
-                <p className={styles.contactLabel}>Email Us</p>
-                <a href="mailto:work@example.com" className={styles.contactValue}>
-                  work@example.com
+                <p className={styles.contactLabel}>Queries</p>
+                <a href="mailto:admin@cloudlit.co" className={styles.contactValue}>
+                  admin@cloudlit.co
                 </a>
               </div>
             </div>
             <div className={styles.contactItem}>
               <div className={styles.contactIconWrap}>
-              <span className={styles.contactIcon}><FontAwesomeIcon icon={faLocationDot} /></span>
+                <span className={styles.contactIcon}><FontAwesomeIcon icon={faLocationDot} /></span>
               </div>
               <div>
-                <p className={styles.contactLabel}>Visit Us</p>
+                <p className={styles.contactLabel}>Our Headquarter</p>
                 <p className={styles.contactValue}>
-                  123 Business Street,
+                  35 Saint Cherbel Way,
                   <br />
-                  City, Country
+                  Punchbowl New South Wales 2196 Australia
                 </p>
-                <p className={styles.contactPhone}>Phone: +1 234 567 8900</p>
+              </div>
+            </div>
+            <div className={`${styles.contactItem} ${styles.contactItemFull}`}>
+              <div className={styles.contactIconWrap}>
+                <span className={styles.contactIcon}><FontAwesomeIcon icon={faGear} /></span>
+              </div>
+              <div>
+                <p className={styles.contactLabel}>Technical Support</p>
+                <a href="mailto:engineering@cloudlit.co" className={styles.contactValue}>
+                  engineering@cloudlit.co
+                </a>
               </div>
             </div>
           </div>

@@ -163,28 +163,30 @@
   white-space: nowrap;
 }
 
-/* Contact info: side-by-side square boxes (Email Us | Visit Us) */
+/* Contact info: Queries and Our Headquarter side by side */
 .contactInfo {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   margin-top: 0;
+  width: 100%;
 }
 
 .contactItem {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 20px;
-  min-height: 140px;
-  aspect-ratio: 2;
+  padding: 16px 20px;
+  min-height: auto;
   
  
   
   
 }
 
-
+.contactItemFull {
+  grid-column: 1 / -1;
+}
 
 .contactIconWrap {
   width: 36px;
