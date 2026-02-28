@@ -6,6 +6,7 @@ import {
   faCode,
   faServer,
   faChartLine,
+  faLayerGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/Services.module.css";
 
@@ -14,6 +15,7 @@ const TABS = [
   { id: "devops", label: "DevOps", icon: faCode },
   { id: "provision", label: "Provision", icon: faServer },
   { id: "monitor", label: "Monitor", icon: faChartLine },
+  { id: "openshift", label: "OpenShift", icon: faLayerGroup },
 ];
 
 const ServicesTabs = () => {

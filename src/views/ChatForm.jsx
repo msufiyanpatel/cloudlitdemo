@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import styles from "../styles/ChatForm.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot, faGear } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +8,12 @@ import avatar2 from "../assets/icons/2.png";
 import avatar3 from "../assets/icons/3.png";
 import avatar4 from "../assets/icons/4.png";
 import avatar5 from "../assets/icons/5.png";
+
+// ── EmailJS config ──────────────────────────────────────
+// Replace these with your real EmailJS credentials from https://emailjs.com
+const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
 
 const teamMembers = [
   { image: avatar1, title: "Technical UI Designer" },
@@ -81,9 +88,37 @@ const ChatForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const [submitting, setSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // "success" | "error"
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setSubmitting(true);
+    setSubmitStatus(null);
+
+    emailjs
+      .send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: `${formData.firstName} ${formData.lastName}`,
+          from_email: formData.workEmail,
+          message: formData.projectDetails,
+          tab: activeTab,
+        },
+        EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+        setSubmitStatus("success");
+        setFormData({ firstName: "", lastName: "", workEmail: "", projectDetails: "" });
+      })
+      .catch(() => {
+        setSubmitStatus("error");
+      })
+      .finally(() => {
+        setSubmitting(false);
+        setTimeout(() => setSubmitStatus(null), 5000);
+      });
   };
 
   // Duplicate team members for seamless infinite scroll
@@ -249,14 +284,19 @@ const ChatForm = () => {
                   rows={5}
                 />
               </div>
-              <button type="submit" className={styles.submitBtn}>
-                Send Message
-                <span className={styles.sendIcon}>✈</span>
+              <button type="submit" className={styles.submitBtn} disabled={submitting}>
+                {submitting ? "Sending…" : "Send Message"}
+                {!submitting && <span className={styles.sendIcon}>✈</span>}
               </button>
+              {submitStatus === "success" && (
+                <p className={styles.successMsg}>✓ Message sent! We'll be in touch soon.</p>
+              )}
+              {submitStatus === "error" && (
+                <p className={styles.errorMsg}>Something went wrong. Please email us directly at admin@cloudlit.co</p>
+              )}
             </form>
             <p className={styles.recaptcha}>
-              Protected by reCAPTCHA and the Google Privacy Policy and Terms of
-              Service apply.
+              No spam, ever. We respect your privacy.
             </p>
           </div>
           )}

@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
+import { Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 import styles from "../styles/CaseStudyFlightAlert.module.css";
 import formStyles from "../styles/ChatForm.module.css";
+import CanvasErrorBoundary from "../components/CanvasErrorBoundary";
+
+const ResultsParticles = React.lazy(() => import("../components/ResultsParticles"));
+
+const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
 
 const CaseStudyAiWebCrawling = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    workEmail: "",
-    projectDetails: "",
-  });
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", workEmail: "", projectDetails: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,12 +23,24 @@ const CaseStudyAiWebCrawling = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setSubmitting(true);
+    setSubmitStatus(null);
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      from_name: `${formData.firstName} ${formData.lastName}`,
+      from_email: formData.workEmail,
+      message: formData.projectDetails,
+      case_study: "AI Web Crawling",
+    }, EMAILJS_PUBLIC_KEY)
+      .then(() => { setSubmitStatus("success"); setFormData({ firstName: "", lastName: "", workEmail: "", projectDetails: "" }); })
+      .catch(() => setSubmitStatus("error"))
+      .finally(() => { setSubmitting(false); setTimeout(() => setSubmitStatus(null), 5000); });
   };
 
   return (
     <div className={styles.page}>
+      {/* ── HERO ── */}
       <section className={styles.hero}>
+        <Link to="/casestudies" className={styles.heroBack}>← Back to Portfolio</Link>
         <div className={styles.heroInner}>
           <div className={styles.meta}>Industry · AI &amp; ML</div>
           <h1 className={styles.title}>
@@ -35,204 +53,205 @@ const CaseStudyAiWebCrawling = () => {
         </div>
       </section>
 
-      <section className={styles.content}>
-        <div className={styles.highlightGrid}>
-          <div className={styles.highlightCard}>
-            <div className={styles.highlightIcon}>🤖</div>
+      {/* ── HIGHLIGHT STRIP ── */}
+      <div className={styles.highlightGrid}>
+        {[
+          { icon: "🤖", title: "Autonomous agents", text: "High-quality conversational data fueling AI assistants." },
+          { icon: "📊", title: "Crawl analytics", text: "LLM-enriched datasets ready for analytics and modeling." },
+          { icon: "☁", title: "AWS native", text: "Dockerized Crawl4AI deployment on scalable AWS infrastructure." },
+        ].map((h) => (
+          <div key={h.title} className={styles.highlightCard}>
+            <div className={styles.highlightIcon}>{h.icon}</div>
             <div>
-              <p className={styles.highlightTitle}>Autonomous agents</p>
-              <p className={styles.highlightText}>High-quality conversational data fueling AI assistants.</p>
+              <p className={styles.highlightTitle}>{h.title}</p>
+              <p className={styles.highlightText}>{h.text}</p>
             </div>
           </div>
-          <div className={styles.highlightCard}>
-            <div className={styles.highlightIcon}>📊</div>
-            <div>
-              <p className={styles.highlightTitle}>Crawl analytics</p>
-              <p className={styles.highlightText}>LLM-enriched datasets ready for analytics and modeling.</p>
+        ))}
+      </div>
+
+      {/* ── CONTENT ── */}
+      <div className={styles.content}>
+
+        {/* LEFT: Article */}
+        <div className={styles.article}>
+
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Customer</p>
+            <p className={styles.paragraph}>
+              A UAE-based startup pioneering a new category of autonomous AI agents that augment companies'
+              workforce. Their product relies on a continuous flow of diverse, high-quality conversational
+              data sourced from forums, reviews, and social media to train and ground their agent models.
+            </p>
+            <p className={styles.paragraph}>
+              They needed a fully automated, scalable web crawling platform that could collect, preprocess,
+              and pipe domain-specific data into their AI training workflows — without manual intervention
+              or fragile one-off scripts that break under production load.
+            </p>
+          </div>
+
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Challenge</p>
+            <ul className={styles.list}>
+              <li><strong>Manual data collection:</strong> Gathering data manually from multiple websites was time-consuming, resource-intensive, and produced inconsistent output quality.</li>
+              <li><strong>Scalability limitations:</strong> Traditional scraping scripts were not designed to handle concurrent large-scale crawling reliably or without constant maintenance.</li>
+              <li><strong>Unstructured output:</strong> Raw HTML had to be manually cleaned and formatted before feeding AI pipelines — adding significant lag between crawl and training.</li>
+              <li><strong>Complex API integration:</strong> Connecting crawled content to LLM APIs required custom data transformation, deduplication, and schema normalisation work.</li>
+              <li><strong>Security and compliance:</strong> Secure API key management, encrypted transit, and IAM-controlled access to cloud resources were non-negotiable requirements.</li>
+            </ul>
+          </div>
+
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Solution</p>
+            <p className={styles.paragraph}>
+              Cloudlit deployed Crawl4AI inside a Docker container on Amazon EC2 and built a REST API
+              layer around it, enabling the startup's engineering team to trigger crawl jobs, monitor
+              progress, and receive structured, LLM-enriched output through a single consistent interface.
+            </p>
+            <ol className={styles.featuresList}>
+              <li><strong>AWS cloud deployment:</strong> Crawl4AI deployed on Amazon EC2 using the official Docker image for seamless portability, version pinning, and environment consistency.</li>
+              <li><strong>REST API implementation:</strong> FastAPI endpoints allow engineers to submit crawl targets, track real-time job status, and retrieve structured JSON results on demand.</li>
+              <li><strong>LLM integration:</strong> GPT-4 and Claude API were integrated to classify page intent, extract named entities, summarise content, and tag sentiment automatically post-crawl.</li>
+              <li><strong>Enhanced security:</strong> API key authentication, HTTPS-only endpoints, VPC isolation, security group rules, and IAM roles enforce least-privilege access end to end.</li>
+              <li><strong>Storage and data management:</strong> Crawled outputs are stored in Amazon S3 with lifecycle policies; structured metadata is indexed in DynamoDB for fast retrieval.</li>
+            </ol>
+          </div>
+
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Architecture Overview</p>
+            <ol className={styles.featuresList}>
+              <li><strong>Containerised crawler on EC2:</strong> Crawl4AI runs in an isolated Docker container, decoupling it from the host environment and enabling fast rollbacks or horizontal scaling.</li>
+              <li><strong>Job queue with status tracking:</strong> Each crawl request is assigned a unique job ID; an async queue ensures ordered execution and prevents resource exhaustion.</li>
+              <li><strong>Post-crawl LLM enrichment pipeline:</strong> After each page is fetched, content is automatically passed to the LLM API for entity extraction and summarisation before being written to S3.</li>
+              <li><strong>Scheduled batch crawls:</strong> Cron-triggered Lambda functions kick off nightly bulk crawls across configured seed URLs to keep training datasets continuously refreshed.</li>
+              <li><strong>Monitoring and alerting:</strong> CloudWatch metrics and alarms track crawl success rate, error counts, and LLM API latency — with instant alerts on anomalies.</li>
+            </ol>
+          </div>
+
+        </div>
+
+        {/* RIGHT: Sidebar */}
+        <div className={styles.sidebar}>
+          <div className={styles.sideCtaCard}>
+            <p className={styles.sideCtaTitle}>Build an AI data platform</p>
+            <p className={styles.sideCtaDesc}>Planning a crawling or data pipeline? Let's map it out together.</p>
+            <a href="#contact-form" className={styles.sideCtaBtn}>Get in Touch →</a>
+          </div>
+
+          <div className={styles.sideCard}>
+            <p className={styles.sideCardTitle}>Project Details</p>
+            {[
+              { icon: "🏢", label: "Industry", value: "AI & ML" },
+              { icon: "☁", label: "Platform", value: "Amazon AWS" },
+              { icon: "🐳", label: "Deployment", value: "Docker / EC2" },
+              { icon: "🧠", label: "AI Models", value: "GPT-4, Claude" },
+            ].map((item) => (
+              <div key={item.label} className={styles.sideItem}>
+                <div className={styles.sideItemIcon}>{item.icon}</div>
+                <div>
+                  <p className={styles.sideItemLabel}>{item.label}</p>
+                  <p className={styles.sideItemValue}>{item.value}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.sideCard}>
+            <p className={styles.sideCardTitle}>Key Technologies</p>
+            <div className={styles.techChips}>
+              {["Crawl4AI","Docker","FastAPI","AWS S3","OpenAI"].map((t) => (
+                <span key={t} className={styles.techChip}>{t}</span>
+              ))}
             </div>
           </div>
-          <div className={styles.highlightCard}>
-            <div className={styles.highlightIcon}>☁</div>
-            <div>
-              <p className={styles.highlightTitle}>AWS native</p>
-              <p className={styles.highlightText}>Dockerized Crawl4AI deployment on scalable AWS infrastructure.</p>
-            </div>
+        </div>
+
+        {/* Results — full width */}
+        <div className={styles.resultsCard}>
+          <CanvasErrorBoundary>
+            <Suspense fallback={null}>
+              <div className={styles.resultsCanvasWrap}>
+                <ResultsParticles />
+              </div>
+            </Suspense>
+          </CanvasErrorBoundary>
+          <p className={styles.sectionTitle}>Results / Success</p>
+          <p className={styles.resultsHeading}>Outcomes that moved the needle</p>
+          <div className={styles.resultsGrid}>
+            {[
+              { icon: "⚡", label: "Operational Efficiency", text: "Automating web crawling eliminated manual data collection, reduced overhead, and significantly increased processing speed." },
+              { icon: "🧠", label: "AI-Driven Insights", text: "LLM integration enabled real-time content analysis, sentiment detection, and intelligent summarization." },
+              { icon: "📦", label: "Deployment Flexibility", text: "The Dockerized architecture ensured seamless scalability across on-premise, cloud, and hybrid environments." },
+            ].map((r) => (
+              <div key={r.label} className={styles.resultItem}>
+                <div className={styles.resultBullet}>{r.icon}</div>
+                <p className={styles.resultLabel}>{r.label}</p>
+                <p className={styles.resultText}>{r.text}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Customer</h2>
-          <p className={styles.paragraph}>
-            A UAE-based startup pioneering a new category of autonomous AI agents that augment companies&apos;
-            workforce needs diverse conversational data from forums, reviews, and social media. They required
-            automated web scraping to collect, structure, and preprocess this data, ensuring a steady stream of
-            high‑quality inputs for model training.
-          </p>
-        </div>
-
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Challenge</h2>
-          <ul className={styles.list}>
-            <li>
-              <strong>Manual data collection:</strong> Gathering data manually from multiple websites was
-              time‑consuming, resource‑intensive, and error‑prone, making it difficult to maintain consistent,
-              high‑quality datasets for AI model training.
-            </li>
-            <li>
-              <strong>Scalability limitations:</strong> Traditional web scraping scripts and legacy tools were
-              not designed to handle large‑scale crawling efficiently or reliably as data volume and source
-              variety grew.
-            </li>
-            <li>
-              <strong>Complex API integration:</strong> Integrating crawled data into AI models, analytics
-              pipelines, or BI platforms required manual formatting, cleaning, and transformation, increasing
-              development time and complexity.
-            </li>
-            <li>
-              <strong>Security and compliance:</strong> Ensuring secure API access, authentication handling, and
-              adherence to organizational security policies for data collection and storage was critical.
-            </li>
-          </ul>
-        </div>
-
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Solution</h2>
-          <p className={styles.paragraph}>
-            To address these challenges, Crawl4AI was deployed using a Dockerized architecture and integrated
-            with Large Language Models (LLMs) for AI‑driven content analysis. The key components of the solution
-            included:
-          </p>
-          <ol className={styles.featuresList}>
-            <li>
-              <strong>AWS and cloud deployment:</strong> Crawl4AI was deployed on Amazon EC2 instances to ensure
-              scalability, reliability, and performance. The official Docker image was used to run the crawler,
-              enabling seamless portability and environment consistency.
-            </li>
-            <li>
-              <strong>REST API implementation:</strong> RESTful API endpoints were exposed to allow users to
-              initiate crawl tasks, monitor their status, and retrieve structured data in a controlled and repeatable
-              way.
-            </li>
-            <li>
-              <strong>LLM integration:</strong> Advanced AI models, including OpenAI&apos;s GPT‑4 and other LLMs,
-              were integrated to classify content, extract entities, summarize pages, and enrich the raw crawl data
-              with higher‑level insights.
-            </li>
-            <li>
-              <strong>Enhanced security:</strong> API key authentication, encrypted communication, and environment‑
-              based access controls were implemented. Within AWS, VPCs, security groups, and IAM roles enforced access
-              control and protected data in transit and at rest.
-            </li>
-            <li>
-              <strong>Storage and data management:</strong> Crawled data was stored in Amazon S3, while structured
-              metadata was managed in Amazon RDS or DynamoDB for efficient querying, retrieval, and downstream
-              consumption by AI and analytics workloads.
-            </li>
-          </ol>
-        </div>
-
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Results / Success</h2>
-          <p className={styles.paragraph}>
-            <strong>Operational efficiency:</strong> Automating the web crawling process eliminated manual data
-            collection, reduced operational overhead, and significantly increased processing speed.
-          </p>
-          <p className={styles.paragraph}>
-            <strong>AI‑driven insights:</strong> LLM integration enabled real‑time content analysis, sentiment
-            detection, and intelligent summarization, providing richer signals for model training and decision‑making.
-          </p>
-          <p className={styles.paragraph}>
-            <strong>Scalability and deployment flexibility:</strong> The Dockerized architecture ensured seamless
-            scalability and allowed deployment across on‑premise, cloud, and hybrid environments with minimal
-            configuration changes.
-          </p>
-        </div>
-
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Technologies and Tools</h2>
-          <p className={styles.paragraph}>Key technologies and services used in this engagement:</p>
+        {/* Technologies — full width */}
+        <div className={styles.sectionFullWidth}>
+          <p className={styles.sectionTitle}>Technologies &amp; Tools</p>
           <div className={styles.techChips}>
-            <span className={styles.techChip}>AWS Cloud</span>
-            <span className={styles.techChip}>Docker</span>
-            <span className={styles.techChip}>Python</span>
-            <span className={styles.techChip}>FastAPI</span>
-            <span className={styles.techChip}>OpenAI API</span>
-            <span className={styles.techChip}>Claude API</span>
-            <span className={styles.techChip}>Bash Scripts</span>
+            {["AWS Cloud","Docker","Python","FastAPI","OpenAI API","Claude API","Bash Scripts"].map((t) => (
+              <span key={t} className={styles.techChip}>{t}</span>
+            ))}
           </div>
         </div>
 
-        {/* Contact form - same as Contact page */}
-        <div className={styles.formSection}>
-          <h2 className={styles.formSectionTitle}>Get in touch</h2>
-          <p className={styles.formSectionDesc}>
-            Planning an AI-powered crawling or data platform? Share your use case and we’ll follow up.
-          </p>
+        {/* FORM */}
+        <div className={styles.formSection} id="contact-form">
+          <div className={styles.formSectionLeft}>
+            <h2 className={styles.formSectionTitle}>Planning an AI data platform?</h2>
+            <p className={styles.formSectionDesc}>Share your use case and data goals — we'll follow up with a tailored approach.</p>
+            <div className={styles.formSectionPerks}>
+              {["Free initial consultation","No commitment required","Response within 24 hours","AI & cloud expertise"].map((p) => (
+                <div key={p} className={styles.formPerk}>
+                  <div className={styles.formPerkDot} />
+                  {p}
+                </div>
+              ))}
+            </div>
+          </div>
           <div className={styles.formPanelWrap}>
             <div className={formStyles.formPanel}>
               <form onSubmit={handleSubmit} className={formStyles.form}>
                 <div className={formStyles.formRow}>
                   <div className={formStyles.formGroup}>
                     <label htmlFor="ai-firstName">FIRST NAME</label>
-                    <input
-                      type="text"
-                      id="ai-firstName"
-                      name="firstName"
-                      placeholder="Abdullah"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                    />
+                    <input type="text" id="ai-firstName" name="firstName" placeholder="Abdullah" value={formData.firstName} onChange={handleChange} />
                   </div>
                   <div className={formStyles.formGroup}>
                     <label htmlFor="ai-lastName">LAST NAME</label>
-                    <input
-                      type="text"
-                      id="ai-lastName"
-                      name="lastName"
-                      placeholder="Ahmad"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                    />
+                    <input type="text" id="ai-lastName" name="lastName" placeholder="Ahmad" value={formData.lastName} onChange={handleChange} />
                   </div>
                 </div>
                 <div className={formStyles.formGroup}>
                   <label htmlFor="ai-workEmail">WORK EMAIL</label>
-                  <input
-                    type="email"
-                    id="ai-workEmail"
-                    name="workEmail"
-                    placeholder="abdullah@company.com"
-                    value={formData.workEmail}
-                    onChange={handleChange}
-                    required
-                  />
+                  <input type="email" id="ai-workEmail" name="workEmail" placeholder="abdullah@company.com" value={formData.workEmail} onChange={handleChange} required />
                 </div>
                 <div className={formStyles.formGroup}>
                   <label htmlFor="ai-projectDetails">PROJECT DETAILS</label>
-                  <textarea
-                    id="ai-projectDetails"
-                    name="projectDetails"
-                    placeholder="Tell us about your data sources, scale, and AI goals..."
-                    value={formData.projectDetails}
-                    onChange={handleChange}
-                    rows={5}
-                  />
+                  <textarea id="ai-projectDetails" name="projectDetails" placeholder="Tell us about your data sources, scale, and AI goals..." value={formData.projectDetails} onChange={handleChange} rows={5} />
                 </div>
-                <button type="submit" className={formStyles.submitBtn}>
-                  Send Message
-                  <span className={formStyles.sendIcon}>✈</span>
+                <button type="submit" className={formStyles.submitBtn} disabled={submitting}>
+                  {submitting ? "Sending…" : "Send Message"}
+                  {!submitting && <span className={formStyles.sendIcon}>✈</span>}
                 </button>
+                {submitStatus === "success" && <p className={formStyles.successMsg}>✓ Message sent! We'll be in touch soon.</p>}
+                {submitStatus === "error" && <p className={formStyles.errorMsg}>Something went wrong. Email us at admin@cloudlit.co</p>}
               </form>
-              <p className={formStyles.recaptcha}>
-                Protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
-              </p>
+              <p className={formStyles.recaptcha}>No spam, ever. We respect your privacy.</p>
             </div>
           </div>
         </div>
-      </section>
+
+      </div>
     </div>
   );
 };
 
 export default CaseStudyAiWebCrawling;
-

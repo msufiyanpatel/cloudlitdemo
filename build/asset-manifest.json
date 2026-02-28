@@ -1,8 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.7b78ebba.css",
-    "main.js": "/static/js/main.ab1fdb05.js",
+    "main.css": "/static/css/main.959c8659.css",
+    "main.js": "/static/js/main.b67990b8.js",
+    "static/js/186.0ec8d5fb.chunk.js": "/static/js/186.0ec8d5fb.chunk.js",
     "static/js/787.bdb0affa.chunk.js": "/static/js/787.bdb0affa.chunk.js",
+    "static/js/580.4a8bc551.chunk.js": "/static/js/580.4a8bc551.chunk.js",
     "static/media/Integrity.png": "/static/media/Integrity.91a630a1b6fe9b71d963.png",
     "static/media/2nd picture.png": "/static/media/2nd picture.bdf0549e847c543bade3.png",
     "static/media/Ethics.png": "/static/media/Ethics.b904d6221474872b65b0.png",
@@ -17,6 +19,7 @@
     "static/media/datadog.png": "/static/media/datadog.dcc661cfe708abcd645a.png",
     "static/media/9.png": "/static/media/9.c704d5d82718a0e18301.png",
     "static/media/5.png": "/static/media/5.5c85eb9a503a23a25736.png",
+    "static/media/rabbitmq.png": "/static/media/rabbitmq.59c6970534ca124f0e3d.png",
     "static/media/1.png": "/static/media/1.60941990ceb2c57e9829.png",
     "static/media/Azure-Logo-PNG-Black.png": "/static/media/Azure-Logo-PNG-Black.5d378b10b684ad02e995.png",
     "static/media/3.png": "/static/media/3.f65279d559659d750153.png",
@@ -26,14 +29,18 @@
     "static/media/7.png": "/static/media/7.86a15c2bd0779839147a.png",
     "static/media/docker-logo.png": "/static/media/docker-logo.900e4877d5954f413357.png",
     "static/media/6.png": "/static/media/6.69ea1320ff8407c7a224.png",
+    "static/media/reddid.png": "/static/media/reddid.52a85440d0cb10638fe8.png",
     "static/media/promoetheus.png": "/static/media/promoetheus.2a5b7deb47bb273248ed.png",
+    "static/media/pulumi.svg": "/static/media/pulumi.1cfbe418da31452c30f1ca4da2a5daee.svg",
     "index.html": "/index.html",
-    "main.7b78ebba.css.map": "/static/css/main.7b78ebba.css.map",
-    "main.ab1fdb05.js.map": "/static/js/main.ab1fdb05.js.map",
-    "787.bdb0affa.chunk.js.map": "/static/js/787.bdb0affa.chunk.js.map"
+    "main.959c8659.css.map": "/static/css/main.959c8659.css.map",
+    "main.b67990b8.js.map": "/static/js/main.b67990b8.js.map",
+    "186.0ec8d5fb.chunk.js.map": "/static/js/186.0ec8d5fb.chunk.js.map",
+    "787.bdb0affa.chunk.js.map": "/static/js/787.bdb0affa.chunk.js.map",
+    "580.4a8bc551.chunk.js.map": "/static/js/580.4a8bc551.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7b78ebba.css",
-    "static/js/main.ab1fdb05.js"
+    "static/css/main.959c8659.css",
+    "static/js/main.b67990b8.js"
   ]
 }

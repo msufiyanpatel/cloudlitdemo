@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import styles from "../styles/Contact.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,6 +10,10 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+
+const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_FOOTER_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
 
 const capabilities = [
   { label: "Cloud", href: "/services/cloud" },
@@ -21,15 +26,33 @@ const Footer = () => {
   const [ctaRef, ctaInView] = useInView({ triggerOnce: true, threshold: 0.15 });
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubmitted(true);
-      setEmail("");
-      setTimeout(() => setSubmitted(false), 4000);
-    }
+    if (!email.trim()) return;
+    setSubmitting(true);
+    setSubmitError(false);
+
+    emailjs
+      .send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        { from_email: email },
+        EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+        setSubmitted(true);
+        setEmail("");
+        setTimeout(() => setSubmitted(false), 5000);
+      })
+      .catch(() => {
+        setSubmitError(true);
+        setTimeout(() => setSubmitError(false), 5000);
+      })
+      .finally(() => setSubmitting(false));
   };
 
   const socials = [
@@ -84,14 +107,18 @@ const Footer = () => {
                   required
                 />
               </div>
-              <button type="submit" className={styles.ctaButton}>
-                {submitted ? (
+              <button type="submit" className={styles.ctaButton} disabled={submitting}>
+                {submitting ? (
+                  "Sending…"
+                ) : submitted ? (
                   <span className={styles.ctaButtonSuccess}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                     Sent!
                   </span>
+                ) : submitError ? (
+                  "Try Again"
                 ) : (
                   <>
                     Get Free Consultation

@@ -6,6 +6,7 @@
     "@chakra-ui/icon": "^3.0.14",
     "@chakra-ui/icons": "^2.0.15",
     "@chakra-ui/react": "^2.4.6",
+    "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -14,6 +15,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/material": "^5.13.6",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.17.10",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -25,6 +28,7 @@
     "react-intersection-observer": "^10.0.2",
     "react-router-dom": "^6.14.1",
     "react-scripts": "5.0.1",
+    "three": "^0.183.1",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {

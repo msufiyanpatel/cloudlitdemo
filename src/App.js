@@ -1,4 +1,5 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -7,6 +8,7 @@ import ServicesCloud from "./views/ServicesCloud";
 import ServicesDevOps from "./views/ServicesDevOps";
 import ServicesProvision from "./views/ServicesProvision";
 import ServicesMonitor from "./views/ServicesMonitor";
+import ServicesOpenShift from "./views/ServicesOpenShift";
 import HomeServices from "./views/HomeServices";
 import Locations from "./views/Locations";
 import Roadmap from "./views/Roadmap";
@@ -19,9 +21,18 @@ import CaseStudyMaximo from "./views/CaseStudyMaximo";
 import CaseStudyAiWebCrawling from "./views/CaseStudyAiWebCrawling";
 // import Router from './routes';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   return (
     <div className="App">
+      <ScrollToTop />
       <Navbar />
       <main className="App__main">
         <Routes>
@@ -32,6 +43,7 @@ function App() {
           <Route path="/services/devops" element={<ServicesDevOps />} />
           <Route path="/services/provision" element={<ServicesProvision />} />
           <Route path="/services/monitor" element={<ServicesMonitor />} />
+          <Route path="/services/openshift" element={<ServicesOpenShift />} />
           <Route path="/benefits" element={<Benefits variant="light" />} />
           <Route path="/roadmap" element={<Roadmap />} />
           <Route path="/casestudies" element={<CaseStudiesPage />} />

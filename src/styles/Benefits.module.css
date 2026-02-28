@@ -22,19 +22,13 @@
 .bgGrid {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(81, 70, 202, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(81, 70, 202, 0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%);
 }
 
 .benefitsLight .bgGrid {
-  background-image:
-    linear-gradient(rgba(81, 70, 202, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(81, 70, 202, 0.03) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(81,70,202,0.06) 1px, transparent 1px);
 }
 
 /* ===== SECTION HEADER ===== */

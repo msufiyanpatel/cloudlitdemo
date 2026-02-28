@@ -9,12 +9,22 @@ import gcp from "../assets/google-cloud-platform.png";
 import docker from "../assets/docker-logo.png";
 import kubernetes from "../assets/kubernetes.png";
 import gitlab from "../assets/Gitlab.png";
+import github from "../assets/GitHub.png";
+import teamCity from "../assets/TeamCity.png";
 import ansible from "../assets/ansible.png";
 import chef from "../assets/chef.png";
+import puppet from "../assets/puppet.png";
 import Terraform from "../assets/terraform.png";
 import cloudFormation from "../assets/aws-cloudformation.png";
+import pulumi from "../assets/pulumi.svg";
 import Promethus from "../assets/promoetheus.png";
 import datadog from "../assets/datadog.png";
+import pagerduty from "../assets/pagerduty.png";
+import kafka from "../assets/kafka.png";
+import rabbitmq from "../assets/rabbitmq.png";
+import mysql from "../assets/mysql.png";
+import postgresql from "../assets/Postgresql.png";
+import oracle from "../assets/oracle.png";
 
 const TOOL_ITEMS = [
   { icon: awsIcon, label: "AWS" },
@@ -33,7 +43,7 @@ const TOOL_ITEMS = [
 
 const SERVICE_CARDS = [
   {
-    eyebrow: "BUILD ON THE WORLD'S LEADING PLATFORMS",
+    eyebrow: "BUILD ON THE WORLD’S LEADING PLATFORMS",
     title: "Cloud Providers",
     description:
       "Amazon AWS, Google Cloud, Microsoft Azure and any private cloud – we architect solutions across all major providers.",
@@ -53,7 +63,7 @@ const SERVICE_CARDS = [
     title: "CI/CD Pipelines",
     description:
       "Jenkins, GitLab, GitHub Actions, ArgoCD – continuous delivery that never sleeps.",
-    tools: [gitlab],
+    tools: [gitlab, github, teamCity],
     path: "/services/devops",
   },
   {
@@ -61,7 +71,7 @@ const SERVICE_CARDS = [
     title: "Configuration Management",
     description:
       "Ansible, Chef, Puppet – automate everything from server provisioning to application configuration.",
-    tools: [ansible, chef],
+    tools: [ansible, chef, puppet],
     path: "/services/provision",
   },
   {
@@ -69,7 +79,7 @@ const SERVICE_CARDS = [
     title: "Databases",
     description:
       "MySQL, PostgreSQL, Oracle, MongoDB, Amazon Aurora – relational and NoSQL expertise for every workload.",
-    tools: [awsIcon, azureIcon],
+    tools: [mysql, postgresql, oracle],
     path: "/services/cloud",
   },
   {
@@ -77,7 +87,7 @@ const SERVICE_CARDS = [
     title: "Messaging & Caching",
     description:
       "RabbitMQ, Kafka, Redis, ELK stack – event-driven architectures that handle millions of messages.",
-    tools: [Promethus],
+    tools: [kafka, rabbitmq],
     path: "/services/monitor",
   },
   {
@@ -85,7 +95,7 @@ const SERVICE_CARDS = [
     title: "Monitoring & Observability",
     description:
       "Prometheus, Datadog, Grafana – full-stack observability from infrastructure to user experience.",
-    tools: [Promethus, datadog],
+    tools: [Promethus, datadog, pagerduty],
     path: "/services/monitor",
   },
   {
@@ -93,7 +103,7 @@ const SERVICE_CARDS = [
     title: "Infrastructure Provisioning",
     description:
       "Terraform, Pulumi, AWS CloudFormation – declarative infrastructure that’s versioned, reviewed, and repeatable.",
-    tools: [Terraform, cloudFormation],
+    tools: [Terraform, pulumi, cloudFormation],
     path: "/services/provision",
   },
 ];

@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
+import { Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 import styles from "../styles/CaseStudyFlightAlert.module.css";
 import formStyles from "../styles/ChatForm.module.css";
+import CanvasErrorBoundary from "../components/CanvasErrorBoundary";
+
+const ResultsParticles = React.lazy(() => import("../components/ResultsParticles"));
+
+const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
 
 const CaseStudyMaximo = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    workEmail: "",
-    projectDetails: "",
-  });
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", workEmail: "", projectDetails: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,16 +23,28 @@ const CaseStudyMaximo = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setSubmitting(true);
+    setSubmitStatus(null);
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      from_name: `${formData.firstName} ${formData.lastName}`,
+      from_email: formData.workEmail,
+      message: formData.projectDetails,
+      case_study: "Maximo Azure OpenShift",
+    }, EMAILJS_PUBLIC_KEY)
+      .then(() => { setSubmitStatus("success"); setFormData({ firstName: "", lastName: "", workEmail: "", projectDetails: "" }); })
+      .catch(() => setSubmitStatus("error"))
+      .finally(() => { setSubmitting(false); setTimeout(() => setSubmitStatus(null), 5000); });
   };
 
   return (
     <div className={styles.page}>
+      {/* ── HERO ── */}
       <section className={styles.hero}>
+        <Link to="/casestudies" className={styles.heroBack}>← Back to Portfolio</Link>
         <div className={styles.heroInner}>
           <div className={styles.meta}>Industry · All Industries</div>
           <h1 className={styles.title}>
-            Automation of IBM Maximo Application Suite on Azure using RedHat OpenShift
+            Automation of IBM Maximo Application Suite on Azure using Red Hat OpenShift
           </h1>
           <p className={styles.subtitle}>
             Cloudlit automated IBM Maximo Application Suite on Azure Red Hat OpenShift for a
@@ -36,229 +54,208 @@ const CaseStudyMaximo = () => {
         </div>
       </section>
 
-      <section className={styles.content}>
-        <div className={styles.highlightGrid}>
-          <div className={styles.highlightCard}>
-            <div className={styles.highlightIcon}>☁</div>
+      {/* ── HIGHLIGHT STRIP ── */}
+      <div className={styles.highlightGrid}>
+        {[
+          { icon: "☁", title: "Azure OpenShift", text: "Enterprise-grade Maximo running on Azure Red Hat OpenShift." },
+          { icon: "⚙", title: "Ansible automation", text: "Cluster and Maximo deployment fully automated with Ansible." },
+          { icon: "🔒", title: "Hardened security", text: "Firewalls, VPN, SSL, and role-based access built in." },
+        ].map((h) => (
+          <div key={h.title} className={styles.highlightCard}>
+            <div className={styles.highlightIcon}>{h.icon}</div>
             <div>
-              <p className={styles.highlightTitle}>Azure OpenShift</p>
-              <p className={styles.highlightText}>Enterprise-grade Maximo running on Azure Red Hat OpenShift.</p>
+              <p className={styles.highlightTitle}>{h.title}</p>
+              <p className={styles.highlightText}>{h.text}</p>
             </div>
           </div>
-          <div className={styles.highlightCard}>
-            <div className={styles.highlightIcon}>⚙</div>
-            <div>
-              <p className={styles.highlightTitle}>Ansible automation</p>
-              <p className={styles.highlightText}>Cluster and Maximo deployment fully automated with Ansible.</p>
+        ))}
+      </div>
+
+      {/* ── CONTENT ── */}
+      <div className={styles.content}>
+
+        {/* LEFT: Article */}
+        <div className={styles.article}>
+
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Customer</p>
+            <p className={styles.paragraph}>
+              Cloudlit partnered with a leading Netherlands-based IT consulting firm specializing in
+              comprehensive data management and automation solutions across Europe. The firm serves
+              enterprise clients who rely on IBM Maximo Application Suite for asset lifecycle management,
+              maintenance planning, and operational compliance.
+            </p>
+            <p className={styles.paragraph}>
+              Their mandate was to deliver a repeatable, automated deployment framework so new client
+              environments could be provisioned rapidly, consistently, and securely — without months
+              of manual infrastructure setup for each engagement.
+            </p>
+          </div>
+
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Challenge</p>
+            <ul className={styles.list}>
+              <li><strong>Infrastructure scalability and cost management:</strong> Provisioning control and worker nodes with the exact CPU, RAM, and storage Maximo demands on Azure — while keeping costs predictable and elastic.</li>
+              <li><strong>Red Hat OpenShift cluster provisioning:</strong> Configuring pull secrets, resource quotas, operator subscriptions, and cluster-wide settings to precisely meet IBM Maximo's deployment requirements.</li>
+              <li><strong>Persistent storage and data integrity:</strong> Correct storage class selection and PVC sizing were critical to avoid data loss, I/O bottlenecks, or misalignment with MAS 9.0 prerequisites.</li>
+              <li><strong>IBM licensing and registry access:</strong> Automating the retrieval and application of IBM entitlement keys and Container Registry credentials without exposing secrets in plaintext.</li>
+              <li><strong>Security for sensitive operational data:</strong> Hardened access controls, encrypted traffic, VPN tunnels, and network segmentation required across both the OpenShift cluster and Maximo application tiers.</li>
+            </ul>
+          </div>
+
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Solution</p>
+            <p className={styles.paragraph}>
+              The Cloudlit team built a fully automated, Ansible-driven deployment pipeline that provisions
+              the complete Azure Red Hat OpenShift cluster and installs IBM Maximo Application Suite from
+              scratch — repeatable in hours, not weeks.
+            </p>
+            <ol className={styles.featuresList}>
+              <li><strong>Infrastructure automation with Ansible:</strong> End-to-end Ansible playbooks provision the ARO cluster on Azure, configure networking, apply security policies, and deploy MAS — all idempotently.</li>
+              <li><strong>Right-sized cluster provisioning:</strong> 3 control nodes (12 vCPUs, 48 GB RAM, 360 GB storage each) and 3 worker nodes (228 vCPUs and 1,298 GB RAM total) sized precisely to MAS 9.0 requirements.</li>
+              <li><strong>IBM licensing integration:</strong> Automated workflows retrieve and inject the IBM entitlement license file and IBM Container Registry pull secret as Kubernetes secrets — never in plaintext.</li>
+              <li><strong>Persistent storage configuration:</strong> Storage classes, persistent volume claims, and reclaim policies aligned with MAS 9.0 data integrity and performance specifications.</li>
+              <li><strong>Security hardening:</strong> Internal load balancers, Azure Firewall rules, site-to-site VPN, SSL/TLS certificates, pod-level RBAC, and cluster network policies form a layered defence posture.</li>
+            </ol>
+          </div>
+
+          <div className={styles.section}>
+            <p className={styles.sectionTitle}>Architecture Overview</p>
+            <ol className={styles.featuresList}>
+              <li><strong>Azure Red Hat OpenShift (ARO):</strong> Managed OpenShift on Azure provides the container orchestration layer with built-in SLA, automated patching, and Azure AD integration for identity.</li>
+              <li><strong>Ansible control plane:</strong> A dedicated Ansible controller node runs all provisioning playbooks, with vault-encrypted secrets and role-based task separation for auditability.</li>
+              <li><strong>IBM Maximo Application Suite operators:</strong> MAS and its dependencies (MongoDB, Db2, Kafka, AppConnect) are deployed as OpenShift Operators managed through the Operator Lifecycle Manager.</li>
+              <li><strong>Network topology:</strong> All cluster traffic is routed through an internal load balancer; external access is restricted to VPN-authenticated clients only, with no public API endpoints exposed.</li>
+              <li><strong>Monitoring and observability:</strong> Azure Monitor, OpenShift built-in Prometheus/Grafana stack, and custom dashboards provide real-time visibility into cluster health, MAS performance, and capacity.</li>
+            </ol>
+          </div>
+
+        </div>
+
+        {/* RIGHT: Sidebar */}
+        <div className={styles.sidebar}>
+          <div className={styles.sideCtaCard}>
+            <p className={styles.sideCtaTitle}>Automate your Maximo</p>
+            <p className={styles.sideCtaDesc}>Tell us about your IBM environment and automation goals.</p>
+            <a href="#contact-form" className={styles.sideCtaBtn}>Get in Touch →</a>
+          </div>
+
+          <div className={styles.sideCard}>
+            <p className={styles.sideCardTitle}>Project Details</p>
+            {[
+              { icon: "🌍", label: "Client Location", value: "Netherlands" },
+              { icon: "☁", label: "Platform", value: "Azure + OpenShift" },
+              { icon: "🤖", label: "Automation", value: "Ansible" },
+              { icon: "🏭", label: "Application", value: "IBM Maximo 9.0" },
+            ].map((item) => (
+              <div key={item.label} className={styles.sideItem}>
+                <div className={styles.sideItemIcon}>{item.icon}</div>
+                <div>
+                  <p className={styles.sideItemLabel}>{item.label}</p>
+                  <p className={styles.sideItemValue}>{item.value}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.sideCard}>
+            <p className={styles.sideCardTitle}>Key Technologies</p>
+            <div className={styles.techChips}>
+              {["Ansible","OpenShift","Azure","IBM Maximo","Terraform"].map((t) => (
+                <span key={t} className={styles.techChip}>{t}</span>
+              ))}
             </div>
           </div>
-          <div className={styles.highlightCard}>
-            <div className={styles.highlightIcon}>🔒</div>
-            <div>
-              <p className={styles.highlightTitle}>Hardened security</p>
-              <p className={styles.highlightText}>Firewalls, VPN, SSL, and role-based access built in.</p>
-            </div>
+        </div>
+
+        {/* Results — full width */}
+        <div className={styles.resultsCard}>
+          <CanvasErrorBoundary>
+            <Suspense fallback={null}>
+              <div className={styles.resultsCanvasWrap}>
+                <ResultsParticles />
+              </div>
+            </Suspense>
+          </CanvasErrorBoundary>
+          <p className={styles.sectionTitle}>Results / Success</p>
+          <p className={styles.resultsHeading}>Outcomes that moved the needle</p>
+          <div className={styles.resultsGrid}>
+            {[
+              { icon: "⚡", label: "Resource Utilization", text: "Automated provisioning and standardized configuration ensured compute and storage were efficiently used." },
+              { icon: "🚀", label: "Time-to-Market", text: "Automated setup reduced deployment time significantly, enabling faster onboarding of new environments." },
+              { icon: "💰", label: "Cost Optimization", text: "Precise sizing and Azure elastic scaling minimized waste while meeting all performance requirements." },
+              { icon: "🔒", label: "Security Assurance", text: "Load balancers, firewalls, and SSL certificates protected the cluster and Maximo suite against threats." },
+              { icon: "📈", label: "Future Scalability", text: "Automated, standards-based foundation enables scaling IBM Maximo with additional nodes, IoT, and analytics." },
+            ].map((r) => (
+              <div key={r.label} className={styles.resultItem}>
+                <div className={styles.resultBullet}>{r.icon}</div>
+                <p className={styles.resultLabel}>{r.label}</p>
+                <p className={styles.resultText}>{r.text}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Customer</h2>
-          <p className={styles.paragraph}>
-            Cloudlit has partnered with a leading Netherlands-based IT consulting firm specializing
-            in providing comprehensive data management and automation solutions across Europe. This
-            collaboration focuses on leveraging the capabilities of the IBM Maximo suite to deliver
-            innovative, efficient, and scalable solutions tailored to meet the diverse needs of
-            their clients. With deep expertise in the Maximo platform, the consulting firm supports
-            organizations in optimizing their asset management processes, enhancing operational
-            efficiency, and driving digital transformation through advanced data management and
-            automation strategies.
-          </p>
-        </div>
-
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Challenge</h2>
-          <ul className={styles.list}>
-            <li>
-              <strong>Infrastructure scalability and cost management:</strong> The client needed to
-              provision control and worker nodes with the required CPU, RAM, and storage on Azure
-              while ensuring the platform remained cost‑effective and capable of supporting future
-              growth.
-            </li>
-            <li>
-              <strong>Red Hat OpenShift cluster provisioning:</strong> Standing up the OpenShift
-              cluster required configuring pull secrets, resource quotas, and cluster settings that
-              meet IBM Maximo&apos;s specific requirements.
-            </li>
-            <li>
-              <strong>Persistent storage configuration and data integrity:</strong> Correct
-              persistent storage setup was critical to avoid data loss, performance issues, or
-              misalignment with IBM Maximo Application Suite 9.0 system requirements.
-            </li>
-            <li>
-              <strong>Security for sensitive operational data:</strong> The Maximo suite handles
-              sensitive operational data, so the client needed strong security across both the
-              OpenShift cluster and the application itself, including hardened access controls and
-              network protections.
-            </li>
-          </ul>
-        </div>
-
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Solution</h2>
-          <p className={styles.paragraph}>
-            To address these challenges, the Cloudlit team implemented a set of automation‑driven
-            strategies that standardized provisioning and configuration while enforcing best
-            practices.
-          </p>
-          <ol className={styles.featuresList}>
-            <li>
-              <strong>Infrastructure automation:</strong> Infrastructure automation via Ansible was
-              used to provision the Azure Red Hat OpenShift cluster, enabling fast, consistent
-              deployments with minimal manual intervention.
-            </li>
-            <li>
-              <strong>Automated Azure OpenShift cluster setup:</strong> The automation provisioned a
-              cluster with 3 control nodes and 3 worker nodes, aligning with the required
-              specifications (12 vCPUs, 48 GB RAM, and 360 GB storage for control nodes; 228 vCPUs
-              and 1298 GB RAM for worker nodes).
-            </li>
-            <li>
-              <strong>Integration of IBM licensing:</strong> The deployment workflows included
-              steps to retrieve and apply a valid IBM license file and IBM Container Registry key
-              (IBM Entitlement Key), ensuring seamless authentication and license verification for
-              Maximo.
-            </li>
-            <li>
-              <strong>Persistent storage configuration:</strong> Persistent storage was configured
-              in line with IBM Maximo Application Suite 9.0 system requirements so that capacity,
-              performance, and availability matched application needs.
-            </li>
-            <li>
-              <strong>Security measures:</strong> A full security protocol was implemented for the
-              OpenShift cluster, including internal load balancers, firewalls, VPNs, SSL
-              certificates, and best practices in encryption and user access management for the
-              Maximo platform.
-            </li>
-          </ol>
-        </div>
-
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Results / Success</h2>
-          <p className={styles.paragraph}>
-            <strong>Efficient resource utilization:</strong> Automated infrastructure provisioning
-            and standardized configuration streamlined deployment, ensuring that compute and storage
-            resources were efficiently used.
-          </p>
-          <p className={styles.paragraph}>
-            <strong>Improved time‑to‑market:</strong> The automated setup and clear configuration
-            guidelines reduced deployment time significantly compared to manual processes, enabling
-            faster onboarding of new environments and clients.
-          </p>
-          <p className={styles.paragraph}>
-            <strong>Cost optimization:</strong> Precise sizing and the use of Azure and OpenShift
-            elastic scaling capabilities minimized waste and optimized operational costs while
-            still meeting performance requirements.
-          </p>
-          <p className={styles.paragraph}>
-            <strong>Security assurance:</strong> With strong security controls in place—including
-            internal load balancers, firewalls, and SSL certificates—the OpenShift cluster and
-            Maximo Application Suite were protected against external threats and unauthorized
-            access.
-          </p>
-          <p className={styles.paragraph}>
-            <strong>Future scalability:</strong> The automated, standards‑based foundation enables
-            the business to scale the IBM Maximo Application Suite as needed, adding additional
-            nodes, integrations, or capabilities such as IoT and analytics.
-          </p>
-        </div>
-
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>Technologies and Tools</h2>
-          <p className={styles.paragraph}>Key technologies and services used in this engagement:</p>
+        {/* Technologies — full width */}
+        <div className={styles.sectionFullWidth}>
+          <p className={styles.sectionTitle}>Technologies &amp; Tools</p>
           <div className={styles.techChips}>
-            <span className={styles.techChip}>Azure Cloud</span>
-            <span className={styles.techChip}>Ansible</span>
-            <span className={styles.techChip}>Red Hat</span>
-            <span className={styles.techChip}>OpenShift</span>
-            <span className={styles.techChip}>IBM Maximo Suite</span>
-            <span className={styles.techChip}>Cloud Storage</span>
-            <span className={styles.techChip}>SQL</span>
-            <span className={styles.techChip}>Container Registry</span>
+            {["Azure Cloud","Ansible","Red Hat","OpenShift","IBM Maximo Suite","Cloud Storage","SQL","Container Registry"].map((t) => (
+              <span key={t} className={styles.techChip}>{t}</span>
+            ))}
           </div>
         </div>
 
-        {/* Contact form - same as Contact page */}
-        <div className={styles.formSection}>
-          <h2 className={styles.formSectionTitle}>Get in touch</h2>
-          <p className={styles.formSectionDesc}>
-            Interested in a similar Maximo automation project? Tell us about your environment and
-            we’ll get back to you.
-          </p>
+        {/* FORM */}
+        <div className={styles.formSection} id="contact-form">
+          <div className={styles.formSectionLeft}>
+            <h2 className={styles.formSectionTitle}>Interested in Maximo automation?</h2>
+            <p className={styles.formSectionDesc}>Tell us about your environment and timelines — we'll get back to you fast.</p>
+            <div className={styles.formSectionPerks}>
+              {["Free initial consultation","No commitment required","Response within 24 hours","IBM & Azure expertise"].map((p) => (
+                <div key={p} className={styles.formPerk}>
+                  <div className={styles.formPerkDot} />
+                  {p}
+                </div>
+              ))}
+            </div>
+          </div>
           <div className={styles.formPanelWrap}>
             <div className={formStyles.formPanel}>
               <form onSubmit={handleSubmit} className={formStyles.form}>
                 <div className={formStyles.formRow}>
                   <div className={formStyles.formGroup}>
                     <label htmlFor="maximo-firstName">FIRST NAME</label>
-                    <input
-                      type="text"
-                     id="maximo-firstName"
-                      name="firstName"
-                      placeholder="Abdullah"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                    />
+                    <input type="text" id="maximo-firstName" name="firstName" placeholder="Abdullah" value={formData.firstName} onChange={handleChange} />
                   </div>
                   <div className={formStyles.formGroup}>
                     <label htmlFor="maximo-lastName">LAST NAME</label>
-                    <input
-                      type="text"
-                      id="maximo-lastName"
-                      name="lastName"
-                      placeholder="Ahmad"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                    />
+                    <input type="text" id="maximo-lastName" name="lastName" placeholder="Ahmad" value={formData.lastName} onChange={handleChange} />
                   </div>
                 </div>
                 <div className={formStyles.formGroup}>
                   <label htmlFor="maximo-workEmail">WORK EMAIL</label>
-                  <input
-                    type="email"
-                    id="maximo-workEmail"
-                    name="workEmail"
-                    placeholder="abdullah@company.com"
-                    value={formData.workEmail}
-                    onChange={handleChange}
-                    required
-                  />
+                  <input type="email" id="maximo-workEmail" name="workEmail" placeholder="abdullah@company.com" value={formData.workEmail} onChange={handleChange} required />
                 </div>
                 <div className={formStyles.formGroup}>
                   <label htmlFor="maximo-projectDetails">PROJECT DETAILS</label>
-                  <textarea
-                    id="maximo-projectDetails"
-                    name="projectDetails"
-                    placeholder="Tell us about your Maximo environment, automation goals, and timelines..."
-                    value={formData.projectDetails}
-                    onChange={handleChange}
-                    rows={5}
-                  />
+                  <textarea id="maximo-projectDetails" name="projectDetails" placeholder="Tell us about your Maximo environment, automation goals, and timelines..." value={formData.projectDetails} onChange={handleChange} rows={5} />
                 </div>
-                <button type="submit" className={formStyles.submitBtn}>
-                  Send Message
-                  <span className={formStyles.sendIcon}>✈</span>
+                <button type="submit" className={formStyles.submitBtn} disabled={submitting}>
+                  {submitting ? "Sending…" : "Send Message"}
+                  {!submitting && <span className={formStyles.sendIcon}>✈</span>}
                 </button>
+                {submitStatus === "success" && <p className={formStyles.successMsg}>✓ Message sent! We'll be in touch soon.</p>}
+                {submitStatus === "error" && <p className={formStyles.errorMsg}>Something went wrong. Email us at admin@cloudlit.co</p>}
               </form>
-              <p className={formStyles.recaptcha}>
-                Protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
-              </p>
+              <p className={formStyles.recaptcha}>No spam, ever. We respect your privacy.</p>
             </div>
           </div>
         </div>
-      </section>
+
+      </div>
     </div>
   );
 };
 
 export default CaseStudyMaximo;
-
