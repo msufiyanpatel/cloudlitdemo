@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
 import styles from "../styles/Contact.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,9 +10,7 @@ import {
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_FOOTER_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
+const FORMSPARK_FORM_ID = "RBNpe83YE";
 
 const capabilities = [
   { label: "Cloud", href: "/services/cloud" },
@@ -36,14 +33,13 @@ const Footer = () => {
     setSubmitting(true);
     setSubmitError(false);
 
-    emailjs
-      .send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        { from_email: email },
-        EMAILJS_PUBLIC_KEY
-      )
-      .then(() => {
+    fetch(`https://submit-form.com/${FORMSPARK_FORM_ID}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ email }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error();
         setSubmitted(true);
         setEmail("");
         setTimeout(() => setSubmitted(false), 5000);

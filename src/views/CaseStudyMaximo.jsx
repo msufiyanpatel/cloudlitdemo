@@ -1,15 +1,12 @@
 import React, { useState, Suspense } from "react";
 import { Link } from "react-router-dom";
-import emailjs from "@emailjs/browser";
 import styles from "../styles/CaseStudyFlightAlert.module.css";
 import formStyles from "../styles/ChatForm.module.css";
 import CanvasErrorBoundary from "../components/CanvasErrorBoundary";
 
 const ResultsParticles = React.lazy(() => import("../components/ResultsParticles"));
 
-const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
+const FORMSPARK_FORM_ID = "oJBWZbvkD";
 
 const CaseStudyMaximo = () => {
   const [formData, setFormData] = useState({ firstName: "", lastName: "", workEmail: "", projectDetails: "" });
@@ -25,13 +22,21 @@ const CaseStudyMaximo = () => {
     e.preventDefault();
     setSubmitting(true);
     setSubmitStatus(null);
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      from_name: `${formData.firstName} ${formData.lastName}`,
-      from_email: formData.workEmail,
-      message: formData.projectDetails,
-      case_study: "Maximo Azure OpenShift",
-    }, EMAILJS_PUBLIC_KEY)
-      .then(() => { setSubmitStatus("success"); setFormData({ firstName: "", lastName: "", workEmail: "", projectDetails: "" }); })
+    fetch(`https://submit-form.com/${FORMSPARK_FORM_ID}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.workEmail,
+        message: formData.projectDetails,
+        source: "Case Study: Maximo Azure OpenShift",
+      }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error();
+        setSubmitStatus("success");
+        setFormData({ firstName: "", lastName: "", workEmail: "", projectDetails: "" });
+      })
       .catch(() => setSubmitStatus("error"))
       .finally(() => { setSubmitting(false); setTimeout(() => setSubmitStatus(null), 5000); });
   };

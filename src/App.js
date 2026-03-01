@@ -19,6 +19,8 @@ import CaseStudiesPage from "./views/CaseStudiesPage";
 import CaseStudyFlightAlert from "./views/CaseStudyFlightAlert";
 import CaseStudyMaximo from "./views/CaseStudyMaximo";
 import CaseStudyAiWebCrawling from "./views/CaseStudyAiWebCrawling";
+import PrivacyPolicy from "./views/PrivacyPolicy";
+import TermsOfService from "./views/TermsOfService";
 // import Router from './routes';
 
 function ScrollToTop() {
@@ -50,6 +52,8 @@ function App() {
           <Route path="/casestudies/flight-alert" element={<CaseStudyFlightAlert />} />
           <Route path="/casestudies/maximo-azure-openshift" element={<CaseStudyMaximo />} />
           <Route path="/casestudies/ai-web-crawling" element={<CaseStudyAiWebCrawling />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
           <Route
             path="*"
             element={

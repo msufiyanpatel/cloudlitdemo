@@ -21,7 +21,7 @@ const CARD_COLORS = [
 /* Stat ticker shown in hero */
 const STATS = [
   { value: "7+", label: "Case Studies" },
-  { value: "5", label: "Industries" },
+  { value: "7", label: "Industries" },
   { value: "100%", label: "Cloud-Native" },
   { value: "24/7", label: "Support" },
 ];

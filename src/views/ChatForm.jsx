@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 import styles from "../styles/ChatForm.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot, faGear } from "@fortawesome/free-solid-svg-icons";
@@ -9,11 +8,7 @@ import avatar3 from "../assets/icons/3.png";
 import avatar4 from "../assets/icons/4.png";
 import avatar5 from "../assets/icons/5.png";
 
-// ── EmailJS config ──────────────────────────────────────
-// Replace these with your real EmailJS credentials from https://emailjs.com
-const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
+const FORMSPARK_FORM_ID = "x97N0VFEB";
 
 const teamMembers = [
   { image: avatar1, title: "Technical UI Designer" },
@@ -96,25 +91,22 @@ const ChatForm = () => {
     setSubmitting(true);
     setSubmitStatus(null);
 
-    emailjs
-      .send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: `${formData.firstName} ${formData.lastName}`,
-          from_email: formData.workEmail,
-          message: formData.projectDetails,
-          tab: activeTab,
-        },
-        EMAILJS_PUBLIC_KEY
-      )
-      .then(() => {
+    fetch(`https://submit-form.com/${FORMSPARK_FORM_ID}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.workEmail,
+        message: formData.projectDetails,
+        department: activeTab,
+      }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error();
         setSubmitStatus("success");
         setFormData({ firstName: "", lastName: "", workEmail: "", projectDetails: "" });
       })
-      .catch(() => {
-        setSubmitStatus("error");
-      })
+      .catch(() => setSubmitStatus("error"))
       .finally(() => {
         setSubmitting(false);
         setTimeout(() => setSubmitStatus(null), 5000);
