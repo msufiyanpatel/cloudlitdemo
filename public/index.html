@@ -5,6 +5,16 @@
     <link rel="icon" href="%PUBLIC_URL%/CloudLit.webp" type="image/webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <!-- Critical CSS: above-the-fold styles to prevent FOUC and reduce LCP delay -->
+    <style>
+      *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+      html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+      body{font-family:"Inter","Open Sans",-apple-system,BlinkMacSystemFont,sans-serif;color:#1a1a2e;background:#fff;overflow-x:hidden}
+      .App{text-align:center;overflow-x:hidden}
+      .App__main{padding-top:0}
+      a{color:inherit;text-decoration:none}
+      img{-webkit-user-drag:none;user-select:none}
+    </style>
     <meta
       name="description"
       content="Your Trusted IT and Cloud Solutions Provider"
@@ -15,6 +25,7 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="preconnect" href="https://embed.tawk.to" crossorigin />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -40,18 +51,16 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-    <!--Start of Tawk.to Script-->
-      <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/66c73220ea492f34bc08eea7/1i5t1nju3';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-</script>
-<!--End of Tawk.to Script-->
+    <!-- Tawk.to: deferred to avoid blocking main thread -->
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var s1=document.createElement('script'),s0=document.getElementsByTagName('script')[0];
+          s1.async=true;s1.src='https://embed.tawk.to/66c73220ea492f34bc08eea7/1i5t1nju3';
+          s1.charset='UTF-8';s1.setAttribute('crossorigin','*');
+          s0.parentNode.insertBefore(s1,s0);
+        }, 3000);
+      });
+    </script>
   </body>
 </html>
