@@ -255,7 +255,7 @@ const Home = () => {
 
       {/* Trusted By Industry Leaders */}
       <section className={styles.trustedSection}>
-        <h2 className={styles.trustedHeading}>TRUSTED BY INDUSTRY LEADERS IN MEA</h2>
+        <h2 className={styles.trustedHeading}>TRUSTED BY INDUSTRY LEADERS</h2>
         <div className={styles.trustedLogos}>
           {trustedLogos.map((logo, i) => (
             <div key={i} className={styles.trustedLogoItem}>
