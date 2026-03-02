@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/ChatForm.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot, faGear } from "@fortawesome/free-solid-svg-icons";
-import avatar1 from "../assets/icons/1.png";
-import avatar2 from "../assets/icons/2.png";
-import avatar3 from "../assets/icons/3.png";
-import avatar4 from "../assets/icons/4.png";
-import avatar5 from "../assets/icons/5.png";
+import avatar1 from "../assets/icons/1.webp";
+import avatar2 from "../assets/icons/2.webp";
+import avatar3 from "../assets/icons/3.webp";
+import avatar4 from "../assets/icons/4.webp";
+import avatar5 from "../assets/icons/5.webp";
 
 const FORMSPARK_FORM_ID = "x97N0VFEB";
 

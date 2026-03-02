@@ -2,16 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/Home.module.css";
 import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import logo1 from "../assets/logos/1.png";
-import logo2 from "../assets/logos/2.png";
-import logo3 from "../assets/logos/3.png";
-import logo4 from "../assets/logos/4.png";
-import logo5 from "../assets/logos/5.png";
-import logo6 from "../assets/logos/6.png";
-import logo7 from "../assets/logos/7.png";
-import logo8 from "../assets/logos/8.png";
-import logo9 from "../assets/logos/9.png";
-import logo10 from "../assets/logos/10.png";
+import logo1 from "../assets/logos/1.webp";
+import logo2 from "../assets/logos/2.webp";
+import logo3 from "../assets/logos/3.webp";
+import logo4 from "../assets/logos/4.webp";
+import logo5 from "../assets/logos/5.webp";
+import logo6 from "../assets/logos/6.webp";
+import logo7 from "../assets/logos/7.webp";
+import logo8 from "../assets/logos/8.webp";
+import logo9 from "../assets/logos/9.webp";
+import logo10 from "../assets/logos/10.webp";
 
 const trustedLogos = [
   logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10,

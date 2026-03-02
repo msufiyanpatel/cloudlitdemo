@@ -94,14 +94,14 @@ const About = () => {
       <div id="About" style={imageStyle}>
         <div style={imgContainerStyle}>
           <img
-              src="./businesswoman-posing-during-meeting-indoors-with-laptop.jpg" // Replace with the URL of your image
+              src="/businesswoman-posing-during-meeting-indoors-with-laptop.webp" // Replace with the URL of your image
               alt="Professional Team 1 working"
               // style={{borderRadius: "40%"}}
             />
         </div>
         <div style={imgContainerStyle}>
           <img
-              src="\two-female-one-male-business-partners-looking-computer-screen-discussing-their-project.jpg" // Replace with the URL of your image
+              src="/two-female-one-male-business-partners-looking-computer-screen-discussing-their-project.webp" // Replace with the URL of your image
               alt="Professional Team 2 working"
               // style={{borderRadius: "40%"}}
             />

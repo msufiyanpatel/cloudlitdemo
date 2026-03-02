@@ -6,11 +6,11 @@ import * as THREE from "three";
 import ServicesTabs from "../components/ServicesTabs";
 import styles from "../styles/Services.module.css";
 import s from "../styles/ServicesMonitor.module.css";
-import Prometheus from "../assets/promoetheus.png";
-import datadog from "../assets/datadog.png";
-import pagerduty from "../assets/pagerduty.png";
-import kafka from "../assets/kafka.png";
-import rabbitmq from "../assets/rabbitmq.png";
+import Prometheus from "../assets/promoetheus.webp";
+import datadog from "../assets/datadog.webp";
+import pagerduty from "../assets/pagerduty.webp";
+import kafka from "../assets/kafka.webp";
+import rabbitmq from "../assets/rabbitmq.webp";
 
 /* ─── DATA ─────────────────────────────────────────── */
 

@@ -6,12 +6,12 @@ import * as THREE from "three";
 import ServicesTabs from "../components/ServicesTabs";
 import styles from "../styles/Services.module.css";
 import s from "../styles/ServicesDevOps.module.css";
-import docker from "../assets/docker-logo.png";
-import kubernetes from "../assets/kubernetes.png";
-import gitlab from "../assets/Gitlab.png";
-import github from "../assets/GitHub.png";
-import teamCity from "../assets/TeamCity.png";
-import ansible from "../assets/ansible.png";
+import docker from "../assets/docker-logo.webp";
+import kubernetes from "../assets/kubernetes.webp";
+import gitlab from "../assets/Gitlab.webp";
+import github from "../assets/GitHub.webp";
+import teamCity from "../assets/TeamCity.webp";
+import ansible from "../assets/ansible.webp";
 
 /* ─── DATA ─────────────────────────────────────────── */
 

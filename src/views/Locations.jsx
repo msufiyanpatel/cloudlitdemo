@@ -12,7 +12,7 @@ const locationsData = [
     country: "AUSTRALIA",
     hub: "Tech Center",
     coords: "33.8688° S, 151.2093° E",
-    image: "/New%20South%20Wales.jpg",
+    image: "/New%20South%20Wales.webp",
   },
   {
     city: "Karachi",
@@ -20,7 +20,7 @@ const locationsData = [
     country: "PAKISTAN",
     hub: "Design Studio",
     coords: "24.8607° N, 67.0011° E",
-    image: "/karachi.jpg",
+    image: "/karachi.webp",
   },
   {
     city: "Jeddah",
@@ -28,7 +28,7 @@ const locationsData = [
     country: "SAUDI ARABIA",
     hub: "Technical Sales",
     coords: "21.5433° N, 39.1728° E",
-    image: "/jeddah.jpg",
+    image: "/jeddah.webp",
   },
   {
     city: "Toronto",
@@ -36,7 +36,7 @@ const locationsData = [
     country: "CANADA",
     hub: "Innovation Lab",
     coords: "43.6532° N, 79.3832° W",
-    image: "/canada.jpg",
+    image: "/canada.webp",
   },
 ];
 

@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "../styles/About1.module.css";
-import excellence from "../assets/Execellence.png";
-import innovation from "../assets/Innovation.png";
-import teamwork from "../assets/TeamWork.png";
-import integrity from "../assets/Integrity.png";
-import ethics from "../assets/Ethics.png";
-import compassion from "../assets/Compassion.png";
-import picture from "../assets/3rd picture.png";
-import picture2 from "../assets/2nd picture.png";
+import excellence from "../assets/Execellence.webp";
+import innovation from "../assets/Innovation.webp";
+import teamwork from "../assets/TeamWork.webp";
+import integrity from "../assets/Integrity.webp";
+import ethics from "../assets/Ethics.webp";
+import compassion from "../assets/Compassion.webp";
+import picture from "../assets/3rd picture.webp";
+import picture2 from "../assets/2nd picture.webp";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 

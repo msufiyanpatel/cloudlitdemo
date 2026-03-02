@@ -6,11 +6,11 @@ import * as THREE from "three";
 import ServicesTabs from "../components/ServicesTabs";
 import styles from "../styles/Services.module.css";
 import s from "../styles/ServicesProvision.module.css";
-import Terraform from "../assets/terraform.png";
-import ansible from "../assets/ansible.png";
-import chef from "../assets/chef.png";
-import puppet from "../assets/puppet.png";
-import cloudFormation from "../assets/aws-cloudformation.png";
+import Terraform from "../assets/terraform.webp";
+import ansible from "../assets/ansible.webp";
+import chef from "../assets/chef.webp";
+import puppet from "../assets/puppet.webp";
+import cloudFormation from "../assets/aws-cloudformation.webp";
 import pulumi from "../assets/pulumi.svg";
 
 /* ─── DATA ─────────────────────────────────────────── */

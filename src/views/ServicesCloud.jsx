@@ -6,9 +6,9 @@ import * as THREE from "three";
 import ServicesTabs from "../components/ServicesTabs";
 import styles from "../styles/Services.module.css";
 import s from "../styles/ServicesCloud.module.css";
-import awsIcon from "../assets/aws-icon.png";
-import azureIcon from "../assets/Azure-Logo-PNG-Black.png";
-import gcp from "../assets/google-cloud-platform.png";
+import awsIcon from "../assets/aws-icon.webp";
+import azureIcon from "../assets/Azure-Logo-PNG-Black.webp";
+import gcp from "../assets/google-cloud-platform.webp";
 
 /* ─── DATA ─────────────────────────────────────────── */
 

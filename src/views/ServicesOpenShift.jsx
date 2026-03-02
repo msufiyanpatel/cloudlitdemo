@@ -6,7 +6,7 @@ import * as THREE from "three";
 import ServicesTabs from "../components/ServicesTabs";
 import styles from "../styles/Services.module.css";
 import s from "../styles/ServicesOpenShift.module.css";
-import redhatIcon from "../assets/reddid.png";
+import redhatIcon from "../assets/reddid.webp";
 
 /* ─── DATA ─────────────────────────────────────────── */
 

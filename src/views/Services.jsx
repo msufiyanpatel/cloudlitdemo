@@ -10,18 +10,18 @@ import {
   faServer,
   faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
-import awsIcon from "../assets/aws-icon.png";
-import azureIcon from "../assets/Azure-Logo-PNG-Black.png";
-import gcp from "../assets/google-cloud-platform.png";
-import docker from "../assets/docker-logo.png";
-import kubernetes from "../assets/kubernetes.png";
-import gitlab from "../assets/Gitlab.png";
-import ansible from "../assets/ansible.png";
-import chef from "../assets/chef.png";
-import Promethus from "../assets/promoetheus.png";
-import datadog from "../assets/datadog.png";
-import Terraform from "../assets/terraform.png";
-import cloudFormation from "../assets/aws-cloudformation.png";
+import awsIcon from "../assets/aws-icon.webp";
+import azureIcon from "../assets/Azure-Logo-PNG-Black.webp";
+import gcp from "../assets/google-cloud-platform.webp";
+import docker from "../assets/docker-logo.webp";
+import kubernetes from "../assets/kubernetes.webp";
+import gitlab from "../assets/Gitlab.webp";
+import ansible from "../assets/ansible.webp";
+import chef from "../assets/chef.webp";
+import Promethus from "../assets/promoetheus.webp";
+import datadog from "../assets/datadog.webp";
+import Terraform from "../assets/terraform.webp";
+import cloudFormation from "../assets/aws-cloudformation.webp";
 
 const TABS = [
   {
