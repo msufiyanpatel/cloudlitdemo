@@ -97,11 +97,12 @@
 /* ══ HERO ════════════════════════════════════════════ */
 .hero {
   position: relative;
-  height: 600px;
+  min-height: 600px;
   display: flex;
   align-items: center;
   overflow: hidden;
   background: #0a0714;
+  padding: 60px 0;
 }
 
 .threeCanvas {
@@ -295,9 +296,24 @@
 
 .tabsRow {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
   justify-content: center;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.tabsRow::-webkit-scrollbar { display: none; }
+
+@media (max-width: 640px) {
+  .tabsRow {
+    justify-content: flex-start;
+    padding: 0 5% 4px;
+  }
+  .tabBtn {
+    flex-shrink: 0;
+  }
 }
 
 .tabBtn {
@@ -740,7 +756,8 @@
 }
 
 @media (max-width: 768px) {
-  .hero { height: 520px; }
+  .hero { min-height: 520px; padding: 70px 0; }
+  .heroInner { padding-top: 0; }
 
   .howSection,
   .servicesSection,
@@ -771,7 +788,8 @@
 }
 
 @media (max-width: 480px) {
-  .hero { height: 460px; }
+  .hero { min-height: 500px; padding: 80px 0; }
+  .heroInner { padding-top: 0; }
   .heroHeading { letter-spacing: -1px; }
   .heroStat { padding: 14px 16px; }
   .heroStatN { font-size: 18px; }

@@ -1,0 +1,166 @@
+.page {
+  min-height: 100vh;
+  background: #0a0a0f;
+  color: #e2e8f0;
+  padding: 6rem 1.5rem 4rem;
+}
+
+.inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #3a92ee, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.updated {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.intro {
+  color: #94a3b8;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.introBullets {
+  color: #94a3b8;
+  line-height: 1.75;
+  padding-left: 1.5rem;
+  list-style: disc;
+  margin-bottom: 1rem;
+}
+
+.introBullets li {
+  margin-bottom: 0.4rem;
+}
+
+.section {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.section h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+}
+
+.section h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.section p {
+  color: #94a3b8;
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+
+.section ul,
+.section ol {
+  color: #94a3b8;
+  line-height: 1.75;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.section ul {
+  list-style: disc;
+}
+
+.section ol {
+  list-style: decimal;
+}
+
+.section ul li,
+.section ol li {
+  margin-bottom: 0.4rem;
+}
+
+.section a {
+  color: #3a92ee;
+  text-decoration: underline;
+}
+
+.section a:hover {
+  color: #8b5cf6;
+}
+
+.toc {
+  color: #94a3b8;
+  line-height: 1.75;
+  padding-left: 1.5rem;
+  list-style: decimal;
+}
+
+.toc li {
+  margin-bottom: 0.35rem;
+  font-size: 0.92rem;
+}
+
+/* Table */
+.tableWrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.table th {
+  background: rgba(58, 146, 238, 0.12);
+  color: #cbd5e1;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.table td {
+  color: #94a3b8;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 5rem 1rem 3rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.82rem;
+  }
+}

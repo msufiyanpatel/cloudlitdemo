@@ -17,7 +17,7 @@ import puppet from "../assets/puppet.png";
 import Terraform from "../assets/terraform.png";
 import cloudFormation from "../assets/aws-cloudformation.png";
 import pulumi from "../assets/pulumi.svg";
-import Promethus from "../assets/promoetheus.png";
+import Prometheus from "../assets/promoetheus.png";
 import datadog from "../assets/datadog.png";
 import pagerduty from "../assets/pagerduty.png";
 import kafka from "../assets/kafka.png";
@@ -37,8 +37,9 @@ const TOOL_ITEMS = [
   { icon: chef, label: "Chef" },
   { icon: Terraform, label: "Terraform" },
   { icon: cloudFormation, label: "CloudFormation" },
-  { icon: Promethus, label: "Prometheus" },
+  { icon: Prometheus, label: "Prometheus" },
   { icon: datadog, label: "Datadog" },
+  { icon: pagerduty, label: "PagerDuty" },
 ];
 
 const SERVICE_CARDS = [
@@ -95,7 +96,7 @@ const SERVICE_CARDS = [
     title: "Monitoring & Observability",
     description:
       "Prometheus, Datadog, Grafana – full-stack observability from infrastructure to user experience.",
-    tools: [Promethus, datadog, pagerduty],
+    tools: [Prometheus, datadog, pagerduty],
     path: "/services/monitor",
   },
   {
