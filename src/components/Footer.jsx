@@ -15,8 +15,9 @@ const FORMSPARK_FORM_ID = "RBNpe83YE";
 const capabilities = [
   { label: "Cloud", href: "/services/cloud" },
   { label: "DevOps", href: "/services/devops" },
-  { label: "Provision", href: "/services/provision" },
-  { label: "Monitor", href: "/services/monitor" },
+  { label: "Infrastructure Management", href: "/services/provision" },
+  { label: "Enterprise Monitoring", href: "/services/monitor" },
+  { label: "Red Hat OpenShift", href: "/services/openshift" },
 ];
 
 const Footer = () => {

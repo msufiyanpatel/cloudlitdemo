@@ -42,7 +42,7 @@ const TABS = [
   },
   {
     id: "provision",
-    label: "Provision",
+    label: "Infrastructure Management",
     icon: faServer,
     heading: "Infrastructure",
     headingAlt: "as Code.",
@@ -50,7 +50,7 @@ const TABS = [
   },
   {
     id: "monitor",
-    label: "Monitor",
+    label: "Enterprise Monitoring",
     icon: faChartLine,
     heading: "Monitoring &",
     headingAlt: "Observability.",

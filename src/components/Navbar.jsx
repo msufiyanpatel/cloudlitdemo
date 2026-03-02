@@ -5,9 +5,9 @@ import "../styles/Navbar.css";
 const serviceLinks = [
   { label: "Cloud", path: "/services/cloud" },
   { label: "DevOps", path: "/services/devops" },
-  { label: "Provision", path: "/services/provision" },
-  { label: "Monitor", path: "/services/monitor" },
-  { label: "OpenShift", path: "/services/openshift" },
+  { label: "Infrastructure Management", path: "/services/provision" },
+  { label: "Enterprise Monitoring", path: "/services/monitor" },
+  { label: "Red Hat OpenShift", path: "/services/openshift" },
 ];
 
 export default function Navbar() {

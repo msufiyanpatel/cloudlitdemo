@@ -207,7 +207,7 @@ const ServicesProvision = () => {
         <ThreeHero />
         <div className={s.heroOverlay} />
         <div className={s.heroInner}>
-          <motion.span className={s.tag} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>Provision Services</motion.span>
+          <motion.span className={s.tag} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>Infrastructure Management Services</motion.span>
           <motion.h1 className={s.heroHeading} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
             Scale automation with <span className={s.heroGrad}>Control & Insight</span>
           </motion.h1>
@@ -246,7 +246,7 @@ const ServicesProvision = () => {
 
       <section className={s.servicesSection}>
         <div className={s.inner}>
-          <FadeIn><SectionHeader tag="What We Offer" title="Our Provision" highlight="Services" desc="We are ready to provide our customers with any set of service components to form an ideal service scope." /></FadeIn>
+          <FadeIn><SectionHeader tag="What We Offer" title="Our Infrastructure Management" highlight="Services" desc="We are ready to provide our customers with any set of service components to form an ideal service scope." /></FadeIn>
           <div className={s.tabsWrap}>
             <div className={s.tabsRow}>
               {PROVISION_TABS.map((tab) => (

@@ -117,7 +117,7 @@ const CaseStudiesPage = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.6 }}
         >
-          {["AWS", "Azure", "React", "Docker", "OpenShift", "Cloud"].map((t) => (
+          {["AWS", "Azure", "React", "Docker", "Red Hat OpenShift", "Cloud"].map((t) => (
             <span key={t} className={styles.floatingPill}>{t}</span>
           ))}
         </motion.div>

@@ -205,7 +205,7 @@ const ServicesMonitor = () => {
         <ThreeHero />
         <div className={s.heroOverlay} />
         <div className={s.heroInner}>
-          <motion.span className={s.tag} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>Monitor & Observability</motion.span>
+          <motion.span className={s.tag} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>Enterprise Monitoring & Observability</motion.span>
           <motion.h1 className={s.heroHeading} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
             See everything,<br /><span className={s.heroGrad}>miss nothing</span>
           </motion.h1>
@@ -244,7 +244,7 @@ const ServicesMonitor = () => {
 
       <section className={s.servicesSection}>
         <div className={s.inner}>
-          <FadeIn><SectionHeader tag="What We Offer" title="Our Monitoring &" highlight="Observability Services" desc="Comprehensive monitoring capabilities covering metrics, traces, logs, alerting, and event streaming." /></FadeIn>
+          <FadeIn><SectionHeader tag="What We Offer" title="Our Enterprise Monitoring &" highlight="Observability Services" desc="Comprehensive monitoring capabilities covering metrics, traces, logs, alerting, and event streaming." /></FadeIn>
           <div className={s.tabsWrap}>
             <div className={s.tabsRow}>
               {MONITOR_TABS.map((tab) => (

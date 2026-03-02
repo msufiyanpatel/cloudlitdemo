@@ -13,6 +13,10 @@
 }
 
 /* ===== TAB NAVIGATION ===== */
+.tabsNavWrapper {
+  position: relative;
+}
+
 .tabsNav {
   display: flex;
   flex-direction: row;
@@ -23,6 +27,8 @@
   margin-bottom: 24px;
   border-bottom: 1px solid rgba(81, 70, 202, 0.08);
   overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -92,6 +98,29 @@
 .tabItemActive:hover .tabIcon,
 .tabItemActive:hover .tabLabel {
   color: #4538b8;
+}
+
+/* Custom always-visible scrollbar (mobile) */
+.tabsScrollbar {
+  display: none;
+}
+
+.tabsScrollbarTrack {
+  height: 6px;
+  background: rgba(81, 70, 202, 0.12);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.tabsScrollbarThumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(81, 70, 202, 0.6);
+  border-radius: 3px;
+  transition: left 0.1s ease-out;
+  min-width: 24px;
 }
 
 /* ===== BREADCRUMBS ===== */
@@ -240,7 +269,33 @@
 
   .tabsNav {
     gap: 12px 32px;
-    padding-bottom: 20px;
+    padding-bottom: 36px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    /* Hide native scrollbar on mobile; custom scrollbar shows instead */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .tabsNav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tabsScrollbar {
+    display: block;
+    padding: 0 5% 0;
+    margin-top: -30px;
+    margin-bottom: 24px;
+  }
+
+  .tabsScrollbarTrack {
+    position: relative;
+    height: 6px;
+    width: 100%;
+  }
+
+  .tabItem {
+    flex-shrink: 0;
   }
 
   .breadcrumbs {
@@ -267,9 +322,8 @@
 
 @media (max-width: 580px) {
   .tabsNav {
-    justify-content: flex-start;
     gap: 8px;
-    padding: 12px 5% 20px;
+    padding: 12px 5% 36px;
   }
 
   .tabItem {

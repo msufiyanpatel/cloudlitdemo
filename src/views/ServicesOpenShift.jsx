@@ -14,8 +14,8 @@ const OPENSHIFT_TABS = [
   {
     id: "implementation",
     label: "Implementation",
-    heading: "OpenShift Implementation & Deployment",
-    para: "With our assistance, organizations can take advantage across eight dimensions — Architecture, Applications, Scalability, Storage & Backup, CI/CD, Disaster Recovery, Monitoring, and Security — to deploy OpenShift and infrastructure components seamlessly.",
+    heading: "Red Hat OpenShift Implementation & Deployment",
+    para: "With our assistance, organizations can take advantage across eight dimensions — Architecture, Applications, Scalability, Storage & Backup, CI/CD, Disaster Recovery, Monitoring, and Security — to deploy Red Hat OpenShift and infrastructure components seamlessly.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
@@ -28,7 +28,7 @@ const OPENSHIFT_TABS = [
     id: "modernization",
     label: "Modernization",
     heading: "Application Modernization",
-    para: "OpenShift provides a smooth transition to modernized applications. From analyzing your present application landscape to integrating modern microservices and containerization architecture, our comprehensive Application Modernization Service covers every step of your journey.",
+    para: "Red Hat OpenShift provides a smooth transition to modernized applications. From analyzing your present application landscape to integrating modern microservices and containerization architecture, our comprehensive Application Modernization Service covers every step of your journey.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="17 1 21 5 17 9" />
@@ -41,8 +41,8 @@ const OPENSHIFT_TABS = [
   {
     id: "networking",
     label: "Networking",
-    heading: "OpenShift Networking",
-    para: "We design and implement robust OpenShift networking solutions including SDN, service mesh with Istio, ingress/egress controllers, and network policies. Our engineers ensure secure, high-performance connectivity across hybrid and multi-cloud environments.",
+    heading: "Red Hat OpenShift Networking",
+    para: "We design and implement robust Red Hat OpenShift networking solutions including SDN, service mesh with Istio, ingress/egress controllers, and network policies. Our engineers ensure secure, high-performance connectivity across hybrid and multi-cloud environments.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="5" r="3" />
@@ -56,8 +56,8 @@ const OPENSHIFT_TABS = [
   {
     id: "devops",
     label: "DevOps",
-    heading: "OpenShift DevOps & CI/CD",
-    para: "Enable Continuous Integration and Deployment with Tekton and OpenShift Pipelines. Our team automates the complete transformation of your workflows using Tekton, Helm, and OpenShift — enabling teams to produce high-quality software through a self-service view of IT infrastructure.",
+    heading: "Red Hat OpenShift DevOps & CI/CD",
+    para: "Enable Continuous Integration and Deployment with Tekton and Red Hat OpenShift Pipelines. Our team automates the complete transformation of your workflows using Tekton, Helm, and Red Hat OpenShift — enabling teams to produce high-quality software through a self-service view of IT infrastructure.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="16 18 22 12 16 6" />
@@ -71,19 +71,19 @@ const HOW_IT_WORKS = [
   {
     step: "01",
     title: "Discovery & Assessment",
-    desc: "We assess your existing infrastructure, application portfolio, and business requirements to build a comprehensive OpenShift readiness report.",
+    desc: "We assess your existing infrastructure, application portfolio, and business requirements to build a comprehensive Red Hat OpenShift readiness report.",
     color: "#CC0000",
   },
   {
     step: "02",
     title: "Architecture Design",
-    desc: "Our certified engineers design a tailored OpenShift environment architecture, outlining all risks and customizing solutions to your unique requirements.",
+    desc: "Our certified engineers design a tailored Red Hat OpenShift environment architecture, outlining all risks and customizing solutions to your unique requirements.",
     color: "#5146CA",
   },
   {
     step: "03",
     title: "Implementation & Migration",
-    desc: "We deploy OpenShift across eight key dimensions with zero-downtime precision — containerizing workloads and establishing automated pipelines throughout.",
+    desc: "We deploy Red Hat OpenShift across eight key dimensions with zero-downtime precision — containerizing workloads and establishing automated pipelines throughout.",
     color: "#6015B2",
   },
   {
@@ -97,7 +97,7 @@ const HOW_IT_WORKS = [
 const BENEFITS = [
   {
     title: "Innovation Acceleration",
-    desc: "OpenShift allows developers to focus more on innovation and less on infrastructure management, enabling faster feature delivery.",
+    desc: "Red Hat OpenShift allows developers to focus more on innovation and less on infrastructure management, enabling faster feature delivery.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
@@ -155,7 +155,7 @@ const WHY_CARDS = [
     ),
   },
   {
-    title: "OpenShift Consulting Experience",
+    title: "Red Hat OpenShift Consulting Experience",
     desc: "Our Red Hat OpenShift consultancy helps with adoption, setup, and administration. Join forces with us to take advantage of our experience as a reliable Red Hat partner.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -211,7 +211,7 @@ const WORKLOADS = [
   },
   {
     title: "AI / ML Workloads",
-    desc: "Run demanding AI and machine learning workloads on OpenShift with GPU support, model serving, and data pipeline integration.",
+    desc: "Run demanding AI and machine learning workloads on Red Hat OpenShift with GPU support, model serving, and data pipeline integration.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a7 7 0 0 1-7 7H8a7 7 0 0 1-7-7H0a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" />
@@ -232,20 +232,20 @@ const WORKLOADS = [
 
 const FAQ_ITEMS = [
   {
-    q: "What advantages come with utilizing the OpenShift Application Modernization Service from Cloudlit?",
+    q: "What advantages come with utilizing the Red Hat OpenShift Application Modernization Service from Cloudlit?",
     a: "By modernizing your applications with our service, expect increased performance, scalability, and agility. It also speeds up the entire application lifecycle from development to production, enabling faster delivery of new features and services in a cost-effective way and more competitiveness in the quickly changing digital market of today.",
   },
   {
-    q: "Is Cloudlit's OpenShift deployment suitable for businesses of all sizes?",
-    a: "Indeed! We offer our OpenShift Deployment Service to companies of all sizes, from small startups to major multinational corporations. Since every company has different needs, we modify our strategy to fit your demands as well as your financial limitations.",
+    q: "Is Cloudlit's Red Hat OpenShift deployment suitable for businesses of all sizes?",
+    a: "Indeed! We offer our Red Hat OpenShift Deployment Service to companies of all sizes, from small startups to major multinational corporations. Since every company has different needs, we modify our strategy to fit your demands as well as your financial limitations.",
   },
   {
-    q: "What kind of services does Cloudlit offer for OpenShift?",
-    a: "Red Hat OpenShift is a powerful container application platform, and our OpenShift Consulting Service provides expert advice on how to utilize it in the best way. Our team of experts assists companies in streamlining workflows, increasing scalability, and optimizing their development processes.",
+    q: "What kind of services does Cloudlit offer for Red Hat OpenShift?",
+    a: "Red Hat OpenShift is a powerful container application platform, and our Red Hat OpenShift Consulting Service provides expert advice on how to utilize it in the best way. Our team of experts assists companies in streamlining workflows, increasing scalability, and optimizing their development processes.",
   },
   {
-    q: "What can I expect from Cloudlit team during the OpenShift cluster deployment process?",
-    a: "Our team will collaborate closely with you to comprehend your needs and design a customized OpenShift environment architecture and make sure all the risks are outlined properly before deployment. Throughout the process, our project manager will keep you updated, and after the deployment is finished, our testers thoroughly verify everything is operating as it should.",
+    q: "What can I expect from Cloudlit team during the Red Hat OpenShift cluster deployment process?",
+    a: "Our team will collaborate closely with you to comprehend your needs and design a customized Red Hat OpenShift environment architecture and make sure all the risks are outlined properly before deployment. Throughout the process, our project manager will keep you updated, and after the deployment is finished, our testers thoroughly verify everything is operating as it should.",
   },
 ];
 
@@ -424,7 +424,7 @@ const ServicesOpenShift = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Cloudlit engineering team provides a seamless transition to OpenShift by assisting you
+            Cloudlit engineering team provides a seamless transition to Red Hat OpenShift by assisting you
             in navigating the challenges of installing, scaling, and managing applications on this
             robust platform.
           </motion.p>
@@ -467,7 +467,7 @@ const ServicesOpenShift = () => {
           <div className={s.aboutGrid}>
             <FadeIn direction="left">
               <div className={s.aboutText}>
-                <span className={s.tag}>About OpenShift</span>
+                <span className={s.tag}>About Red Hat OpenShift</span>
                 <h2 className={s.aboutTitle}>
                   Red Hat OpenShift:{" "}
                   <span className={s.titleGrad}>Accelerating Operational & Innovation Efficiency</span>
@@ -513,8 +513,8 @@ const ServicesOpenShift = () => {
             <SectionHeader
               tag="Our Process"
               title="How We Deliver"
-              highlight="OpenShift Excellence"
-              desc="A proven 4-step process from initial assessment to a fully optimized OpenShift environment."
+              highlight="Red Hat OpenShift Excellence"
+              desc="A proven 4-step process from initial assessment to a fully optimized Red Hat OpenShift environment."
             />
           </FadeIn>
           <div className={s.howGrid}>
@@ -540,9 +540,9 @@ const ServicesOpenShift = () => {
           <FadeIn>
             <SectionHeader
               tag="Consulting Services"
-              title="Overcome OpenShift Challenges with"
+              title="Overcome Red Hat OpenShift Challenges with"
               highlight="Our Expert Engineers"
-              desc="A wide range of specialised solutions are included in our comprehensive OpenShift Consultation Services."
+              desc="A wide range of specialised solutions are included in our comprehensive Red Hat OpenShift Consultation Services."
             />
           </FadeIn>
           <div className={s.tabsWrap}>
@@ -590,7 +590,7 @@ const ServicesOpenShift = () => {
               tag="Supported Workloads"
               title="Utilize Cloud-Native &"
               highlight="Modern Applications"
-              desc="OpenShift supports the most demanding workloads. Automate lifecycle management and deployment across any environment."
+              desc="Red Hat OpenShift supports the most demanding workloads. Automate lifecycle management and deployment across any environment."
             />
           </FadeIn>
           <div className={s.workloadsGrid}>
@@ -613,19 +613,19 @@ const ServicesOpenShift = () => {
           <div className={s.tektonGrid}>
             <FadeIn direction="left">
               <div className={s.tektonText}>
-                <span className={s.tag}>CI/CD with OpenShift</span>
+                <span className={s.tag}>CI/CD with Red Hat OpenShift</span>
                 <h2 className={s.tektonTitle}>
                   Enable Continuous Integration & Deployment with{" "}
-                  <span className={s.titleGrad}>Tekton and OpenShift Pipelines</span>
+                  <span className={s.titleGrad}>Tekton and Red Hat OpenShift Pipelines</span>
                 </h2>
                 <p className={s.tektonDesc}>
                   Tekton is a Kubernetes-native framework for creating CI/CD systems — flexible,
-                  extensible, and easy to integrate. OpenShift's container-centric approach enables
+                  extensible, and easy to integrate. Red Hat OpenShift's container-centric approach enables
                   teams to produce high-quality software through a self-service view of IT infrastructure.
                 </p>
                 <p className={s.tektonDesc}>
                   CloudLit engineering team automates the complete transformation of Nocodb database
-                  using Tekton, Helm, and OpenShift.
+                  using Tekton, Helm, and Red Hat OpenShift.
                 </p>
                 <button className={s.btnPrimary} onClick={go}>
                   Reach Out to Our Technical Team
@@ -636,7 +636,7 @@ const ServicesOpenShift = () => {
             <FadeIn direction="right" delay={0.1}>
               <div className={s.tektonVisual}>
                 <div className={s.pipelineFlow}>
-                  {["Code Commit", "Tekton Trigger", "Build & Test", "Helm Deploy", "OpenShift Live"].map((step, i) => (
+                  {["Code Commit", "Tekton Trigger", "Build & Test", "Helm Deploy", "Red Hat OpenShift Live"].map((step, i) => (
                     <div key={step} className={s.pipelineStep}>
                       <div className={s.pipelineNode}>
                         <span className={s.pipelineNum}>{String(i + 1).padStart(2, "0")}</span>

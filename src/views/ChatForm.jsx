@@ -25,12 +25,23 @@ const TABS = [
   { id: "careers", label: "Careers" },
 ];
 
+const SERVICES_OPTIONS = [
+  { value: "", label: "Select a service..." },
+  { value: "cloud", label: "Cloud" },
+  { value: "devops", label: "DevOps" },
+  { value: "infrastructure-management", label: "Infrastructure Management" },
+  { value: "enterprise-monitoring", label: "Enterprise Monitoring" },
+  { value: "red-hat-openshift", label: "Red Hat OpenShift" },
+  { value: "other", label: "Other / General Inquiry" },
+];
+
 const ChatForm = () => {
   const [activeTab, setActiveTab] = useState("sales");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     workEmail: "",
+    service: "",
     projectDetails: "",
   });
 
@@ -97,6 +108,7 @@ const ChatForm = () => {
       body: JSON.stringify({
         name: `${formData.firstName} ${formData.lastName}`,
         email: formData.workEmail,
+        service: formData.service,
         message: formData.projectDetails,
         department: activeTab,
       }),
@@ -104,7 +116,7 @@ const ChatForm = () => {
       .then((res) => {
         if (!res.ok) throw new Error();
         setSubmitStatus("success");
-        setFormData({ firstName: "", lastName: "", workEmail: "", projectDetails: "" });
+        setFormData({ firstName: "", lastName: "", workEmail: "", service: "", projectDetails: "" });
       })
       .catch(() => setSubmitStatus("error"))
       .finally(() => {
@@ -264,6 +276,20 @@ const ChatForm = () => {
                   onChange={handleChange}
                   required
                 />
+              </div>
+              <div className={styles.formGroup}>
+                <label htmlFor="service">SERVICES</label>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  className={styles.formSelect}
+                >
+                  {SERVICES_OPTIONS.map((opt) => (
+                    <option key={opt.value} value={opt.value}>{opt.label}</option>
+                  ))}
+                </select>
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="projectDetails">PROJECT DETAILS</label>

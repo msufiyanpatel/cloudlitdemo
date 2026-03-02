@@ -101,7 +101,7 @@ const SERVICE_CARDS = [
   },
   {
     eyebrow: "SPIN UP ENTIRE ENVIRONMENTS IN MINUTES",
-    title: "Infrastructure Provisioning",
+    title: "Infrastructure Management",
     description:
       "Terraform, Pulumi, AWS CloudFormation – declarative infrastructure that’s versioned, reviewed, and repeatable.",
     tools: [Terraform, pulumi, cloudFormation],
