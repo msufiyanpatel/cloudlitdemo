@@ -1,30 +1,27 @@
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect } from "react";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./views/Home";
-import HomeServices from "./views/HomeServices";
 import Benefits from "./views/Benefits";
+import ServicesCloud from "./views/ServicesCloud";
+import ServicesDevOps from "./views/ServicesDevOps";
+import ServicesProvision from "./views/ServicesProvision";
+import ServicesMonitor from "./views/ServicesMonitor";
+import ServicesOpenShift from "./views/ServicesOpenShift";
+import HomeServices from "./views/HomeServices";
 import Locations from "./views/Locations";
 import Roadmap from "./views/Roadmap";
-
-const ChatForm = lazy(() => import("./views/ChatForm"));
-const About = lazy(() => import("./views/About1"));
-const ServicesCloud = lazy(() => import("./views/ServicesCloud"));
-const ServicesDevOps = lazy(() => import("./views/ServicesDevOps"));
-const ServicesProvision = lazy(() => import("./views/ServicesProvision"));
-const ServicesMonitor = lazy(() => import("./views/ServicesMonitor"));
-const ServicesOpenShift = lazy(() => import("./views/ServicesOpenShift"));
-const CaseStudiesPage = lazy(() => import("./views/CaseStudiesPage"));
-const CaseStudyFlightAlert = lazy(() => import("./views/CaseStudyFlightAlert"));
-const CaseStudyMaximo = lazy(() => import("./views/CaseStudyMaximo"));
-const CaseStudyAiWebCrawling = lazy(() => import("./views/CaseStudyAiWebCrawling"));
-const PrivacyPolicy = lazy(() => import("./views/PrivacyPolicy"));
-const TermsOfService = lazy(() => import("./views/TermsOfService"));
-const NotFound = lazy(() => import("./views/NotFound"));
-
-const PageFallback = () => <div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }} aria-hidden="true" />;
+import Home from "./views/Home";
+import ChatForm from "./views/ChatForm";
+import About from "./views/About1";
+import CaseStudiesPage from "./views/CaseStudiesPage";
+import CaseStudyFlightAlert from "./views/CaseStudyFlightAlert";
+import CaseStudyMaximo from "./views/CaseStudyMaximo";
+import CaseStudyAiWebCrawling from "./views/CaseStudyAiWebCrawling";
+import PrivacyPolicy from "./views/PrivacyPolicy";
+import TermsOfService from "./views/TermsOfService";
+import NotFound from "./views/NotFound";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -40,8 +37,7 @@ function App() {
       <ScrollToTop />
       <Navbar />
       <main className="App__main">
-        <Suspense fallback={<PageFallback />}>
-          <Routes>
+        <Routes>
           <Route path="/home" element={<Navigate to="/" replace />} />
           <Route
             path="/"
@@ -72,8 +68,7 @@ function App() {
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+        </Routes>
         <Footer />
       </main>
     </div>
