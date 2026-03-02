@@ -21,7 +21,7 @@ const Contact = () => {
   ];
 
   const pageLinks = [
-    { label: "Home", href: "/home" },
+    { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Services", href: "/services/cloud" },
     { label: "Benefits", href: "/benefits" },

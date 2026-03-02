@@ -21,7 +21,7 @@ import CaseStudyMaximo from "./views/CaseStudyMaximo";
 import CaseStudyAiWebCrawling from "./views/CaseStudyAiWebCrawling";
 import PrivacyPolicy from "./views/PrivacyPolicy";
 import TermsOfService from "./views/TermsOfService";
-// import Router from './routes';
+import NotFound from "./views/NotFound";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -38,6 +38,19 @@ function App() {
       <Navbar />
       <main className="App__main">
         <Routes>
+          <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Home />
+                <HomeServices />
+                <Benefits />
+                <Locations />
+                <Roadmap />
+              </>
+            }
+          />
           <Route path="/contact" element={<ChatForm />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Navigate to="/services/cloud" replace />} />
@@ -54,18 +67,7 @@ function App() {
           <Route path="/casestudies/ai-web-crawling" element={<CaseStudyAiWebCrawling />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
-          <Route
-            path="*"
-            element={
-              <>
-                <Home />
-                <HomeServices />
-                <Benefits />
-                <Locations />
-                <Roadmap />
-              </>
-            }
-          />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </main>
