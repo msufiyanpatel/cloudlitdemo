@@ -146,7 +146,7 @@ const Footer = () => {
         <div className={styles.footerGrid}>
           <div className={styles.brandCol}>
             <a href="/" className={styles.brandLogoLink}>
-              <img src="/CloudLit (1).webp" alt="Cloudlit" className={styles.brandLogo} />
+              <img src={`${process.env.PUBLIC_URL || ''}/CloudLit (1).webp`} alt="Cloudlit" className={styles.brandLogo} />
             </a>
             <p className={styles.brandDesc}>
               Think. Build. Scale with Cloud. Your trusted partner for cloud-native

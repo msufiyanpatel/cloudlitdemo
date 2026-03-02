@@ -56,7 +56,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <div className="navbar__inner">
         <a href="/" className="navbar__logo">
-          <img src="/CloudLit.webp" alt="Cloudlit logo" />
+          <img src={`${process.env.PUBLIC_URL || ''}/CloudLit.webp`} alt="Cloudlit logo" />
         </a>
 
         {/* Desktop links */}
