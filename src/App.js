@@ -9,6 +9,7 @@ import ServicesDevOps from "./views/ServicesDevOps";
 import ServicesProvision from "./views/ServicesProvision";
 import ServicesMonitor from "./views/ServicesMonitor";
 import ServicesOpenShift from "./views/ServicesOpenShift";
+import ServicesTeams from "./views/ServicesTeams";
 import HomeServices from "./views/HomeServices";
 import Locations from "./views/Locations";
 import Roadmap from "./views/Roadmap";
@@ -59,6 +60,7 @@ function App() {
           <Route path="/services/provision" element={<ServicesProvision />} />
           <Route path="/services/monitor" element={<ServicesMonitor />} />
           <Route path="/services/openshift" element={<ServicesOpenShift />} />
+          <Route path="/services/teams" element={<ServicesTeams />} />
           <Route path="/benefits" element={<Benefits variant="light" />} />
           <Route path="/roadmap" element={<Roadmap />} />
           <Route path="/casestudies" element={<CaseStudiesPage />} />

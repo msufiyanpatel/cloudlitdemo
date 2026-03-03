@@ -18,6 +18,7 @@ const capabilities = [
   { label: "Infrastructure Management", href: "/services/provision" },
   { label: "Enterprise Monitoring", href: "/services/monitor" },
   { label: "Red Hat OpenShift", href: "/services/openshift" },
+  { label: "Teams", href: "/services/teams" },
 ];
 
 const Footer = () => {
@@ -195,8 +196,8 @@ const Footer = () => {
             <h3 className={styles.colTitle}>Contact</h3>
             <ul className={styles.linkList}>
               <li>
-                <a href="mailto:hello@cloudlit.dev" className={styles.footerLink}>
-                  hello@cloudlit.dev
+                <a href="mailto:admin@cloudlit.co" className={styles.footerLink}>
+                  admin@cloudlit.co
                 </a>
               </li>
               <li>

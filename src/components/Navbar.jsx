@@ -8,6 +8,7 @@ const serviceLinks = [
   { label: "Infrastructure Management", path: "/services/provision" },
   { label: "Enterprise Monitoring", path: "/services/monitor" },
   { label: "Red Hat OpenShift", path: "/services/openshift" },
+  { label: "Teams", path: "/services/teams" },
 ];
 
 export default function Navbar() {
