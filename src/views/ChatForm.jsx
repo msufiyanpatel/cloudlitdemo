@@ -8,7 +8,7 @@ import avatar3 from "../assets/icons/3.webp";
 import avatar4 from "../assets/icons/4.webp";
 import avatar5 from "../assets/icons/5.webp";
 
-const FORMSPARK_FORM_ID = "x97N0VFEB";
+const API_BASE = process.env.NODE_ENV === "production" ? "" : "http://localhost:5001";
 
 const teamMembers = [
   { image: avatar1, title: "Technical UI Designer" },
@@ -102,11 +102,12 @@ const ChatForm = () => {
     setSubmitting(true);
     setSubmitStatus(null);
 
-    fetch(`https://submit-form.com/${FORMSPARK_FORM_ID}`, {
+    fetch(`${API_BASE}/api/contact`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: `${formData.firstName} ${formData.lastName}`,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
         email: formData.workEmail,
         service: formData.service,
         message: formData.projectDetails,

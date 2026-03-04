@@ -10,7 +10,7 @@ import {
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const FORMSPARK_FORM_ID = "RBNpe83YE";
+const API_BASE = process.env.NODE_ENV === "production" ? "" : "http://localhost:5001";
 
 const capabilities = [
   { label: "Cloud", href: "/services/cloud" },
@@ -35,9 +35,9 @@ const Footer = () => {
     setSubmitting(true);
     setSubmitError(false);
 
-    fetch(`https://submit-form.com/${FORMSPARK_FORM_ID}`, {
+    fetch(`${API_BASE}/api/newsletter`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
     })
       .then((res) => {

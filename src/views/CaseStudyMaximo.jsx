@@ -6,7 +6,7 @@ import CanvasErrorBoundary from "../components/CanvasErrorBoundary";
 
 const ResultsParticles = React.lazy(() => import("../components/ResultsParticles"));
 
-const FORMSPARK_FORM_ID = "oJBWZbvkD";
+const API_BASE = process.env.NODE_ENV === "production" ? "" : "http://localhost:5001";
 
 const CaseStudyMaximo = () => {
   const [formData, setFormData] = useState({ firstName: "", lastName: "", workEmail: "", projectDetails: "" });
@@ -22,11 +22,12 @@ const CaseStudyMaximo = () => {
     e.preventDefault();
     setSubmitting(true);
     setSubmitStatus(null);
-    fetch(`https://submit-form.com/${FORMSPARK_FORM_ID}`, {
+    fetch(`${API_BASE}/api/casestudy`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: `${formData.firstName} ${formData.lastName}`,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
         email: formData.workEmail,
         message: formData.projectDetails,
         source: "Case Study: Maximo Azure OpenShift",
