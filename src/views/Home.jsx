@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import SEO from "../components/SEO";
 import styles from "../styles/Home.module.css";
 import { useNavigate } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -82,6 +83,11 @@ const Home = () => {
 
   return (
     <div id="Home" className={styles.homeWrapper}>
+      <SEO
+        title="Cloud & DevOps Solutions for Modern Enterprises"
+        description="CloudLit delivers expert cloud migration, DevOps automation, infrastructure management, and Red Hat OpenShift services. Your trusted IT partner in Australia."
+        canonical="/"
+      />
       {/* Hero Section */}
       <section className={styles.hero} ref={heroRef}>
         {/* D-shaped gradient - moves down and fades on scroll */}

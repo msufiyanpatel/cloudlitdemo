@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import SEO from "../components/SEO";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -199,6 +200,11 @@ const ServicesProvision = () => {
 
   return (
     <div className={s.page}>
+      <SEO
+        title="Infrastructure Management — IaC, Provisioning & Security"
+        description="CloudLit provides IT infrastructure management, provisioning with Terraform & Ansible, cloud infrastructure security, and well-architected framework consulting."
+        canonical="/services/provision"
+      />
       <section className={styles.servicesSection}>
         <div className={styles.servicesInner}><ServicesTabs /></div>
       </section>

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import SEO from "../components/SEO";
 import { Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
 import { motion, AnimatePresence } from "framer-motion";
@@ -78,6 +79,11 @@ const CaseStudiesPage = () => {
 
   return (
     <div className={styles.page}>
+      <SEO
+        title="Case Studies — Cloud & DevOps Projects Portfolio"
+        description="Explore CloudLit's project portfolio across travel, healthcare, AI & ML, and more. Real-world cloud and DevOps solutions delivering measurable business outcomes."
+        canonical="/casestudies"
+      />
       {/* ── HERO ── */}
       <section className={styles.hero}>
         <div className={styles.heroMesh} aria-hidden />

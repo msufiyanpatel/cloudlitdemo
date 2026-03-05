@@ -1,4 +1,5 @@
 import React from "react";
+import SEO from "../components/SEO";
 import styles from "../styles/About1.module.css";
 import excellence from "../assets/Execellence.webp";
 import innovation from "../assets/Innovation.webp";
@@ -36,6 +37,11 @@ const About = () => {
 
   return (
     <div id="About" className={styles.aboutPage}>
+      <SEO
+        title="About Us — Cloud & DevOps Consulting Company"
+        description="CloudLit is a premier DevOps and IT consulting company helping businesses build, scale, and transform with cloud-native technologies. 150+ projects, 50+ happy clients."
+        canonical="/about"
+      />
       {/* ===== HERO ===== */}
       <div className={styles.heroSection}>
         <div className={styles.heroBg}>

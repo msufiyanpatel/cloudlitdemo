@@ -1,9 +1,16 @@
 import React from "react";
+import SEO from "../components/SEO";
 import styles from "../styles/LegalPage.module.css";
 
 const PrivacyPolicy = () => {
   return (
     <div className={styles.page}>
+      <SEO
+        title="Privacy Policy"
+        description="CloudLit's privacy policy explains how we collect, use, and protect your personal data in compliance with GDPR, CCPA, and Australian Privacy Act."
+        canonical="/privacy"
+        noindex={true}
+      />
       <div className={styles.inner}>
         <h1 className={styles.title}>Privacy Policy</h1>
         <p className={styles.updated}>Last updated October 18, 2023</p>

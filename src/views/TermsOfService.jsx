@@ -1,9 +1,16 @@
 import React from "react";
+import SEO from "../components/SEO";
 import styles from "../styles/LegalPage.module.css";
 
 const TermsOfService = () => {
   return (
     <div className={styles.page}>
+      <SEO
+        title="Terms of Service"
+        description="CloudLit's terms of service governing the use of our website and services. Governed by the laws of New South Wales, Australia."
+        canonical="/terms"
+        noindex={true}
+      />
       <div className={styles.inner}>
         <h1 className={styles.title}>Terms of Service</h1>
         <p className={styles.updated}>Last updated: March 2025</p>

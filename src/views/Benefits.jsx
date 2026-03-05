@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
+import SEO from "../components/SEO";
 import styles from "../styles/Benefits.module.css";
 import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -82,6 +83,13 @@ const Benefits = ({ variant = "dark" }) => {
       id="Benefits"
       className={`${styles.benefitsSection} ${variant === "light" ? styles.benefitsLight : ""}`}
     >
+      {variant === "light" && (
+        <SEO
+          title="Benefits of DevOps Consulting Services"
+          description="Discover the key benefits of CloudLit's DevOps consulting — faster feature delivery, reduced development time, hassle-free deployments, automated workflows, and scalable infrastructure."
+          canonical="/benefits"
+        />
+      )}
       <div className={styles.bgGrid} />
 
       <div className={styles.benefitsInner}>

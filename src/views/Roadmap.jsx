@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import SEO from "../components/SEO";
 import styles from "../styles/Roadmap.module.css";
 import { useInView } from "react-intersection-observer";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -115,6 +116,11 @@ const Roadmap = () => {
 
   return (
     <div id="Roadmap" className={styles.roadmapSection}>
+      <SEO
+        title="Our Process — Cloud Transformation Roadmap"
+        description="CloudLit's 4-step cloud transformation roadmap: requirements discovery, cloud platform selection, DevOps tooling integration, and team training for cloud-native success."
+        canonical="/roadmap"
+      />
       {/* Background decorations */}
       <div className={styles.bgDecor}>
         <div className={styles.bgOrb1} />

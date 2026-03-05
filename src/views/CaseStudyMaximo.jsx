@@ -1,4 +1,5 @@
 import React, { useState, Suspense } from "react";
+import SEO from "../components/SEO";
 import { Link } from "react-router-dom";
 import styles from "../styles/CaseStudyFlightAlert.module.css";
 import formStyles from "../styles/ChatForm.module.css";
@@ -44,6 +45,11 @@ const CaseStudyMaximo = () => {
 
   return (
     <div className={styles.page}>
+      <SEO
+        title="IBM Maximo on Azure OpenShift — Case Study"
+        description="CloudLit automated IBM Maximo Application Suite on Azure Red Hat OpenShift for a Netherlands-based firm, delivering secure, scalable asset management infrastructure."
+        canonical="/casestudies/maximo-azure-openshift"
+      />
       {/* ── HERO ── */}
       <section className={styles.hero}>
         <Link to="/casestudies" className={styles.heroBack}>← Back to Portfolio</Link>

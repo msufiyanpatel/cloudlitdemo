@@ -1,4 +1,5 @@
 import React, { useState, Suspense } from "react";
+import SEO from "../components/SEO";
 import { Link } from "react-router-dom";
 import styles from "../styles/CaseStudyFlightAlert.module.css";
 import formStyles from "../styles/ChatForm.module.css";
@@ -44,6 +45,11 @@ const CaseStudyFlightAlert = () => {
 
   return (
     <div className={styles.page}>
+      <SEO
+        title="Flight Alert Automation on Azure — Travel Case Study"
+        description="How CloudLit built a real-time flight deal notification and booking management system on Microsoft Azure for a leading travel startup, with full observability and cost efficiency."
+        canonical="/casestudies/flight-alert"
+      />
       {/* ── HERO ── */}
       <section className={styles.hero}>
         <Link to="/casestudies" className={styles.heroBack}>← Back to Portfolio</Link>

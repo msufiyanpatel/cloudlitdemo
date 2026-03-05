@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import SEO from "../components/SEO";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -263,6 +264,11 @@ const ServicesCloud = () => {
 
   return (
     <div className={s.page}>
+      <SEO
+        title="Cloud Services — Migration, Consulting & Optimization"
+        description="CloudLit offers end-to-end cloud services including consulting, migration, development, optimization, integration, and security on AWS, Azure, and Google Cloud."
+        canonical="/services/cloud"
+      />
       {/* ── Service nav tabs ── */}
       <section className={styles.servicesSection}>
         <div className={styles.servicesInner}><ServicesTabs /></div>

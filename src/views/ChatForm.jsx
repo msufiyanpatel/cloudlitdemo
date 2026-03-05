@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import SEO from "../components/SEO";
 import styles from "../styles/ChatForm.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot, faGear } from "@fortawesome/free-solid-svg-icons";
@@ -131,6 +132,11 @@ const ChatForm = () => {
 
   return (
     <div className={styles.page}>
+      <SEO
+        title="Contact Us — Get in Touch with CloudLit"
+        description="Contact CloudLit for cloud, DevOps, infrastructure, or Red Hat OpenShift inquiries. Reach our sales, support, or careers team. Based in Sydney, Australia."
+        canonical="/contact"
+      />
       <div className={styles.wrapper}>
         {/* Left: Heading, intro, team, contact */}
         <div className={styles.left}>

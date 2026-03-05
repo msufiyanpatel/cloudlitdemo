@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import SEO from "../components/SEO";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -197,6 +198,11 @@ const ServicesMonitor = () => {
 
   return (
     <div className={s.page}>
+      <SEO
+        title="Enterprise Monitoring — Observability, Alerting & Logging"
+        description="CloudLit implements full-stack monitoring with Prometheus, Datadog, PagerDuty, and ELK Stack. Distributed tracing, intelligent alerting, and Kafka event streaming."
+        canonical="/services/monitor"
+      />
       <section className={styles.servicesSection}>
         <div className={styles.servicesInner}><ServicesTabs /></div>
       </section>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import SEO from "../components/SEO";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -173,6 +174,11 @@ const ServicesTeams = () => {
 
   return (
     <div className={s.page}>
+      <SEO
+        title="Teams & Collaboration — Microsoft Teams & Slack Integration"
+        description="CloudLit integrates Microsoft Teams, Slack, and collaboration platforms with your business systems. Unified communication, automation, security, and remote-first workflows."
+        canonical="/services/teams"
+      />
       <section className={styles.servicesSection}>
         <div className={styles.servicesInner}><ServicesTabs /></div>
       </section>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import SEO from "../components/SEO";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -389,6 +390,11 @@ const ServicesOpenShift = () => {
 
   return (
     <div className={s.page}>
+      <SEO
+        title="Red Hat OpenShift — Implementation, Modernization & DevOps"
+        description="CloudLit delivers certified Red Hat OpenShift implementation, application modernization, networking, and CI/CD services for enterprises across hybrid and multi-cloud environments."
+        canonical="/services/openshift"
+      />
       {/* ── Service nav tabs ── */}
       <section className={styles.servicesSection}>
         <div className={styles.servicesInner}><ServicesTabs /></div>

@@ -1,4 +1,5 @@
 import React, { useState, Suspense } from "react";
+import SEO from "../components/SEO";
 import { Link } from "react-router-dom";
 import styles from "../styles/CaseStudyFlightAlert.module.css";
 import formStyles from "../styles/ChatForm.module.css";
@@ -44,6 +45,11 @@ const CaseStudyAiWebCrawling = () => {
 
   return (
     <div className={styles.page}>
+      <SEO
+        title="AI Web Crawling with Crawl4AI & Docker — Case Study"
+        description="How CloudLit built a Dockerized, LLM-integrated web crawling platform with Crawl4AI for a UAE startup — automating large-scale data collection and AI-powered analysis."
+        canonical="/casestudies/ai-web-crawling"
+      />
       {/* ── HERO ── */}
       <section className={styles.hero}>
         <Link to="/casestudies" className={styles.heroBack}>← Back to Portfolio</Link>

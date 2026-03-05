@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import SEO from "../components/SEO";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -199,6 +200,11 @@ const ServicesDevOps = () => {
 
   return (
     <div className={s.page}>
+      <SEO
+        title="DevOps Services — CI/CD, Containers & Automation"
+        description="CloudLit delivers expert DevOps services including CI/CD pipeline automation, Docker & Kubernetes container orchestration, GitOps, infrastructure automation, and DevSecOps."
+        canonical="/services/devops"
+      />
       <section className={styles.servicesSection}>
         <div className={styles.servicesInner}><ServicesTabs /></div>
       </section>
