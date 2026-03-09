@@ -12,7 +12,7 @@ const locationsData = [
     country: "AUSTRALIA",
     hub: "Tech Center",
     coords: "33.8688° S, 151.2093° E",
-    image: "/New%20South%20Wales.webp",
+    image: "/new-south-wales.webp",
   },
   {
     city: "Karachi",
