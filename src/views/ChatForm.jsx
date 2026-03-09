@@ -258,6 +258,7 @@ const ChatForm = () => {
                     placeholder="Abdullah"
                     value={formData.firstName}
                     onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className={styles.formGroup}>
@@ -269,6 +270,7 @@ const ChatForm = () => {
                     placeholder="Ahmad"
                     value={formData.lastName}
                     onChange={handleChange}
+                    required
                   />
                 </div>
               </div>
