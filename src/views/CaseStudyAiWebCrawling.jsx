@@ -1,13 +1,13 @@
 import React, { useState, Suspense } from "react";
 import SEO from "../components/SEO";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import styles from "../styles/CaseStudyFlightAlert.module.css";
 import formStyles from "../styles/ChatForm.module.css";
 import CanvasErrorBoundary from "../components/CanvasErrorBoundary";
 
 const ResultsParticles = React.lazy(() => import("../components/ResultsParticles"));
 
-const API_BASE = process.env.NODE_ENV === "production" ? "" : "http://localhost:5001";
+
 
 const CaseStudyAiWebCrawling = () => {
   const [formData, setFormData] = useState({ firstName: "", lastName: "", workEmail: "", projectDetails: "" });
@@ -23,7 +23,7 @@ const CaseStudyAiWebCrawling = () => {
     e.preventDefault();
     setSubmitting(true);
     setSubmitStatus(null);
-    fetch(`${API_BASE}/api/casestudy`, {
+    fetch(`/api/casestudy`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -52,7 +52,7 @@ const CaseStudyAiWebCrawling = () => {
       />
       {/* ── HERO ── */}
       <section className={styles.hero}>
-        <Link to="/casestudies" className={styles.heroBack}>← Back to Portfolio</Link>
+        <Link href="/casestudies" className={styles.heroBack}>← Back to Portfolio</Link>
         <div className={styles.heroInner}>
           <div className={styles.meta}>Industry · AI &amp; ML</div>
           <h1 className={styles.title}>

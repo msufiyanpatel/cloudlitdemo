@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCloud,
@@ -21,7 +22,8 @@ const TABS = [
 ];
 
 const ServicesTabs = () => {
-  const { pathname } = useLocation();
+  const router = useRouter();
+  const { pathname } = router;
   const navRef = useRef(null);
   const [scrollInfo, setScrollInfo] = useState({ canScroll: false, scrollLeft: 0, scrollWidth: 0, clientWidth: 0 });
 
@@ -64,7 +66,7 @@ const ServicesTabs = () => {
         {TABS.map((tab) => (
           <Link
             key={tab.id}
-            to={`/services/${tab.id}`}
+            href={`/services/${tab.id}`}
             className={`${styles.tabItem} ${activeTab === tab.id ? styles.tabItemActive : ""}`}
             aria-current={activeTab === tab.id ? "page" : undefined}
           >

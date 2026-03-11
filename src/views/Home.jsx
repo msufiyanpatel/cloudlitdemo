@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import SEO from "../components/SEO";
 import styles from "../styles/Home.module.css";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import logo1 from "../assets/logos/1.webp";
 import logo2 from "../assets/logos/2.webp";
@@ -36,7 +36,7 @@ const FloatingOrb = ({ size, color, top, left, delay, duration }) => (
 const GridDot = ({ style }) => <div className={styles.gridDot} style={style} />;
 
 const Home = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const heroRef = useRef(null);
 
@@ -61,11 +61,11 @@ const Home = () => {
   }, []);
 
   const onDiscoverButtonClick = () => {
-    navigate("/about");
+    router.push("/about");
   };
 
   const onContactClick = () => {
-    navigate("/contact");
+    router.push("/contact");
   };
 
   const techWords = [

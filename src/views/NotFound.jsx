@@ -1,6 +1,6 @@
 import React from "react";
 import SEO from "../components/SEO";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import styles from "../styles/NotFound.module.css";
 
 const NotFound = () => {
@@ -13,7 +13,7 @@ const NotFound = () => {
         <p className={styles.desc}>
           The page you're looking for doesn't exist or has been moved.
         </p>
-        <Link to="/" className={styles.btn}>
+        <Link href="/" className={styles.btn}>
           Back to Home
         </Link>
       </div>

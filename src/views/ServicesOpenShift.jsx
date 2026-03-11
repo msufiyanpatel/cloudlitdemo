@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import SEO from "../components/SEO";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import * as THREE from "three";
@@ -382,10 +382,10 @@ const SectionHeader = ({ tag, title, highlight, desc }) => (
 
 /* ─── MAIN COMPONENT ────────────────────────────────── */
 const ServicesOpenShift = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("implementation");
   const [openFaq, setOpenFaq] = useState(null);
-  const go = () => navigate("/contact");
+  const go = () => router.push("/contact");
   const current = OPENSHIFT_TABS.find((t) => t.id === activeTab);
 
   return (

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import "../styles/Navbar.css";
+import { useRouter } from "next/router";
 
 const serviceLinks = [
   { label: "Cloud", path: "/services/cloud" },
@@ -15,8 +14,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = router.pathname;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +29,7 @@ export default function Navbar() {
   useEffect(() => {
     setMenuOpen(false);
     setServicesOpen(false);
-  }, [location]);
+  }, [pathname]);
 
   // Close desktop dropdown when clicking outside (only when desktop menu is visible)
   useEffect(() => {
@@ -57,7 +56,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <div className="navbar__inner">
         <a href="/" className="navbar__logo">
-          <img src={`${process.env.PUBLIC_URL || ''}/CloudLit.webp`} alt="Cloudlit logo" />
+          <img src="/CloudLit.webp" alt="Cloudlit logo" />
         </a>
 
         {/* Desktop links */}
@@ -71,11 +70,11 @@ export default function Navbar() {
               >
                 <button
                   className={`navbar__link ${
-                    location.pathname.startsWith("/services") ? "navbar__link--active" : ""
+                    pathname.startsWith("/services") ? "navbar__link--active" : ""
                   }`}
                   onClick={() => {
                     setServicesOpen(!servicesOpen);
-                    navigate("/services/cloud");
+                    router.push("/services/cloud");
                   }}
                   aria-expanded={servicesOpen}
                 >
@@ -96,9 +95,9 @@ export default function Navbar() {
                   {link.dropdown.map((sub) => (
                     <button
                       key={sub.path}
-                      className={`navbar__dropdown-link ${location.pathname === sub.path ? "navbar__dropdown-link--active" : ""}`}
+                      className={`navbar__dropdown-link ${pathname === sub.path ? "navbar__dropdown-link--active" : ""}`}
                       onClick={() => {
-                        navigate(sub.path);
+                        router.push(sub.path);
                         setServicesOpen(false);
                       }}
                     >
@@ -110,8 +109,8 @@ export default function Navbar() {
             ) : (
               <button
                 key={link.label}
-                className={`navbar__link ${location.pathname === link.path ? "navbar__link--active" : ""}`}
-                onClick={() => navigate(link.path)}
+                className={`navbar__link ${pathname === link.path ? "navbar__link--active" : ""}`}
+                onClick={() => router.push(link.path)}
               >
                 {link.label}
               </button>
@@ -122,7 +121,7 @@ export default function Navbar() {
         {/* CTA button */}
         <button
           className="navbar__cta"
-          onClick={() => navigate("/contact")}
+          onClick={() => router.push("/contact")}
         >
           Contact Us
         </button>
@@ -181,7 +180,7 @@ export default function Navbar() {
                         key={sub.path}
                         className="navbar__side-menu-sublink"
                         onClick={() => {
-                          navigate(sub.path);
+                          router.push(sub.path);
                           setMenuOpen(false);
                           setServicesOpen(false);
                         }}
@@ -196,7 +195,7 @@ export default function Navbar() {
               <button
                 key={link.label}
                 className="navbar__side-menu-link"
-                onClick={() => navigate(link.path)}
+                onClick={() => router.push(link.path)}
               >
                 {link.label}
               </button>
@@ -205,7 +204,7 @@ export default function Navbar() {
         </div>
         <button
           className="navbar__side-menu-cta"
-          onClick={() => navigate("/contact")}
+          onClick={() => router.push("/contact")}
         >
           Contact Us
         </button>

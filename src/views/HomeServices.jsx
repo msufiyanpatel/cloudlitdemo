@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/HomeServices.module.css";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import awsIcon from "../assets/aws-icon.webp";
 import azureIcon from "../assets/Azure-Logo-PNG-Black.webp";
 import gcp from "../assets/google-cloud-platform.webp";
@@ -110,7 +110,7 @@ const SERVICE_CARDS = [
 ];
 
 const HomeServices = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [isPaused, setIsPaused] = useState(false);
   const forwardStripRef = useRef(null);
   const backwardStripRef = useRef(null);
@@ -211,7 +211,7 @@ const HomeServices = () => {
               <button
                 type="button"
                 className={styles.cardArrowButton}
-                onClick={() => navigate(service.path)}
+                onClick={() => router.push(service.path)}
                 aria-label={`Go to ${service.title} services`}
               >
                 ↗

@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import Head from 'next/head';
 
 const SITE_NAME = "CloudLit";
 const SITE_URL = "https://cloudlit.co";
@@ -16,17 +16,17 @@ const SEO = ({
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} — Cloud & DevOps Solutions`;
 
   return (
-    <Helmet>
+    <Head>
       {/* Primary */}
       <title>{fullTitle}</title>
-      <meta name="description" content={description} />
+      {description && <meta name="description" content={description} />}
       {canonical && <link rel="canonical" href={`${SITE_URL}${canonical}`} />}
       {noindex && <meta name="robots" content="noindex, nofollow" />}
 
       {/* Open Graph */}
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
+      {description && <meta property="og:description" content={description} />}
       <meta property="og:type" content={type} />
       {canonical && <meta property="og:url" content={`${SITE_URL}${canonical}`} />}
       <meta property="og:image" content={image} />
@@ -38,9 +38,9 @@ const SEO = ({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={DEFAULT_TWITTER} />
       <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
+      {description && <meta name="twitter:description" content={description} />}
       <meta name="twitter:image" content={image} />
-    </Helmet>
+    </Head>
   );
 };
 

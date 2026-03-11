@@ -10,8 +10,6 @@ import {
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const API_BASE = process.env.NODE_ENV === "production" ? "" : "http://localhost:5001";
-
 const capabilities = [
   { label: "Cloud", href: "/services/cloud" },
   { label: "DevOps", href: "/services/devops" },
@@ -35,7 +33,7 @@ const Footer = () => {
     setSubmitting(true);
     setSubmitError(false);
 
-    fetch(`${API_BASE}/api/newsletter`, {
+    fetch(`/api/newsletter`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
@@ -147,7 +145,7 @@ const Footer = () => {
         <div className={styles.footerGrid}>
           <div className={styles.brandCol}>
             <a href="/" className={styles.brandLogoLink}>
-              <img src={`${process.env.PUBLIC_URL || ''}/CloudLit (1).webp`} alt="Cloudlit" className={styles.brandLogo} />
+              <img src="/CloudLit (1).webp" alt="Cloudlit" className={styles.brandLogo} />
             </a>
             <p className={styles.brandDesc}>
               Think. Build. Scale with Cloud. Your trusted partner for cloud-native

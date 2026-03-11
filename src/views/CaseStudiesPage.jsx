@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import SEO from "../components/SEO";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { caseStudies } from "../data/caseStudies";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "../styles/CaseStudies.module.css";
@@ -273,7 +273,7 @@ const CaseStudiesPage = () => {
                 const CardTag = cs.link.startsWith("http") ? "a" : Link;
                 const cardProps = cs.link.startsWith("http")
                   ? { href: cs.link, target: "_blank", rel: "noopener noreferrer" }
-                  : { to: cs.link };
+                  : { href: cs.link };
 
                 return (
                   <motion.article
