@@ -7,13 +7,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.(png|jpg|jpeg|gif|webp|svg|ico)$/i,
-      type: 'asset/resource',
-    });
-    return config;
-  },
   async redirects() {
     return [
       { source: '/home', destination: '/', permanent: true },
