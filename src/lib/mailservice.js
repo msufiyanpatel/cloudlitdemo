@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.zoho.com",
@@ -57,11 +57,9 @@ Sent from cloudlit.co
       return true;
     })
     .catch((err) => {
-      if (process.env.NODE_ENV !== "production") {
-        console.error("Error sending mail:", err);
-      }
+      console.error("Error sending mail:", err);
       return false;
     });
 }
 
-module.exports = { sendMail };
+export { sendMail };

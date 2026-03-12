@@ -1,4 +1,4 @@
-const { sendMail } = require('../../src/lib/mailservice');
+import { sendMail } from '../../src/lib/mailservice';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
