@@ -7,13 +7,6 @@ import * as THREE from "three";
 import ServicesTabs from "../components/ServicesTabs";
 import styles from "../styles/Services.module.css";
 import s from "../styles/ServicesProvision.module.css";
-import Terraform from "../assets/terraform.webp";
-import ansible from "../assets/ansible.webp";
-import chef from "../assets/chef.webp";
-import puppet from "../assets/puppet.webp";
-import cloudFormation from "../assets/aws-cloudformation.webp";
-import pulumi from "../assets/pulumi.svg";
-
 /* ─── DATA ─────────────────────────────────────────── */
 
 const PROVISION_TABS = [
@@ -82,12 +75,12 @@ const HOW_IT_WORKS = [
 ];
 
 const TOOLS = [
-  { title: "Terraform", desc: "Declarative infrastructure as code for building, changing, and versioning cloud and on-prem resources.", icon: Terraform, color: "#7B42BC" },
-  { title: "Ansible", desc: "Agentless automation for configuration management, application deployment, and IT orchestration.", icon: ansible, color: "#EE0000" },
-  { title: "Chef", desc: "Configuration management platform for defining infrastructure as code and automating compliance.", icon: chef, color: "#F09820" },
-  { title: "Puppet", desc: "Model-driven configuration management for automating complex infrastructure at enterprise scale.", icon: puppet, color: "#FFAE1A" },
-  { title: "AWS CloudFormation", desc: "Native IaC service for modeling and provisioning AWS resources in a repeatable, predictable way.", icon: cloudFormation, color: "#FF9900" },
-  { title: "Pulumi", desc: "Modern IaC using real programming languages — TypeScript, Python, Go — for maximum flexibility.", icon: pulumi, color: "#8A3391" },
+  { title: "Terraform", desc: "Declarative infrastructure as code for building, changing, and versioning cloud and on-prem resources.", icon: "/assets/terraform.webp", color: "#7B42BC" },
+  { title: "Ansible", desc: "Agentless automation for configuration management, application deployment, and IT orchestration.", icon: "/assets/ansible.webp", color: "#EE0000" },
+  { title: "Chef", desc: "Configuration management platform for defining infrastructure as code and automating compliance.", icon: "/assets/chef.webp", color: "#F09820" },
+  { title: "Puppet", desc: "Model-driven configuration management for automating complex infrastructure at enterprise scale.", icon: "/assets/puppet.webp", color: "#FFAE1A" },
+  { title: "AWS CloudFormation", desc: "Native IaC service for modeling and provisioning AWS resources in a repeatable, predictable way.", icon: "/assets/aws-cloudformation.webp", color: "#FF9900" },
+  { title: "Pulumi", desc: "Modern IaC using real programming languages — TypeScript, Python, Go — for maximum flexibility.", icon: "/assets/pulumi.svg", color: "#8A3391" },
 ];
 
 const WHY_CARDS = [

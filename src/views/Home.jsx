@@ -3,19 +3,17 @@ import SEO from "../components/SEO";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
 import { motion, useScroll, useTransform } from "framer-motion";
-import logo1 from "../assets/logos/1.webp";
-import logo2 from "../assets/logos/2.webp";
-import logo3 from "../assets/logos/3.webp";
-import logo4 from "../assets/logos/4.webp";
-import logo5 from "../assets/logos/5.webp";
-import logo6 from "../assets/logos/6.webp";
-import logo7 from "../assets/logos/7.webp";
-import logo8 from "../assets/logos/8.webp";
-import logo9 from "../assets/logos/9.webp";
-import logo10 from "../assets/logos/10.webp";
-
 const trustedLogos = [
-  logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10,
+  "/assets/logos/1.webp",
+  "/assets/logos/2.webp",
+  "/assets/logos/3.webp",
+  "/assets/logos/4.webp",
+  "/assets/logos/5.webp",
+  "/assets/logos/6.webp",
+  "/assets/logos/7.webp",
+  "/assets/logos/8.webp",
+  "/assets/logos/9.webp",
+  "/assets/logos/10.webp",
 ];
 
 const FloatingOrb = ({ size, color, top, left, delay, duration }) => (

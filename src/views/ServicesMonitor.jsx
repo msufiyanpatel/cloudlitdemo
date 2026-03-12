@@ -7,12 +7,6 @@ import * as THREE from "three";
 import ServicesTabs from "../components/ServicesTabs";
 import styles from "../styles/Services.module.css";
 import s from "../styles/ServicesMonitor.module.css";
-import Prometheus from "../assets/promoetheus.webp";
-import datadog from "../assets/datadog.webp";
-import pagerduty from "../assets/pagerduty.webp";
-import kafka from "../assets/kafka.webp";
-import rabbitmq from "../assets/rabbitmq.webp";
-
 /* ─── DATA ─────────────────────────────────────────── */
 
 const MONITOR_TABS = [
@@ -81,11 +75,11 @@ const HOW_IT_WORKS = [
 ];
 
 const TOOLS = [
-  { title: "Prometheus", desc: "Open-source monitoring and alerting toolkit with dimensional data model and powerful query language.", icon: Prometheus, color: "#E6522C" },
-  { title: "Datadog", desc: "Unified monitoring platform for infrastructure, APM, logs, and real-time user experience analytics.", icon: datadog, color: "#632CA6" },
-  { title: "PagerDuty", desc: "Incident management platform for intelligent alerting, on-call scheduling, and rapid response coordination.", icon: pagerduty, color: "#25C151" },
-  { title: "Apache Kafka", desc: "Distributed event streaming platform capable of handling millions of events per second at low latency.", icon: kafka, color: "#000000" },
-  { title: "RabbitMQ", desc: "Reliable message broker for decoupling services with support for multiple messaging protocols.", icon: rabbitmq, color: "#FF6600" },
+  { title: "Prometheus", desc: "Open-source monitoring and alerting toolkit with dimensional data model and powerful query language.", icon: "/assets/promoetheus.webp", color: "#E6522C" },
+  { title: "Datadog", desc: "Unified monitoring platform for infrastructure, APM, logs, and real-time user experience analytics.", icon: "/assets/datadog.webp", color: "#632CA6" },
+  { title: "PagerDuty", desc: "Incident management platform for intelligent alerting, on-call scheduling, and rapid response coordination.", icon: "/assets/pagerduty.webp", color: "#25C151" },
+  { title: "Apache Kafka", desc: "Distributed event streaming platform capable of handling millions of events per second at low latency.", icon: "/assets/kafka.webp", color: "#000000" },
+  { title: "RabbitMQ", desc: "Reliable message broker for decoupling services with support for multiple messaging protocols.", icon: "/assets/rabbitmq.webp", color: "#FF6600" },
 ];
 
 const WHY_CARDS = [

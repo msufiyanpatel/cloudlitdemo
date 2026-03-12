@@ -3,43 +3,20 @@ import styles from "../styles/HomeServices.module.css";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import awsIcon from "../assets/aws-icon.webp";
-import azureIcon from "../assets/Azure-Logo-PNG-Black.webp";
-import gcp from "../assets/google-cloud-platform.webp";
-import docker from "../assets/docker-logo.webp";
-import kubernetes from "../assets/kubernetes.webp";
-import gitlab from "../assets/Gitlab.webp";
-import github from "../assets/GitHub.webp";
-import teamCity from "../assets/TeamCity.webp";
-import ansible from "../assets/ansible.webp";
-import chef from "../assets/chef.webp";
-import puppet from "../assets/puppet.webp";
-import Terraform from "../assets/terraform.webp";
-import cloudFormation from "../assets/aws-cloudformation.webp";
-import pulumi from "../assets/pulumi.svg";
-import Prometheus from "../assets/promoetheus.webp";
-import datadog from "../assets/datadog.webp";
-import pagerduty from "../assets/pagerduty.webp";
-import kafka from "../assets/kafka.webp";
-import rabbitmq from "../assets/rabbitmq.webp";
-import mysql from "../assets/mysql.webp";
-import postgresql from "../assets/Postgresql.webp";
-import oracle from "../assets/oracle.webp";
-
 const TOOL_ITEMS = [
-  { icon: awsIcon, label: "AWS" },
-  { icon: gcp, label: "GCP" },
-  { icon: azureIcon, label: "Azure" },
-  { icon: docker, label: "Docker" },
-  { icon: kubernetes, label: "Kubernetes" },
-  { icon: gitlab, label: "GitLab" },
-  { icon: ansible, label: "Ansible" },
-  { icon: chef, label: "Chef" },
-  { icon: Terraform, label: "Terraform" },
-  { icon: cloudFormation, label: "CloudFormation" },
-  { icon: Prometheus, label: "Prometheus" },
-  { icon: datadog, label: "Datadog" },
-  { icon: pagerduty, label: "PagerDuty" },
+  { icon: "/assets/aws-icon.webp", label: "AWS" },
+  { icon: "/assets/google-cloud-platform.webp", label: "GCP" },
+  { icon: "/assets/Azure-Logo-PNG-Black.webp", label: "Azure" },
+  { icon: "/assets/docker-logo.webp", label: "Docker" },
+  { icon: "/assets/kubernetes.webp", label: "Kubernetes" },
+  { icon: "/assets/Gitlab.webp", label: "GitLab" },
+  { icon: "/assets/ansible.webp", label: "Ansible" },
+  { icon: "/assets/chef.webp", label: "Chef" },
+  { icon: "/assets/terraform.webp", label: "Terraform" },
+  { icon: "/assets/aws-cloudformation.webp", label: "CloudFormation" },
+  { icon: "/assets/promoetheus.webp", label: "Prometheus" },
+  { icon: "/assets/datadog.webp", label: "Datadog" },
+  { icon: "/assets/pagerduty.webp", label: "PagerDuty" },
 ];
 
 const SERVICE_CARDS = [
@@ -48,7 +25,7 @@ const SERVICE_CARDS = [
     title: "Cloud Providers",
     description:
       "Amazon AWS, Google Cloud, Microsoft Azure and any private cloud – we architect solutions across all major providers.",
-    tools: [awsIcon, gcp, azureIcon],
+    tools: ["/assets/aws-icon.webp", "/assets/google-cloud-platform.webp", "/assets/Azure-Logo-PNG-Black.webp"],
     path: "/services/cloud",
   },
   {
@@ -56,7 +33,7 @@ const SERVICE_CARDS = [
     title: "Containers & Orchestration",
     description:
       "Docker, Kubernetes, and container orchestration that makes your deployments bulletproof.",
-    tools: [docker, kubernetes],
+    tools: ["/assets/docker-logo.webp", "/assets/kubernetes.webp"],
     path: "/services/devops",
   },
   {
@@ -64,7 +41,7 @@ const SERVICE_CARDS = [
     title: "CI/CD Pipelines",
     description:
       "Jenkins, GitLab, GitHub Actions, ArgoCD – continuous delivery that never sleeps.",
-    tools: [gitlab, github, teamCity],
+    tools: ["/assets/Gitlab.webp", "/assets/GitHub.webp", "/assets/TeamCity.webp"],
     path: "/services/devops",
   },
   {
@@ -72,7 +49,7 @@ const SERVICE_CARDS = [
     title: "Configuration Management",
     description:
       "Ansible, Chef, Puppet – automate everything from server provisioning to application configuration.",
-    tools: [ansible, chef, puppet],
+    tools: ["/assets/ansible.webp", "/assets/chef.webp", "/assets/puppet.webp"],
     path: "/services/provision",
   },
   {
@@ -80,7 +57,7 @@ const SERVICE_CARDS = [
     title: "Databases",
     description:
       "MySQL, PostgreSQL, Oracle, MongoDB, Amazon Aurora – relational and NoSQL expertise for every workload.",
-    tools: [mysql, postgresql, oracle],
+    tools: ["/assets/mysql.webp", "/assets/Postgresql.webp", "/assets/oracle.webp"],
     path: "/services/cloud",
   },
   {
@@ -88,7 +65,7 @@ const SERVICE_CARDS = [
     title: "Messaging & Caching",
     description:
       "RabbitMQ, Kafka, Redis, ELK stack – event-driven architectures that handle millions of messages.",
-    tools: [kafka, rabbitmq],
+    tools: ["/assets/kafka.webp", "/assets/rabbitmq.webp"],
     path: "/services/monitor",
   },
   {
@@ -96,7 +73,7 @@ const SERVICE_CARDS = [
     title: "Monitoring & Observability",
     description:
       "Prometheus, Datadog, Grafana – full-stack observability from infrastructure to user experience.",
-    tools: [Prometheus, datadog, pagerduty],
+    tools: ["/assets/promoetheus.webp", "/assets/datadog.webp", "/assets/pagerduty.webp"],
     path: "/services/monitor",
   },
   {
@@ -104,7 +81,7 @@ const SERVICE_CARDS = [
     title: "Infrastructure Management",
     description:
       "Terraform, Pulumi, AWS CloudFormation – declarative infrastructure that’s versioned, reviewed, and repeatable.",
-    tools: [Terraform, pulumi, cloudFormation],
+    tools: ["/assets/terraform.webp", "/assets/pulumi.svg", "/assets/aws-cloudformation.webp"],
     path: "/services/provision",
   },
 ];

@@ -3,19 +3,13 @@ import SEO from "../components/SEO";
 import styles from "../styles/ChatForm.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot, faGear } from "@fortawesome/free-solid-svg-icons";
-import avatar1 from "../assets/icons/1.webp";
-import avatar2 from "../assets/icons/2.webp";
-import avatar3 from "../assets/icons/3.webp";
-import avatar4 from "../assets/icons/4.webp";
-import avatar5 from "../assets/icons/5.webp";
-
 const teamMembers = [
-  { image: avatar1, title: "Technical UI Designer" },
-  { image: avatar2, title: "UI Designer" },
-  { image: avatar3, title: "DevOps & Cloud Lead" },
-  { image: avatar4, title: "Product Designer" },
-  { image: avatar5, title: "Frontend Developer" },
-  { image: avatar1, title: "Backend Developer" },
+  { image: "/assets/icons/1.webp", title: "Technical UI Designer" },
+  { image: "/assets/icons/2.webp", title: "UI Designer" },
+  { image: "/assets/icons/3.webp", title: "DevOps & Cloud Lead" },
+  { image: "/assets/icons/4.webp", title: "Product Designer" },
+  { image: "/assets/icons/5.webp", title: "Frontend Developer" },
+  { image: "/assets/icons/1.webp", title: "Backend Developer" },
 ];
 
 const TABS = [

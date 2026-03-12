@@ -7,10 +7,6 @@ import * as THREE from "three";
 import ServicesTabs from "../components/ServicesTabs";
 import styles from "../styles/Services.module.css";
 import s from "../styles/ServicesCloud.module.css";
-import awsIcon from "../assets/aws-icon.webp";
-import azureIcon from "../assets/Azure-Logo-PNG-Black.webp";
-import gcp from "../assets/google-cloud-platform.webp";
-
 /* ─── DATA ─────────────────────────────────────────── */
 
 const CLOUD_SERVICES_TABS = [
@@ -86,10 +82,10 @@ const HOW_IT_WORKS = [
 ];
 
 const CLOUD_PROVIDERS = [
-  { title: "Amazon Web Services", description: "Innovate with agility and build a secure cloud platform by exploiting the full breadth of AWS capabilities.", icon: awsIcon, color: "#FF9900" },
-  { title: "Google Cloud", description: "Google Cloud provides services that support organizations to go digital with computing, data and AI tools.", icon: gcp, color: "#4285F4" },
-  { title: "IBM Cloud", description: "IBM Cloud offers 200+ services in virtual servers, networking, storage and Watson AI capabilities.", icon: azureIcon, color: "#054ADA" },
-  { title: "Microsoft Azure", description: "Azure helps organizations transition to the cloud with capabilities tailored to their specific needs.", icon: azureIcon, color: "#0078D4" },
+  { title: "Amazon Web Services", description: "Innovate with agility and build a secure cloud platform by exploiting the full breadth of AWS capabilities.", icon: "/assets/aws-icon.webp", color: "#FF9900" },
+  { title: "Google Cloud", description: "Google Cloud provides services that support organizations to go digital with computing, data and AI tools.", icon: "/assets/google-cloud-platform.webp", color: "#4285F4" },
+  { title: "IBM Cloud", description: "IBM Cloud offers 200+ services in virtual servers, networking, storage and Watson AI capabilities.", icon: "/assets/Azure-Logo-PNG-Black.webp", color: "#054ADA" },
+  { title: "Microsoft Azure", description: "Azure helps organizations transition to the cloud with capabilities tailored to their specific needs.", icon: "/assets/Azure-Logo-PNG-Black.webp", color: "#0078D4" },
 ];
 
 const WHY_CARDS = [

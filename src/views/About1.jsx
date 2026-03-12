@@ -1,24 +1,16 @@
 import React from "react";
 import SEO from "../components/SEO";
 import styles from "../styles/About1.module.css";
-import excellence from "../assets/Execellence.webp";
-import innovation from "../assets/Innovation.webp";
-import teamwork from "../assets/TeamWork.webp";
-import integrity from "../assets/Integrity.webp";
-import ethics from "../assets/Ethics.webp";
-import compassion from "../assets/Compassion.webp";
-import picture from "../assets/3rd-picture.webp";
-import picture2 from "../assets/2nd-picture.webp";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const principles = [
-  { icon: excellence, label: "Excellence", desc: "We strive for the highest standards in every solution we deliver." },
-  { icon: innovation, label: "Innovation", desc: "Pushing boundaries with cutting-edge cloud and DevOps practices." },
-  { icon: teamwork, label: "Teamwork", desc: "Collaborating seamlessly with your team for shared success." },
-  { icon: integrity, label: "Integrity", desc: "Transparent communication and honest partnerships always." },
-  { icon: ethics, label: "Ethics", desc: "Responsible technology practices that respect data and privacy." },
-  { icon: compassion, label: "Compassion", desc: "Understanding your challenges and delivering with empathy." },
+  { icon: "/assets/Execellence.webp", label: "Excellence", desc: "We strive for the highest standards in every solution we deliver." },
+  { icon: "/assets/Innovation.webp", label: "Innovation", desc: "Pushing boundaries with cutting-edge cloud and DevOps practices." },
+  { icon: "/assets/TeamWork.webp", label: "Teamwork", desc: "Collaborating seamlessly with your team for shared success." },
+  { icon: "/assets/Integrity.webp", label: "Integrity", desc: "Transparent communication and honest partnerships always." },
+  { icon: "/assets/Ethics.webp", label: "Ethics", desc: "Responsible technology practices that respect data and privacy." },
+  { icon: "/assets/Compassion.webp", label: "Compassion", desc: "Understanding your challenges and delivering with empathy." },
 ];
 
 const stats = [
@@ -74,7 +66,7 @@ const About = () => {
           </div>
           <div className={styles.heroImageWrap}>
             <div className={styles.heroImageGlow} />
-            <img src={picture} alt="Cloud infrastructure" className={styles.heroImage} />
+            <img src="/assets/3rd-picture.webp" alt="Cloud infrastructure" className={styles.heroImage} />
           </div>
         </motion.div>
       </div>
@@ -113,7 +105,7 @@ const About = () => {
       >
         <div className={styles.whoInner}>
           <div className={styles.whoImageWrap}>
-            <img src={picture2} alt="Our team" className={styles.whoImage} />
+            <img src="/assets/2nd-picture.webp" alt="Our team" className={styles.whoImage} />
           </div>
           <div className={styles.whoContent}>
             <span className={styles.tag}>Who We Are</span>

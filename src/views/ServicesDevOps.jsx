@@ -7,13 +7,6 @@ import * as THREE from "three";
 import ServicesTabs from "../components/ServicesTabs";
 import styles from "../styles/Services.module.css";
 import s from "../styles/ServicesDevOps.module.css";
-import docker from "../assets/docker-logo.webp";
-import kubernetes from "../assets/kubernetes.webp";
-import gitlab from "../assets/Gitlab.webp";
-import github from "../assets/GitHub.webp";
-import teamCity from "../assets/TeamCity.webp";
-import ansible from "../assets/ansible.webp";
-
 /* ─── DATA ─────────────────────────────────────────── */
 
 const DEVOPS_TABS = [
@@ -82,12 +75,12 @@ const HOW_IT_WORKS = [
 ];
 
 const TOOLS = [
-  { title: "Docker", desc: "Containerize applications for consistent, portable deployments across every environment.", icon: docker, color: "#2496ED" },
-  { title: "Kubernetes", desc: "Orchestrate containers at scale with automated scheduling, healing, and rolling updates.", icon: kubernetes, color: "#326CE5" },
-  { title: "GitLab", desc: "Complete DevOps platform covering source control, CI/CD, security, and monitoring.", icon: gitlab, color: "#FC6D26" },
-  { title: "GitHub Actions", desc: "Native CI/CD workflows triggered directly from your GitHub repositories.", icon: github, color: "#24292F" },
-  { title: "TeamCity", desc: "Powerful CI/CD server with deep build configuration flexibility and plugin ecosystem.", icon: teamCity, color: "#000000" },
-  { title: "Ansible", desc: "Agentless automation for configuration management, deployments, and IT orchestration.", icon: ansible, color: "#EE0000" },
+  { title: "Docker", desc: "Containerize applications for consistent, portable deployments across every environment.", icon: "/assets/docker-logo.webp", color: "#2496ED" },
+  { title: "Kubernetes", desc: "Orchestrate containers at scale with automated scheduling, healing, and rolling updates.", icon: "/assets/kubernetes.webp", color: "#326CE5" },
+  { title: "GitLab", desc: "Complete DevOps platform covering source control, CI/CD, security, and monitoring.", icon: "/assets/Gitlab.webp", color: "#FC6D26" },
+  { title: "GitHub Actions", desc: "Native CI/CD workflows triggered directly from your GitHub repositories.", icon: "/assets/GitHub.webp", color: "#24292F" },
+  { title: "TeamCity", desc: "Powerful CI/CD server with deep build configuration flexibility and plugin ecosystem.", icon: "/assets/TeamCity.webp", color: "#000000" },
+  { title: "Ansible", desc: "Agentless automation for configuration management, deployments, and IT orchestration.", icon: "/assets/ansible.webp", color: "#EE0000" },
 ];
 
 const WHY_CARDS = [

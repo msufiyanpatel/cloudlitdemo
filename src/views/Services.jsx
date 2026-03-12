@@ -10,19 +10,6 @@ import {
   faServer,
   faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
-import awsIcon from "../assets/aws-icon.webp";
-import azureIcon from "../assets/Azure-Logo-PNG-Black.webp";
-import gcp from "../assets/google-cloud-platform.webp";
-import docker from "../assets/docker-logo.webp";
-import kubernetes from "../assets/kubernetes.webp";
-import gitlab from "../assets/Gitlab.webp";
-import ansible from "../assets/ansible.webp";
-import chef from "../assets/chef.webp";
-import Promethus from "../assets/promoetheus.webp";
-import datadog from "../assets/datadog.webp";
-import Terraform from "../assets/terraform.webp";
-import cloudFormation from "../assets/aws-cloudformation.webp";
-
 const TABS = [
   {
     id: "cloud",
@@ -63,91 +50,91 @@ const serviceData = [
     title: "Amazon Web Services",
     category: "cloud",
     description: "Innovate with agility and build a secure cloud platform by exploiting the full breadth of AWS capabilities.",
-    icons: [{ src: awsIcon, alt: "AWS" }],
+    icons: [{ src: "/assets/aws-icon.webp", alt: "AWS" }],
     accent: "#3A92EE",
   },
   {
     title: "Google Cloud",
     category: "cloud",
     description: "Google Cloud provides services that support organizations to go digital with computing, data and AI tools.",
-    icons: [{ src: gcp, alt: "GCP" }],
+    icons: [{ src: "/assets/google-cloud-platform.webp", alt: "GCP" }],
     accent: "#5146CA",
   },
   {
     title: "IBM Cloud",
     category: "cloud",
     description: "IBM Cloud offers 200+ services in virtual servers, networking, storage and Watson AI capabilities.",
-    icons: [{ src: azureIcon, alt: "IBM" }],
+    icons: [{ src: "/assets/Azure-Logo-PNG-Black.webp", alt: "IBM" }],
     accent: "#6015B2",
   },
   {
     title: "Microsoft Azure",
     category: "cloud",
     description: "Azure helps organizations transition to the cloud with capabilities tailored to their specific needs.",
-    icons: [{ src: azureIcon, alt: "Azure" }],
+    icons: [{ src: "/assets/Azure-Logo-PNG-Black.webp", alt: "Azure" }],
     accent: "#3A92EE",
   },
   {
     title: "Kubernetes",
     category: "devops",
     description: "Container orchestration platform for automating deployment, scaling and management of containerized apps.",
-    icons: [{ src: kubernetes, alt: "Kubernetes" }],
+    icons: [{ src: "/assets/kubernetes.webp", alt: "Kubernetes" }],
     accent: "#3A92EE",
   },
   {
     title: "Docker",
     category: "devops",
     description: "Container platform for developing, shipping and running applications in isolated, portable environments.",
-    icons: [{ src: docker, alt: "Docker" }],
+    icons: [{ src: "/assets/docker-logo.webp", alt: "Docker" }],
     accent: "#5146CA",
   },
   {
     title: "GitLab",
     category: "devops",
     description: "Complete DevOps platform for source code management, CI/CD, and collaboration across the software lifecycle.",
-    icons: [{ src: gitlab, alt: "GitLab" }],
+    icons: [{ src: "/assets/Gitlab.webp", alt: "GitLab" }],
     accent: "#6015B2",
   },
   {
     title: "Ansible",
     category: "provision",
     description: "Agentless automation for configuration management, application deployment and IT orchestration.",
-    icons: [{ src: ansible, alt: "Ansible" }],
+    icons: [{ src: "/assets/ansible.webp", alt: "Ansible" }],
     accent: "#3A92EE",
   },
   {
     title: "Chef",
     category: "provision",
     description: "Configuration management platform for defining infrastructure as code and automating compliance.",
-    icons: [{ src: chef, alt: "Chef" }],
+    icons: [{ src: "/assets/chef.webp", alt: "Chef" }],
     accent: "#5146CA",
   },
   {
     title: "Terraform",
     category: "provision",
     description: "Infrastructure as code tool for building, changing and versioning cloud and on-prem resources.",
-    icons: [{ src: Terraform, alt: "Terraform" }],
+    icons: [{ src: "/assets/terraform.webp", alt: "Terraform" }],
     accent: "#6015B2",
   },
   {
     title: "AWS CloudFormation",
     category: "provision",
     description: "Infrastructure as code service for modeling and provisioning AWS resources in a repeatable way.",
-    icons: [{ src: cloudFormation, alt: "CloudFormation" }],
+    icons: [{ src: "/assets/aws-cloudformation.webp", alt: "CloudFormation" }],
     accent: "#5146CA",
   },
   {
     title: "Prometheus",
     category: "monitor",
     description: "Open source monitoring and alerting toolkit designed for reliability and dimensional data model.",
-    icons: [{ src: Promethus, alt: "Prometheus" }],
+    icons: [{ src: "/assets/promoetheus.webp", alt: "Prometheus" }],
     accent: "#3A92EE",
   },
   {
     title: "Datadog",
     category: "monitor",
     description: "Unified monitoring platform for infrastructure, applications, logs and real-time performance analytics.",
-    icons: [{ src: datadog, alt: "Datadog" }],
+    icons: [{ src: "/assets/datadog.webp", alt: "Datadog" }],
     accent: "#5146CA",
   },
 ];

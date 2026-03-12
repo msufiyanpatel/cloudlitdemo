@@ -7,8 +7,6 @@ import * as THREE from "three";
 import ServicesTabs from "../components/ServicesTabs";
 import styles from "../styles/Services.module.css";
 import s from "../styles/ServicesOpenShift.module.css";
-import redhatIcon from "../assets/reddid.webp";
-
 /* ─── DATA ─────────────────────────────────────────── */
 
 const OPENSHIFT_TABS = [
@@ -411,7 +409,7 @@ const ServicesOpenShift = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <img src={redhatIcon} alt="Red Hat" className={s.heroBadgeIcon} />
+            <img src="/assets/reddid.webp" alt="Red Hat" className={s.heroBadgeIcon} />
             <span>Official Red Hat Partner</span>
           </motion.div>
           <motion.h1
