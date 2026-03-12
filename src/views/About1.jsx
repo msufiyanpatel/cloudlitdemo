@@ -7,8 +7,8 @@ import teamwork from "../assets/TeamWork.webp";
 import integrity from "../assets/Integrity.webp";
 import ethics from "../assets/Ethics.webp";
 import compassion from "../assets/Compassion.webp";
-import picture from "../assets/3rd picture.webp";
-import picture2 from "../assets/2nd picture.webp";
+import picture from "../assets/3rd-picture.webp";
+import picture2 from "../assets/2nd-picture.webp";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 

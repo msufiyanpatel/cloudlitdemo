@@ -2,8 +2,17 @@
 const nextConfig = {
   reactStrictMode: true,
   eslint: {
-    // ESLint runs separately in CI; skip during next build
     ignoreDuringBuilds: true,
+  },
+  images: {
+    unoptimized: true,
+  },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.(png|jpg|jpeg|gif|webp|svg|ico)$/i,
+      type: 'asset/resource',
+    });
+    return config;
   },
   async redirects() {
     return [
