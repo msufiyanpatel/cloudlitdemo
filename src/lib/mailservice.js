@@ -48,18 +48,9 @@ Sent from cloudlit.co
     text,
   };
 
-  return transporter
-    .sendMail(mailOptions)
-    .then((info) => {
-      if (process.env.NODE_ENV !== "production") {
-        console.log("Email sent:", info.response);
-      }
-      return true;
-    })
-    .catch((err) => {
-      console.error("Error sending mail:", err);
-      return false;
-    });
+  const info = await transporter.sendMail(mailOptions);
+  console.log("Email sent:", info.response);
+  return true;
 }
 
 export { sendMail };

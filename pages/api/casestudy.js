@@ -9,13 +9,16 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Email and message are required.' });
   }
 
-  const ok = await sendMail({
-    Name: `${firstName || ''} ${lastName || ''}`.trim() || 'Unknown',
-    Email: email,
-    Message: message,
-    Source: source || 'Case Study Form',
-  });
-
-  if (ok) return res.status(200).json({ success: true });
-  return res.status(500).json({ error: 'Failed to send email. Please try again.' });
+  try {
+    await sendMail({
+      Name: `${firstName || ''} ${lastName || ''}`.trim() || 'Unknown',
+      Email: email,
+      Message: message,
+      Source: source || 'Case Study Form',
+    });
+    return res.status(200).json({ success: true });
+  } catch (err) {
+    console.error('Casestudy API error:', err);
+    return res.status(500).json({ error: err.message || 'Failed to send email.' });
+  }
 }

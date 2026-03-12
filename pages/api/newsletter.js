@@ -9,13 +9,16 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Email is required.' });
   }
 
-  const ok = await sendMail({
-    Name: 'Newsletter Subscriber',
-    Email: email,
-    Message: `New newsletter subscription from: ${email}`,
-    Source: 'Footer Newsletter Form',
-  });
-
-  if (ok) return res.status(200).json({ success: true });
-  return res.status(500).json({ error: 'Failed to process subscription.' });
+  try {
+    await sendMail({
+      Name: 'Newsletter Subscriber',
+      Email: email,
+      Message: `New newsletter subscription from: ${email}`,
+      Source: 'Footer Newsletter Form',
+    });
+    return res.status(200).json({ success: true });
+  } catch (err) {
+    console.error('Newsletter API error:', err);
+    return res.status(500).json({ error: err.message || 'Failed to process subscription.' });
+  }
 }
