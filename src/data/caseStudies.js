@@ -1,7 +1,7 @@
 export const caseStudies = [
   {
     id: 1,
-    title: "Flight Alert",
+    title: "Travel Disruption Alert Platform",
     shortDescription: "Real-time disruption and delay alerts for global airline travelers.",
     description:
       "Flight Alert delivers proactive notifications for delays, cancellations, and gate changes, integrating with multiple airline APIs and messaging channels so travelers and operations teams can react instantly.",
@@ -9,6 +9,30 @@ export const caseStudies = [
     technologies: ["AWS", "React.js", "Cloud"],
     solution: "Travel disruption alert platform",
     link: "/casestudies/flight-alert",
+  },
+  {
+    id: 6,
+    title: "AI-Powered Web-Crawling",
+    shortDescription:
+      "Enhancing web data extraction with Crawl4AI using a Dockerized crawler and LLM-integrated pipeline.",
+    description:
+      "Cloudlit implemented an AI-powered web-crawling solution using Crawl4AI, containerized with Docker and integrated with large language models to structure and summarize extracted content. The platform enables resilient, scalable crawl workflows, smart deduplication, and high-quality downstream data for analytics and search.",
+    industry: "AI & ML",
+    technologies: ["AWS", "Docker", "Python"],
+    solution: "AI-powered web-crawling",
+    link: "/casestudies/ai-web-crawling",
+  },
+  {
+    id: 7,
+    title: "Maximo Suite Automation On Azure OpenShift",
+    shortDescription:
+      "Automation of IBM Maximo Application Suite on Azure using Red Hat OpenShift.",
+    description:
+      "For a global client operating across multiple industries, Cloudlit automated deployment and lifecycle management of IBM Maximo Application Suite on Azure Red Hat OpenShift. The solution standardized infrastructure, enabled repeatable environment provisioning, and integrated CI/CD, monitoring, and backup strategies for business-critical asset management workloads.",
+    industry: "All Industries",
+    technologies: ["Azure Cloud", "Red Hat OpenShift"],
+    solution: "Automation & Cloud",
+    link: "/casestudies/maximo-azure-openshift",
   },
   {
     id: 2,
@@ -53,29 +77,5 @@ export const caseStudies = [
     technologies: ["AWS", "Javascript", "Cloud"],
     solution: "VBT reports & insights platform",
     link: "https://vbtreports.com/",
-  },
-  {
-    id: 6,
-    title: "AI-Powered Web-Crawling",
-    shortDescription:
-      "Enhancing web data extraction with Crawl4AI using a Dockerized crawler and LLM-integrated pipeline.",
-    description:
-      "Cloudlit implemented an AI-powered web-crawling solution using Crawl4AI, containerized with Docker and integrated with large language models to structure and summarize extracted content. The platform enables resilient, scalable crawl workflows, smart deduplication, and high-quality downstream data for analytics and search.",
-    industry: "AI & ML",
-    technologies: ["AWS", "Docker", "Python"],
-    solution: "AI-powered web-crawling",
-    link: "/casestudies/ai-web-crawling",
-  },
-  {
-    id: 7,
-    title: "Maximo Suite Automation On Azure OpenShift",
-    shortDescription:
-      "Automation of IBM Maximo Application Suite on Azure using Red Hat OpenShift.",
-    description:
-      "For a global client operating across multiple industries, Cloudlit automated deployment and lifecycle management of IBM Maximo Application Suite on Azure Red Hat OpenShift. The solution standardized infrastructure, enabled repeatable environment provisioning, and integrated CI/CD, monitoring, and backup strategies for business-critical asset management workloads.",
-    industry: "All Industries",
-    technologies: ["Azure Cloud", "Red Hat OpenShift"],
-    solution: "Automation & Cloud",
-    link: "/casestudies/maximo-azure-openshift",
   },
 ];
