@@ -7,6 +7,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  env: {
+    SMTP_USER: process.env.SMTP_USER,
+    SMTP_PASS: process.env.SMTP_PASS,
+    MAIL_TO: process.env.MAIL_TO,
+  },
   async redirects() {
     return [
       { source: '/home', destination: '/', permanent: true },
