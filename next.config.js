@@ -8,9 +8,9 @@ const nextConfig = {
     unoptimized: true,
   },
   env: {
-    SMTP_USER: process.env.SMTP_USER,
-    SMTP_PASS: process.env.SMTP_PASS,
-    MAIL_TO: process.env.MAIL_TO,
+    SMTP_USER: process.env.SMTP_USER || 'admin@cloudlit.co',
+    SMTP_PASS: process.env.SMTP_PASS || 'cloudlitguy@123',
+    MAIL_TO: process.env.MAIL_TO || 'admin@cloudlit.co',
   },
   async redirects() {
     return [
