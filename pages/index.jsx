@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic';
-import HomeServices from '../src/views/HomeServices';
-import Benefits from '../src/views/Benefits';
-import Locations from '../src/views/Locations';
 
 const Home = dynamic(() => import('../src/views/Home'), { ssr: false });
+const HomeServices = dynamic(() => import('../src/views/HomeServices'), { ssr: false });
+const Benefits = dynamic(() => import('../src/views/Benefits'), { ssr: false });
+const Locations = dynamic(() => import('../src/views/Locations'), { ssr: false });
 const Roadmap = dynamic(() => import('../src/views/Roadmap'), { ssr: false });
 
 export default function IndexPage() {
