@@ -1,6 +1,4 @@
-import dynamic from 'next/dynamic';
-
-const Benefits = dynamic(() => import('../src/views/Benefits'), { ssr: false });
+import Benefits from '../src/views/Benefits';
 
 export default function BenefitsPage() {
   return <Benefits variant="light" />;

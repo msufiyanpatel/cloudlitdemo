@@ -1,6 +1,4 @@
-import dynamic from 'next/dynamic';
-
-const About = dynamic(() => import('../src/views/About1'), { ssr: false });
+import About from '../src/views/About1';
 
 export default function AboutPage() {
   return <About />;

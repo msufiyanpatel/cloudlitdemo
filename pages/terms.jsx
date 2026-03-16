@@ -1,6 +1,4 @@
-import dynamic from 'next/dynamic';
-
-const TermsOfService = dynamic(() => import('../src/views/TermsOfService'), { ssr: false });
+import TermsOfService from '../src/views/TermsOfService';
 
 export default function TermsPage() {
   return <TermsOfService />;

@@ -1,6 +1,4 @@
-import dynamic from 'next/dynamic';
-
-const Roadmap = dynamic(() => import('../src/views/Roadmap'), { ssr: false });
+import Roadmap from '../src/views/Roadmap';
 
 export default function RoadmapPage() {
   return <Roadmap />;

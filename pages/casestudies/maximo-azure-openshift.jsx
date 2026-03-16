@@ -1,6 +1,4 @@
-import dynamic from 'next/dynamic';
-
-const CaseStudyMaximo = dynamic(() => import('../../src/views/CaseStudyMaximo'), { ssr: false });
+import CaseStudyMaximo from '../../src/views/CaseStudyMaximo';
 
 export default function MaximoPage() {
   return <CaseStudyMaximo />;

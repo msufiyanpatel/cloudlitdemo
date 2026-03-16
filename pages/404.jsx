@@ -1,6 +1,4 @@
-import dynamic from 'next/dynamic';
-
-const NotFound = dynamic(() => import('../src/views/NotFound'), { ssr: false });
+import NotFound from '../src/views/NotFound';
 
 export default function NotFoundPage() {
   return <NotFound />;

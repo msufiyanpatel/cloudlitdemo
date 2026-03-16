@@ -1,6 +1,4 @@
-import dynamic from 'next/dynamic';
-
-const CaseStudiesPage = dynamic(() => import('../../src/views/CaseStudiesPage'), { ssr: false });
+import CaseStudiesPage from '../../src/views/CaseStudiesPage';
 
 export default function CaseStudiesIndexPage() {
   return <CaseStudiesPage />;

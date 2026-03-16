@@ -1,6 +1,4 @@
-import dynamic from 'next/dynamic';
-
-const CaseStudyFlightAlert = dynamic(() => import('../../src/views/CaseStudyFlightAlert'), { ssr: false });
+import CaseStudyFlightAlert from '../../src/views/CaseStudyFlightAlert';
 
 export default function FlightAlertPage() {
   return <CaseStudyFlightAlert />;
