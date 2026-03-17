@@ -247,7 +247,7 @@ const ChatForm = () => {
                     type="text"
                     id="firstName"
                     name="firstName"
-                    placeholder="Abdullah"
+                    placeholder="James"
                     value={formData.firstName}
                     onChange={handleChange}
                     required
@@ -259,7 +259,7 @@ const ChatForm = () => {
                     type="text"
                     id="lastName"
                     name="lastName"
-                    placeholder="Ahmad"
+                    placeholder="Carter"
                     value={formData.lastName}
                     onChange={handleChange}
                     required
@@ -272,7 +272,7 @@ const ChatForm = () => {
                   type="email"
                   id="workEmail"
                   name="workEmail"
-                  placeholder="abdullah@company.com"
+                  placeholder="james@company.com"
                   value={formData.workEmail}
                   onChange={handleChange}
                   required

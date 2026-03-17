@@ -368,9 +368,13 @@ box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
 
 .navbar__side-menu-sub > div {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar__side-menu-sublink {
+  display: block;
+  width: 100%;
   background: rgba(81, 70, 202, 0.06);
   border: none;
   font-size: 15px;

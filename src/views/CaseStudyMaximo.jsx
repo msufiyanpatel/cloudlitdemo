@@ -238,16 +238,16 @@ const CaseStudyMaximo = () => {
                 <div className={formStyles.formRow}>
                   <div className={formStyles.formGroup}>
                     <label htmlFor="maximo-firstName">FIRST NAME</label>
-                    <input type="text" id="maximo-firstName" name="firstName" placeholder="Abdullah" value={formData.firstName} onChange={handleChange} />
+                    <input type="text" id="maximo-firstName" name="firstName" placeholder="James" value={formData.firstName} onChange={handleChange} />
                   </div>
                   <div className={formStyles.formGroup}>
                     <label htmlFor="maximo-lastName">LAST NAME</label>
-                    <input type="text" id="maximo-lastName" name="lastName" placeholder="Ahmad" value={formData.lastName} onChange={handleChange} />
+                    <input type="text" id="maximo-lastName" name="lastName" placeholder="Carter" value={formData.lastName} onChange={handleChange} />
                   </div>
                 </div>
                 <div className={formStyles.formGroup}>
                   <label htmlFor="maximo-workEmail">WORK EMAIL</label>
-                  <input type="email" id="maximo-workEmail" name="workEmail" placeholder="abdullah@company.com" value={formData.workEmail} onChange={handleChange} required />
+                  <input type="email" id="maximo-workEmail" name="workEmail" placeholder="james@company.com" value={formData.workEmail} onChange={handleChange} required />
                 </div>
                 <div className={formStyles.formGroup}>
                   <label htmlFor="maximo-projectDetails">PROJECT DETAILS</label>

@@ -234,16 +234,16 @@ const CaseStudyAiWebCrawling = () => {
                 <div className={formStyles.formRow}>
                   <div className={formStyles.formGroup}>
                     <label htmlFor="ai-firstName">FIRST NAME</label>
-                    <input type="text" id="ai-firstName" name="firstName" placeholder="Abdullah" value={formData.firstName} onChange={handleChange} />
+                    <input type="text" id="ai-firstName" name="firstName" placeholder="James" value={formData.firstName} onChange={handleChange} />
                   </div>
                   <div className={formStyles.formGroup}>
                     <label htmlFor="ai-lastName">LAST NAME</label>
-                    <input type="text" id="ai-lastName" name="lastName" placeholder="Ahmad" value={formData.lastName} onChange={handleChange} />
+                    <input type="text" id="ai-lastName" name="lastName" placeholder="Carter" value={formData.lastName} onChange={handleChange} />
                   </div>
                 </div>
                 <div className={formStyles.formGroup}>
                   <label htmlFor="ai-workEmail">WORK EMAIL</label>
-                  <input type="email" id="ai-workEmail" name="workEmail" placeholder="abdullah@company.com" value={formData.workEmail} onChange={handleChange} required />
+                  <input type="email" id="ai-workEmail" name="workEmail" placeholder="james@company.com" value={formData.workEmail} onChange={handleChange} required />
                 </div>
                 <div className={formStyles.formGroup}>
                   <label htmlFor="ai-projectDetails">PROJECT DETAILS</label>

@@ -239,16 +239,16 @@ const CaseStudyFlightAlert = () => {
                 <div className={formStyles.formRow}>
                   <div className={formStyles.formGroup}>
                     <label htmlFor="flight-firstName">FIRST NAME</label>
-                    <input type="text" id="flight-firstName" name="firstName" placeholder="Abdullah" value={formData.firstName} onChange={handleChange} />
+                    <input type="text" id="flight-firstName" name="firstName" placeholder="James" value={formData.firstName} onChange={handleChange} />
                   </div>
                   <div className={formStyles.formGroup}>
                     <label htmlFor="flight-lastName">LAST NAME</label>
-                    <input type="text" id="flight-lastName" name="lastName" placeholder="Ahmad" value={formData.lastName} onChange={handleChange} />
+                    <input type="text" id="flight-lastName" name="lastName" placeholder="Carter" value={formData.lastName} onChange={handleChange} />
                   </div>
                 </div>
                 <div className={formStyles.formGroup}>
                   <label htmlFor="flight-workEmail">WORK EMAIL</label>
-                  <input type="email" id="flight-workEmail" name="workEmail" placeholder="abdullah@company.com" value={formData.workEmail} onChange={handleChange} required />
+                  <input type="email" id="flight-workEmail" name="workEmail" placeholder="james@company.com" value={formData.workEmail} onChange={handleChange} required />
                 </div>
                 <div className={formStyles.formGroup}>
                   <label htmlFor="flight-projectDetails">PROJECT DETAILS</label>
