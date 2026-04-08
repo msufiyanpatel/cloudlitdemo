@@ -5,7 +5,7 @@ import { caseStudies } from "../data/caseStudies";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "../styles/CaseStudies.module.css";
 
-const INDUSTRIES = ["Travel", "Real Estate", "Healthcare", "Recruitment", "Automotive", "AI & ML", "All Industries"];
+const INDUSTRIES = ["Travel", "Real Estate", "Healthcare", "Recruitment", "Automotive", "AI & ML", "Energy & Utilities", "All Industries"];
 const TECHNOLOGIES = ["Azure", "React.js", "AWS", "Javascript", "PHP", "Wordpress", "Cloud", "Docker", "Python"];
 
 /* Per-card accent colours cycling through brand palette */

@@ -35,6 +35,17 @@ export const caseStudies = [
     link: "/casestudies/maximo-azure-openshift",
   },
   {
+    id: 8,
+    title: "Enterprise Application Modernization for a Leading Utility Company",
+    shortDescription: "Secure, scalable Azure cloud architecture for a utility company with hybrid connectivity and private data services.",
+    description:
+      "Cloudlit designed and implemented a secure, scalable Azure cloud architecture for a leading utility organization. The solution featured a multi-tier network with site-to-site VPN, containerized microservices on Azure Container Apps, private data services (Cosmos DB, Blob Storage, Redis), and Azure Active Directory for identity management — enabling seamless hybrid integration between on-premises ERP systems and Azure cloud with zero public exposure of backend services.",
+    industry: "Energy & Utilities",
+    technologies: ["Azure", "Cloud", "Docker"],
+    solution: "Enterprise cloud modernization",
+    link: "/casestudies/utility-azure-modernization",
+  },
+  {
     id: 2,
     title: "Dua Greens community portal",
     shortDescription: "Resident services and property management portal for the Dua Greens community.",
